@@ -8,3 +8,4 @@ git commit -m "$1"
 git push origin main
 
 open https://github.com/nuuuwan/$DIST_NAME
+open https://readthedocs.org/projects/${DIST_NAME}-nuuuwan/builds/
