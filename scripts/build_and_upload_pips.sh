@@ -1,9 +1,13 @@
 DIST_NAME=gig
-REPOSITORY=testpypi
-REPOSITORY_DOMAIN=test.pypi
+# REPOSITORY=testpypi
+# REPOSITORY_DOMAIN=test.pypi
+
+REPOSITORY=pypi
+REPOSITORY_DOMAIN=pypi
 
 # Build
-scripts/clean.sh
+rm -rf build
+rm -rf dist
 python3 -m build
 
 # Upload
