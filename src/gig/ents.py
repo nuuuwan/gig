@@ -6,8 +6,8 @@ following information can be access about Colombo District.
 
 .. code-block:: python
 
-    >> from gig import entities
-    >> entities.get_entity('district', 'LK-11')
+    >> from gig import ents
+    >> ents.get_entity('district', 'LK-11')
     {'district_id': 'LK-11', 'name': 'Colombo', 'province_id': 'LK-1',
     'ed_id': 'EC-01', 'hasc': 'LK.CO', 'fips': 'CE23',
     'area': '642', 'population': '2324349'}
@@ -34,9 +34,9 @@ def get_entities(entity_type):
 
     .. code-block:: python
 
-        >> from gig import entities
-        >> ents = entities.get_entities('province')
-        >> ents[0]
+        >> from gig import ents
+        >> entities = ents.get_entities('province')
+        >> entities[0]
         {'province_id': 'LK-1', 'name': 'Western',
         'country_id': 'LK', 'fips': 'CE36', 'area': '3709',
         'capital': 'Colombo'}
@@ -51,6 +51,7 @@ def get_entities(entity_type):
 @cache(GIG_CACHE_NAME)
 def get_entity_index(entity_type):
     """Get all entity data, for entities of a particular type.
+
         Indexed by entity id.
 
     Args:
@@ -60,8 +61,8 @@ def get_entity_index(entity_type):
 
     .. code-block:: python
 
-        >> from gig import entities
-        >> entity_index = entities.get_entity_index('province')
+        >> from gig import ents
+        >> entity_index = ents.get_entity_index('province')
         >> entity_index['LK-2']
         {'province_id': 'LK-2', 'name': 'Central',
         'country_id': 'LK', 'fips': 'CE29', 'area': '5584', 'capital': 'Kandy'}
@@ -89,14 +90,49 @@ def get_entity(entity_id):
 
     .. code-block:: python
 
-        >> from gig import entities
-        >> entities.get_entity('LK-3')
+        >> from gig import ents
+        >> ents.get_entity('LK-3')
         {'province_id': 'LK-3', 'name': 'Southern', 'country_id': 'LK',
         'fips': 'CE34', 'area': '5559', 'capital': 'Galle'}
     """
     entity_type = get_entity_type(entity_id)
     entity_index = get_entity_index(entity_type)
     return entity_index.get(entity_id, None)
+
+
+@cache(GIG_CACHE_NAME)
+def multiget_entities(entity_ids):
+    """Get multiple entities by entity id.
+
+    Args:
+        entity_ids(list of str): entity_ids id
+    Returns:
+        map of entity id to entity
+
+    .. code-block:: python
+
+        >> from gig import ents
+        >> ents.multiget_entities(
+            ['LK-1', 'LK-11', 'LK-1127', 'LK-1127015']
+        )
+        {'LK-1': {'province_id': 'LK-1', 'name': 'Western',
+            'country_id': 'LK', 'fips': 'CE36', 'area': '3709',
+            'capital': 'Colombo'},
+        'LK-11': {'district_id': 'LK-11', 'name': 'Colombo',
+            'province_id': 'LK-1', 'ed_id': 'EC-01',
+            'hasc': 'LK.CO', 'fips': 'CE23', 'area': '642',
+            'population': '2324349'},
+        'LK-1127': {'dsd_id': LK-1127', 'name': 'Thimbirigasyaya',
+            'hasc': 'LK.CO.TH','province_id': 'LK-1', 'district_id': 'LK-11',
+            'area': '24', 'population': '238057'},
+        'LK-1127015': {'gnd_id':'LK-1127015', 'name': 'Kurunduwatta',
+            'province_id': 'LK-1', 'district_id': 'LK-11',
+            'dsd_id': 'LK-1127', 'pd_id': 'EC-01C', 'gnd_num': 'None'}}
+    """
+    entity_map = {}
+    for entity_id in entity_ids:
+        entity_map[entity_id] = get_entity(entity_id)
+    return entity_map
 
 
 @cache(GIG_CACHE_NAME)
@@ -110,8 +146,8 @@ def get_entity_ids(entity_type):
 
     .. code-block:: python
 
-        >> from gig import entities
-        >> entities.get_entity_ids('province')
+        >> from gig import ents
+        >> ents.get_entity_ids('province')
         ['LK-1', 'LK-2', 'LK-3', 'LK-4', 'LK-5', 'LK-6',
         'LK-7', 'LK-8', 'LK-9']
 

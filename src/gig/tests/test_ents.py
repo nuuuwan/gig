@@ -1,9 +1,11 @@
 """Test gig_data."""
 import unittest
 import time
+
+from utils import db
+
 from gig import ents
 from gig.ent_types import ENTITY_TYPE
-from utils import db
 
 
 class TestGig(unittest.TestCase):
@@ -39,6 +41,21 @@ class TestGig(unittest.TestCase):
             entity = ents.get_entity(first_entity_id)
             id_key = db.get_id_key(entity_type)
             self.assertEqual(entity[id_key], first_entity_id)
+
+    def test_multiget_entities(self):
+        """Test."""
+        self.assertEqual(
+            ents.multiget_entities(['LK-1', 'LK-11']),
+            {
+                'LK-1': {'province_id': 'LK-1', 'name': 'Western',
+                         'country_id': 'LK', 'fips': 'CE36', 'area': '3709',
+                         'capital': 'Colombo'},
+                'LK-11': {'district_id': 'LK-11', 'name': 'Colombo',
+                          'province_id': 'LK-1', 'ed_id': 'EC-01',
+                          'hasc': 'LK.CO', 'fips': 'CE23', 'area': '642',
+                          'population': '2324349'},
+            },
+        )
 
     def test_perf(self):
         """Test."""

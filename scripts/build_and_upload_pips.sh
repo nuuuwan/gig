@@ -1,9 +1,9 @@
 DIST_NAME=gig
-# REPOSITORY=testpypi
-# REPOSITORY_DOMAIN=test.pypi
+REPOSITORY=testpypi
+REPOSITORY_DOMAIN=test.pypi
 
-REPOSITORY=pypi
-REPOSITORY_DOMAIN=pypi
+# REPOSITORY=pypi
+# REPOSITORY_DOMAIN=pypi
 
 # Build
 rm -rf build
