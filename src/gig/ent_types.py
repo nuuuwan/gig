@@ -12,6 +12,8 @@ class ENTITY_TYPE:
     ED = 'ed'
     PD = 'pd'
     PS = 'ps'
+    LG = 'lg'
+    MOH = 'moh'
     UNKNOWN = 'unknown'
 
     @staticmethod
@@ -25,6 +27,8 @@ class ENTITY_TYPE:
             ENTITY_TYPE.ED,
             ENTITY_TYPE.PD,
             ENTITY_TYPE.PS,
+            ENTITY_TYPE.LG,
+            ENTITY_TYPE.MOH,
         ]
 
 
@@ -68,5 +72,11 @@ def get_entity_type(entity_id):
 
     if entity_id[:2] == 'PS':
         return ENTITY_TYPE.PS
+
+    if entity_id[:2] == 'LG':
+        return ENTITY_TYPE.LG
+
+    if entity_id[:3] == 'MOH':
+        return ENTITY_TYPE.MOH
 
     return ENTITY_TYPE.UNKNOWN

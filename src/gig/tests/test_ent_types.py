@@ -19,6 +19,8 @@ class TestEntityTypes(unittest.TestCase):
             ['EC-11', ENTITY_TYPE.ED],
             ['EC-11A', ENTITY_TYPE.PD],
             ['PS-1234', ENTITY_TYPE.PS],
+            ['LG-12345', ENTITY_TYPE.LG],
+            ['MOH-12345', ENTITY_TYPE.MOH],
             ['XX-1234', ENTITY_TYPE.UNKNOWN],
         ]:
             self.assertEqual(
