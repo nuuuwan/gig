@@ -1,4 +1,4 @@
-"""Test gig_data."""
+'''Test gig_data.'''
 import unittest
 import time
 
@@ -9,16 +9,16 @@ from gig.ent_types import ENTITY_TYPE
 
 
 class TestGig(unittest.TestCase):
-    """Test."""
+    '''Test.'''
 
     def test_get_entities(self):
-        """Test."""
+        '''Test.'''
         for entity_type in ENTITY_TYPE.list():
             entities = ents.get_entities(entity_type)
             self.assertTrue(len(entities) >= 9)
 
     def test_get_entity_index(self):
-        """Test."""
+        '''Test.'''
         for entity_type in ENTITY_TYPE.list():
             entity_index = ents.get_entity_index(entity_type)
             first_entity_id = (list(entity_index.keys()))[0]
@@ -27,14 +27,14 @@ class TestGig(unittest.TestCase):
             self.assertEqual(first_entity_id, first_entity_id2)
 
     def test_get_entity_ids(self):
-        """Test."""
+        '''Test.'''
         for entity_type in ENTITY_TYPE.list():
             entity_index = ents.get_entity_index(entity_type)
             entity_ids = ents.get_entity_ids(entity_type)
             self.assertEqual(list(entity_index.keys()), entity_ids)
 
     def test_get_entity(self):
-        """Test."""
+        '''Test.'''
         for entity_type in ENTITY_TYPE.list():
             entity_ids = ents.get_entity_ids(entity_type)
             first_entity_id = entity_ids[0]
@@ -43,22 +43,46 @@ class TestGig(unittest.TestCase):
             self.assertEqual(entity[id_key], first_entity_id)
 
     def test_multiget_entities(self):
-        """Test."""
+        '''Test.'''
         self.assertEqual(
-            ents.multiget_entities(['LK-1', 'LK-11']),
+            ents.multiget_entities(['LK', 'LK-1', 'LK-11']),
             {
-                'LK-1': {'province_id': 'LK-1', 'name': 'Western',
-                         'country_id': 'LK', 'fips': 'CE36', 'area': '3709',
-                         'capital': 'Colombo'},
-                'LK-11': {'district_id': 'LK-11', 'name': 'Colombo',
-                          'province_id': 'LK-1', 'ed_id': 'EC-01',
-                          'hasc': 'LK.CO', 'fips': 'CE23', 'area': '642',
-                          'population': '2324349'},
+                'LK': {
+                  'id': 'LK',
+                  'name': 'Sri Lanka',
+                  'country_id': 'LK',
+                  'area': 65611.0,
+                  'population': 20359054,
+                  'hasc': 'LK',
+                  'fips': 'CE'
+                },
+                'LK-1': {
+                  'id': 'LK-1',
+                  'name': 'Western',
+                  'country_id': 'LK',
+                  'province_id': 'LK-1',
+                  'area': 3709.0,
+                  'population': 5850745,
+                  'province_capital': 'Colombo',
+                  'fips': 'CE36'
+                },
+                'LK-11': {
+                  'id': 'LK-11',
+                  'name': 'Colombo',
+                  'country_id': 'LK',
+                  'province_id': 'LK-1',
+                  'district_id': 'LK-11',
+                  'ed_id': 'EC-01',
+                  'area': 642.0,
+                  'population': 2323964,
+                  'hasc': 'LK.CO',
+                  'fips': 'CE23'
+                },
             },
         )
 
     def test_perf(self):
-        """Test."""
+        '''Test.'''
         delta_t_total = 0
         for entity_type in ENTITY_TYPE.list():
             ents.get_entities(entity_type)

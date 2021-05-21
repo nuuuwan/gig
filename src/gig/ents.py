@@ -42,9 +42,20 @@ def get_entities(entity_type):
         'capital': 'Colombo'}
 
     """
-    return list(filter(
-        lambda x: x,
-        _get_remote_tsv_data('%s.tsv' % (entity_type)),
+
+    def clean_types(d):
+        if 'area' in d:
+            d['area'] = (float)(d['area'])
+        if 'population' in d:
+            d['population'] = (int)(d['population'])
+        return d
+
+    return list(map(
+        clean_types,
+        list(filter(
+            lambda x: x,
+            _get_remote_tsv_data('%s.tsv' % (entity_type)),
+        )),
     ))
 
 
