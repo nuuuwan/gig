@@ -1,15 +1,16 @@
 """Setup."""
 import setuptools
 DIST_NAME = 'gig'
-VERSION = 1
-SUB_VERSION = 4
+VERSION = 0
+SUB_VERSION = 1
+SUB_SUB_VERSION = 5
 
 with open("src/%s/README.md" % DIST_NAME, "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
-    version="0.%d.%d" % (VERSION, SUB_VERSION),
+    version="%d.%d.%d" % (VERSION, SUB_VERSION, SUB_SUB_VERSION),
     author="Nuwan I. Senaratna",
     author_email="nuuuwan@gmail.com",
     description="Generalized information graph.",
