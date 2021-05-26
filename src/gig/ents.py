@@ -48,6 +48,11 @@ def get_entities(entity_type):
             d['area'] = (float)(d['area'])
         if 'population' in d:
             d['population'] = (int)(d['population'])
+        if 'altitude' in d:
+            d['altitude'] = (int)(d['altitude'])
+        for k in ['centroid', 'subs', 'supers', 'ints', 'eqs']:
+            if k in d:
+                d[k] = json.loads(d[k])
         return d
 
     return list(map(
