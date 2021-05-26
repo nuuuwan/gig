@@ -41,8 +41,9 @@ class TestGig(unittest.TestCase):
             entity = ents.get_entity(first_entity_id)
             id_key = db.get_id_key(entity_type)
             self.assertEqual(entity[id_key], first_entity_id)
-            if 'altitude' in entity:
-                self.assertTrue(0 >= entity['altitude'] >= 2600)
+            print(entity)
+            if 'centroid_altitude' in entity:
+                self.assertTrue(0 <= entity['centroid_altitude'] <= 2600)
 
     def test_multiget_entities(self):
         '''Test.'''

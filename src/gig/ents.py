@@ -46,13 +46,18 @@ def get_entities(entity_type):
     def clean_types(d):
         if 'area' in d:
             d['area'] = (float)(d['area'])
+
         if 'population' in d:
             d['population'] = (int)(d['population'])
-        if 'altitude' in d:
-            d['altitude'] = (int)(d['altitude'])
+
+        if 'centroid_altitude' in d:
+            try:
+                d['centroid_altitude'] = (int)(d['centroid_altitude'])
+            except ValueError:
+                d['centroid_altitude'] = 0
+
         for k in ['centroid', 'subs', 'supers', 'ints', 'eqs']:
             if k in d:
-                print(d['id'], d[k])
                 if d[k]:
                     d[k] = json.loads(d[k].replace('\'', '"'))
         return d
