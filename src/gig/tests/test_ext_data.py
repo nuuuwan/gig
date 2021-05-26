@@ -22,7 +22,7 @@ class TestGIGExtData(unittest.TestCase):
         """Test."""
         table = ext_data._get_table(TEST_ATTR_GROUP, TEST_TABLE_ID)
         self.assertTrue(len(table) > 100)
-        self.assertEqual(table[0]['entity_id'][:2], 'LK')
+        self.assertEqual(table[0]['entity_id'][:2], 'EC')
 
     def test_get_table_index(self):
         """Test."""

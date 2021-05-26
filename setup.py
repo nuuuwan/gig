@@ -2,7 +2,7 @@
 import setuptools
 DIST_NAME = 'gig'
 VERSION = 1
-SUB_VERSION = 3
+SUB_VERSION = 4
 
 with open("src/%s/README.md" % DIST_NAME, "r") as fh:
     long_description = fh.read()

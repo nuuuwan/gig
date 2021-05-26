@@ -44,41 +44,10 @@ class TestGig(unittest.TestCase):
 
     def test_multiget_entities(self):
         '''Test.'''
+        entity_map = ents.multiget_entities(['LK', 'LK-1', 'LK-11'])
         self.assertEqual(
-            ents.multiget_entities(['LK', 'LK-1', 'LK-11']),
-            {
-                'LK': {
-                  'id': 'LK',
-                  'name': 'Sri Lanka',
-                  'country_id': 'LK',
-                  'area': 65611.0,
-                  'population': 20359054,
-                  'hasc': 'LK',
-                  'fips': 'CE'
-                },
-                'LK-1': {
-                  'id': 'LK-1',
-                  'name': 'Western',
-                  'country_id': 'LK',
-                  'province_id': 'LK-1',
-                  'area': 3709.0,
-                  'population': 5850745,
-                  'province_capital': 'Colombo',
-                  'fips': 'CE36'
-                },
-                'LK-11': {
-                  'id': 'LK-11',
-                  'name': 'Colombo',
-                  'country_id': 'LK',
-                  'province_id': 'LK-1',
-                  'district_id': 'LK-11',
-                  'ed_id': 'EC-01',
-                  'area': 642.0,
-                  'population': 2323964,
-                  'hasc': 'LK.CO',
-                  'fips': 'CE23'
-                },
-            },
+            list(entity_map.keys()),
+            ['LK', 'LK-1', 'LK-11'],
         )
 
     def test_perf(self):
