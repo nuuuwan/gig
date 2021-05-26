@@ -13,7 +13,7 @@ following information can be access about Colombo District.
     'area': '642', 'population': '2324349'}
 
 """
-
+import json
 from utils import db
 from utils.cache import cache
 
@@ -52,7 +52,9 @@ def get_entities(entity_type):
             d['altitude'] = (int)(d['altitude'])
         for k in ['centroid', 'subs', 'supers', 'ints', 'eqs']:
             if k in d:
-                d[k] = json.loads(d[k])
+                print(d['id'], d[k])
+                if d[k]:
+                    d[k] = json.loads(d[k].replace('\'', '"'))
         return d
 
     return list(map(
