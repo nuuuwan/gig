@@ -193,7 +193,12 @@ def get_fuzzy_fp(entity_name):
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
-def get_entities_by_name_fuzzy(entity_name, limit=5):
+def get_entities_by_name_fuzzy(
+    entity_name,
+    filter_entity_type=None,
+    filter_parent_id=None,
+    limit=5,
+):
     """Get entity by fuzzy name search.
 
     Args:
@@ -205,8 +210,12 @@ def get_entities_by_name_fuzzy(entity_name, limit=5):
     fp_search = get_fuzzy_fp(entity_name)
     matching_entities = []
     for entity_type in ENTITY_TYPE.list():
+        if filter_entity_type and (filter_entity_type != entity_type):
+            continue
         entities = get_entities(entity_type)
         for entity in entities:
+            if filter_parent_id and (filter_parent_id not in entity['id']):
+                continue
             fp_entity = get_fuzzy_fp(entity['name'])
 
             if fp_entity == fp_search:

@@ -17,9 +17,9 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
 
 ## Release History
 
-### 1.0.2 (PRE-RELEASE ONLY)
+### 1.0.2
 
-...
+*  Added 1) parent, and 2) entity type filtering to get_entities_by_name_fuzzy
 
 ### 1.0.1
 

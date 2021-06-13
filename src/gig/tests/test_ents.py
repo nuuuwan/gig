@@ -128,3 +128,20 @@ class TestGig(unittest.TestCase):
                 actual_entities,
             ))
             self.assertListEqual(expected_entity_names, actual_entity_names)
+
+        # with filters
+        self.assertEqual(
+            'LK-11',
+            ents.get_entities_by_name_fuzzy(
+                'Colombo',
+                filter_entity_type='district',
+            )[0]['id']
+        )
+
+        self.assertEqual(
+            'EC-01A',
+            ents.get_entities_by_name_fuzzy(
+                'Colombo North',
+                filter_parent_id='EC-01',
+            )[0]['id']
+        )
