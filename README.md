@@ -19,7 +19,7 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
 
 ### 1.0.1 (PRE-RELEASE ONLY)
 
-* Add ents.get_fuzzy_fp
+* Added ents.get_fuzzy_fp
 
 ### 1.0.0
 
