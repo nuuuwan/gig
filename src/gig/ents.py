@@ -13,6 +13,7 @@ following information can be access about Colombo District.
     'area': '642', 'population': '2324349'}
 
 """
+import re
 import json
 from utils import db
 from utils.cache import cache
@@ -176,3 +177,14 @@ def get_entity_ids(entity_type):
 
     """
     return list(get_entity_index(entity_type).keys())
+
+
+def get_fuzzy_fp(entity_name):
+    """Helper for fuzzy search."""
+    fuzzy_fp = entity_name
+    fuzzy_fp = fuzzy_fp.split(' ')[0]
+    fuzzy_fp = fuzzy_fp.lower()
+    fuzzy_fp = fuzzy_fp.replace("th", 't')
+    fuzzy_fp = fuzzy_fp.replace("w", 'v')
+    fuzzy_fp = fuzzy_fp[0] + re.sub('[aeiou]', '', fuzzy_fp[1:])
+    return fuzzy_fp

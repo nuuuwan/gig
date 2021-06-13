@@ -1,4 +1,4 @@
-'''Test gig_data.'''
+"""Test gig_data."""
 import unittest
 import time
 
@@ -9,16 +9,16 @@ from gig.ent_types import ENTITY_TYPE
 
 
 class TestGig(unittest.TestCase):
-    '''Test.'''
+    """Test."""
 
     def test_get_entities(self):
-        '''Test.'''
+        """Test."""
         for entity_type in ENTITY_TYPE.list():
             entities = ents.get_entities(entity_type)
             self.assertTrue(len(entities) >= 9)
 
     def test_get_entity_index(self):
-        '''Test.'''
+        """Test."""
         for entity_type in ENTITY_TYPE.list():
             entity_index = ents.get_entity_index(entity_type)
             first_entity_id = (list(entity_index.keys()))[0]
@@ -27,14 +27,14 @@ class TestGig(unittest.TestCase):
             self.assertEqual(first_entity_id, first_entity_id2)
 
     def test_get_entity_ids(self):
-        '''Test.'''
+        """Test."""
         for entity_type in ENTITY_TYPE.list():
             entity_index = ents.get_entity_index(entity_type)
             entity_ids = ents.get_entity_ids(entity_type)
             self.assertEqual(list(entity_index.keys()), entity_ids)
 
     def test_get_entity(self):
-        '''Test.'''
+        """Test."""
         for entity_type in ENTITY_TYPE.list():
             entity_ids = ents.get_entity_ids(entity_type)
             first_entity_id = entity_ids[0]
@@ -46,7 +46,7 @@ class TestGig(unittest.TestCase):
                 self.assertTrue(0 <= entity['centroid_altitude'] <= 2600)
 
     def test_multiget_entities(self):
-        '''Test.'''
+        """Test."""
         entity_map = ents.multiget_entities(['LK', 'LK-1', 'LK-11'])
         self.assertEqual(
             list(entity_map.keys()),
@@ -54,7 +54,7 @@ class TestGig(unittest.TestCase):
         )
 
     def test_perf(self):
-        '''Test.'''
+        """Test."""
         delta_t_total = 0
         for entity_type in ENTITY_TYPE.list():
             ents.get_entities(entity_type)
@@ -69,3 +69,16 @@ class TestGig(unittest.TestCase):
             self.assertTrue('name' in first_entity)
         delta_t_mean = delta_t_total / len(ENTITY_TYPE.list())
         self.assertTrue(delta_t_mean < 200, delta_t_mean)
+
+    def test_get_fuzzy_fp(self):
+        """Test."""
+        for [entity_name, expected_fp] in [
+            ['Colombo', 'clmb'],
+            ['Nuwara Eliya', 'nvr'],
+            ['Trincomalee', 'trncml'],
+            ['Galle', 'gll'],
+        ]:
+            self.assertEqual(
+                expected_fp,
+                ents.get_fuzzy_fp(entity_name),
+            )
