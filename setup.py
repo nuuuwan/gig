@@ -3,15 +3,15 @@ import time
 import setuptools
 DIST_NAME = 'gig'
 
-IS_PRE_RELEASE = False
-MAJOR, MINOR, PATCH = 1, 0, 1
+IS_PRE_RELEASE = True
+MAJOR, MINOR, PATCH = 1, 0, 2
 if IS_PRE_RELEASE:
     PRE_RELEASE_LABEL = '%d' % (time.time())
     version = '%d.%d.%drc%s' % (MAJOR, MINOR, PATCH, PRE_RELEASE_LABEL)
 else:
     version = '%d.%d.%d' % (MAJOR, MINOR, PATCH)
 
-with open("src/%s/README.md" % DIST_NAME, "r") as fh:
+with open("README.md" % DIST_NAME, "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
