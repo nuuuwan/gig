@@ -193,7 +193,7 @@ def get_fuzzy_fp(entity_name):
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
-def get_entities_by_name_buzzy(entity_name, limit=5):
+def get_entities_by_name_fuzzy(entity_name, limit=5):
     """Get entity by fuzzy name search.
 
     Args:

@@ -122,7 +122,7 @@ class TestGig(unittest.TestCase):
                 ],
             ],
         ]:
-            actual_entities = ents.get_entities_by_name_buzzy(entity_name)
+            actual_entities = ents.get_entities_by_name_fuzzy(entity_name)
             actual_entity_names = list(map(
                 lambda entity: entity['name'],
                 actual_entities,
