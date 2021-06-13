@@ -74,7 +74,7 @@ class TestGig(unittest.TestCase):
         """Test."""
         for [entity_name, expected_fp] in [
             ['Colombo', 'clmb'],
-            ['Nuwara Eliya', 'nvr'],
+            ['Nuwara Eliya', 'nvr ely'],
             ['Trincomalee', 'trncml'],
             ['Galle', 'gll'],
         ]:
@@ -82,3 +82,49 @@ class TestGig(unittest.TestCase):
                 expected_fp,
                 ents.get_fuzzy_fp(entity_name),
             )
+
+    def test_get_entities_by_name_buzzy(self):
+        """Test."""
+        for [entity_name, expected_entity_names] in [
+            [
+                'Colombu',
+                 [
+                    'Colombo',
+                    'Colombo',
+                    'Colombo',
+                ],
+            ],
+            [
+                'Nuware Eliya',
+                [
+                    'Nuwara Eliya',
+                    'Nuwara Eliya',
+                    'Nuwara Eliya',
+                ],
+            ],
+            [
+                'Trincomali',
+                [
+                    'Trincomalee',
+                    'Trincomalee',
+                    'Trincomalee',
+                    'Trincomalee',
+                    'Trincomalee',
+                ],
+            ],
+            [
+                'Galla',
+                [
+                    'Galle',
+                    'Galle',
+                    'Galle',
+                    'Galle',
+                ],
+            ],
+        ]:
+            actual_entities = ents.get_entities_by_name_buzzy(entity_name)
+            actual_entity_names = list(map(
+                lambda entity: entity['name'],
+                actual_entities,
+            ))
+            self.assertListEqual(expected_entity_names, actual_entity_names)

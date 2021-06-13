@@ -21,7 +21,7 @@ from utils.cache import cache
 from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
 from gig._remote_data import _get_remote_tsv_data
 
-from gig.ent_types import get_entity_type
+from gig.ent_types import get_entity_type, ENTITY_TYPE
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
@@ -180,11 +180,38 @@ def get_entity_ids(entity_type):
 
 
 def get_fuzzy_fp(entity_name):
-    """Helper for fuzzy search."""
-    fuzzy_fp = entity_name
-    fuzzy_fp = fuzzy_fp.split(' ')[0]
-    fuzzy_fp = fuzzy_fp.lower()
-    fuzzy_fp = fuzzy_fp.replace("th", 't')
-    fuzzy_fp = fuzzy_fp.replace("w", 'v')
-    fuzzy_fp = fuzzy_fp[0] + re.sub('[aeiou]', '', fuzzy_fp[1:])
-    return fuzzy_fp
+    """Get fuzzy fingerprint."""
+    fuzzy_words = []
+    for word in entity_name.split(' '):
+        fuzzy_word = word.lower()
+        if len(fuzzy_word) > 1:
+            fuzzy_word = fuzzy_word.replace("th", 't')
+            fuzzy_word = fuzzy_word.replace("w", 'v')
+            fuzzy_word = fuzzy_word[0] + re.sub('[aeiou]', '', fuzzy_word[1:])
+        fuzzy_words.append(fuzzy_word)
+    return ' '.join(fuzzy_words)
+
+
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
+def get_entities_by_name_buzzy(entity_name, limit=5):
+    """Get entity by fuzzy name search.
+
+    Args:
+        entity_name(str): entity name
+        limit (int): Maximum number of results to return
+    Returns:
+        entities (list) that approximately match the entity name
+    """
+    fp_search = get_fuzzy_fp(entity_name)
+    matching_entities = []
+    for entity_type in ENTITY_TYPE.list():
+        entities = get_entities(entity_type)
+        for entity in entities:
+            fp_entity = get_fuzzy_fp(entity['name'])
+
+            if fp_entity == fp_search:
+                matching_entities.append(entity)
+                if len(matching_entities) >= limit:
+                    return matching_entities
+
+    return matching_entities
