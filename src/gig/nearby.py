@@ -3,13 +3,13 @@
 from utils import db, geo
 from utils.cache import cache
 
-from gig._constants import GIG_CACHE_NAME, EXCLUDE_PLACE_IDS
+from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT, EXCLUDE_PLACE_IDS
 
 from gig.ent_types import NEARBY_ENTITY_TYPES
 from gig.ents import get_entities
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def get_nearby_entities(
     lat_lng,
     distance_limit=20,

@@ -31,17 +31,17 @@ from utils.cache import cache
 from utils import dt
 
 from gig._remote_data import _get_remote_json_data, _get_remote_tsv_data
-from gig._constants import GIG_CACHE_NAME
+from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
 from gig.ent_types import get_entity_type
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def _get_meta_data(data_group):
     """Get attr table index."""
     return _get_remote_json_data('%s/meta.json' % data_group)
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def _get_table(data_group, table_id):
     """Get table."""
     table = _get_remote_tsv_data('%s/data.%s.tsv' % (
@@ -58,7 +58,7 @@ def _get_table(data_group, table_id):
     ))
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def _get_table_index(data_group, table_id):
     """Get attr table."""
     table = _get_table(data_group, table_id)
@@ -68,7 +68,7 @@ def _get_table_index(data_group, table_id):
     ))
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def get_table_data(data_group, table_id, entity_ids=None, entity_type=None):
     """Get data for a given data_group, table and entity selection.
 

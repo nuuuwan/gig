@@ -18,13 +18,13 @@ import json
 from utils import db
 from utils.cache import cache
 
-from gig._constants import GIG_CACHE_NAME
+from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
 from gig._remote_data import _get_remote_tsv_data
 
 from gig.ent_types import get_entity_type
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def get_entities(entity_type):
     """Get get all entity data, for entities of a particular type.
 
@@ -72,7 +72,7 @@ def get_entities(entity_type):
     ))
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def get_entity_index(entity_type):
     """Get all entity data, for entities of a particular type.
 
@@ -103,7 +103,7 @@ def get_entity_index(entity_type):
     ))
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def get_entity(entity_id):
     """Get entity by entity id.
 
@@ -124,7 +124,7 @@ def get_entity(entity_id):
     return entity_index.get(entity_id, None)
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def multiget_entities(entity_ids):
     """Get multiple entities by entity id.
 
@@ -159,7 +159,7 @@ def multiget_entities(entity_ids):
     return entity_map
 
 
-@cache(GIG_CACHE_NAME)
+@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def get_entity_ids(entity_type):
     """Get all entity_ids of a particular entity type.
 
