@@ -4,21 +4,10 @@ import time
 import setuptools
 
 DIST_NAME = 'gig'
-
-IS_PRE_RELEASE = False
-MAJOR, MINOR, PATCH = 1, 0, 2
-if IS_PRE_RELEASE:
-    PRE_RELEASE_LABEL = '%d' % (time.time())
-    version = '%d.%d.%drc%s' % (MAJOR, MINOR, PATCH, PRE_RELEASE_LABEL)
-else:
-    version = '%d.%d.%d' % (MAJOR, MINOR, PATCH)
-
-with open("README.md", "r") as fh:
-    long_description = fh.read()
-
+VERSION = '1.0.2'
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
-    version=version,
+    version=VERSION,
     author="Nuwan I. Senaratna",
     author_email="nuuuwan@gmail.com",
     description="Generalized information graph.",
