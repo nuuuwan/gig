@@ -1,1 +1,4 @@
+# Auto Generated
+fuzzywuzzy
+python-Levenshtein
 utils-nuuuwan

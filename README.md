@@ -28,3 +28,4 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
 ### 1.0.0
 
 * Initial Release . See source for details.
+  * Updated dependencies

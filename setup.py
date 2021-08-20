@@ -37,6 +37,8 @@ setuptools.setup(
 
     install_requires=[
         'utils-nuuuwan',
+        'fuzzywuzzy',
+        'python-Levenshtein',
     ],
 
     test_suite='nose.collector',
