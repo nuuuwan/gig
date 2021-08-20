@@ -1,4 +1,3 @@
-
 """Utils for getting basic entity data.
 
 For example, the
@@ -13,15 +12,15 @@ following information can be access about Colombo District.
     'area': '642', 'population': '2324349'}
 
 """
-import re
 import json
+
+from fuzzywuzzy import fuzz
 from utils import db
 from utils.cache import cache
 
 from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
 from gig._remote_data import _get_remote_tsv_data
-
-from gig.ent_types import get_entity_type, ENTITY_TYPE
+from gig.ent_types import ENTITY_TYPE, get_entity_type
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
@@ -63,13 +62,17 @@ def get_entities(entity_type):
                     d[k] = json.loads(d[k].replace('\'', '"'))
         return d
 
-    return list(map(
-        clean_types,
-        list(filter(
-            lambda x: x,
-            _get_remote_tsv_data('%s.tsv' % (entity_type)),
-        )),
-    ))
+    return list(
+        map(
+            clean_types,
+            list(
+                filter(
+                    lambda x: x,
+                    _get_remote_tsv_data('%s.tsv' % (entity_type)),
+                )
+            ),
+        )
+    )
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
@@ -94,13 +97,17 @@ def get_entity_index(entity_type):
     """
     entities = get_entities(entity_type)
     id_key = db.get_id_key(entity_type)
-    return dict(zip(
-        list(map(
-            lambda e: e[id_key],
+    return dict(
+        zip(
+            list(
+                map(
+                    lambda e: e[id_key],
+                    entities,
+                )
+            ),
             entities,
-        )),
-        entities,
-    ))
+        )
+    )
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
@@ -179,25 +186,13 @@ def get_entity_ids(entity_type):
     return list(get_entity_index(entity_type).keys())
 
 
-def get_fuzzy_fp(entity_name):
-    """Get fuzzy fingerprint."""
-    fuzzy_words = []
-    for word in entity_name.split(' '):
-        fuzzy_word = word.lower()
-        if len(fuzzy_word) > 1:
-            fuzzy_word = fuzzy_word.replace("th", 't')
-            fuzzy_word = fuzzy_word.replace("w", 'v')
-            fuzzy_word = fuzzy_word[0] + re.sub('[aeiou]', '', fuzzy_word[1:])
-        fuzzy_words.append(fuzzy_word)
-    return ' '.join(fuzzy_words)
-
-
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def get_entities_by_name_fuzzy(
-    entity_name,
+    fuzzy_entity_name,
     filter_entity_type=None,
     filter_parent_id=None,
     limit=5,
+    min_fuzz_ratio=80,
 ):
     """Get entity by fuzzy name search.
 
@@ -207,20 +202,31 @@ def get_entities_by_name_fuzzy(
     Returns:
         entities (list) that approximately match the entity name
     """
-    fp_search = get_fuzzy_fp(entity_name)
-    matching_entities = []
+    matching_entities_info = []
     for entity_type in ENTITY_TYPE.list():
         if filter_entity_type and (filter_entity_type != entity_type):
             continue
+
         entities = get_entities(entity_type)
         for entity in entities:
             if filter_parent_id and (filter_parent_id not in entity['id']):
                 continue
-            fp_entity = get_fuzzy_fp(entity['name'])
 
-            if fp_entity == fp_search:
-                matching_entities.append(entity)
-                if len(matching_entities) >= limit:
-                    return matching_entities
+            fuzz_ratio = fuzz.ratio(entity['name'], fuzzy_entity_name)
+
+            if fuzz_ratio >= min_fuzz_ratio:
+                matching_entities_info.append([entity, fuzz_ratio])
+
+    matching_entities = list(
+        map(
+            lambda x: x[0],
+            sorted(
+                matching_entities_info,
+                key=lambda x: -x[1],
+            ),
+        )
+    )
+    if len(matching_entities) >= limit:
+        return matching_entities[:limit]
 
     return matching_entities

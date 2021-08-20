@@ -27,11 +27,11 @@ follows:
     {'LK-11': {'entity_id': 'LK-11', 'total_population': 2323964.0}}
 
 """
-from utils.cache import cache
 from utils import dt
+from utils.cache import cache
 
-from gig._remote_data import _get_remote_json_data, _get_remote_tsv_data
 from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
+from gig._remote_data import _get_remote_json_data, _get_remote_tsv_data
 from gig.ent_types import get_entity_type
 
 
@@ -44,28 +44,37 @@ def _get_meta_data(data_group):
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def _get_table(data_group, table_id):
     """Get table."""
-    table = _get_remote_tsv_data('%s/data.%s.tsv' % (
-        data_group,
-        table_id,
-    ))
+    table = _get_remote_tsv_data(
+        '%s/data.%s.tsv'
+        % (
+            data_group,
+            table_id,
+        )
+    )
 
-    return list(map(
-        lambda row: dict(zip(
-            row.keys(),
-            list(map(lambda v: dt.parse_float(v, v), row.values())),
-        )),
-        table,
-    ))
+    return list(
+        map(
+            lambda row: dict(
+                zip(
+                    row.keys(),
+                    list(map(lambda v: dt.parse_float(v, v), row.values())),
+                )
+            ),
+            table,
+        )
+    )
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def _get_table_index(data_group, table_id):
     """Get attr table."""
     table = _get_table(data_group, table_id)
-    return dict(zip(
-        list(map(lambda d: d['entity_id'], table)),
-        table,
-    ))
+    return dict(
+        zip(
+            list(map(lambda d: d['entity_id'], table)),
+            table,
+        )
+    )
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)

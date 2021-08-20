@@ -1,7 +1,9 @@
 """Test gig_data."""
 import unittest
+
 from gig import ext_data
 from gig.ent_types import ENTITY_TYPE
+
 TEST_ATTR_GROUP = 'census'
 TEST_TABLE_ID = 'total_population'
 TEST_FIELD_ID = 'total_population'

@@ -1,5 +1,6 @@
 """Test gig_data."""
 import unittest
+
 from gig import nearby
 
 

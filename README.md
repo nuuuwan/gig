@@ -29,3 +29,4 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
 
 * Initial Release . See source for details.
   * Updated dependencies
+  * Updated get_entities_by_name_fuzzy

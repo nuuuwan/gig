@@ -1,5 +1,6 @@
 """Test data."""
 import unittest
+
 from gig._remote_data import _get_remote_json_data, _get_remote_tsv_data
 
 

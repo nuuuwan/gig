@@ -3,8 +3,7 @@
 from utils import db, geo
 from utils.cache import cache
 
-from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT, EXCLUDE_PLACE_IDS
-
+from gig._constants import EXCLUDE_PLACE_IDS, GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
 from gig.ent_types import NEARBY_ENTITY_TYPES
 from gig.ents import get_entities
 
@@ -53,14 +52,15 @@ def get_nearby_entities(
             lat_lng1 = (float)(entity['lat']), (float)(entity['lng'])
             distance = geo.get_distance(lat_lng, lat_lng1)
             if distance <= distance_limit:
-                distance_info_list.append({
-                    'distance': distance,
-                    'entity_type': entity_type,
-                    'entity': entity,
-                })
+                distance_info_list.append(
+                    {
+                        'distance': distance,
+                        'entity_type': entity_type,
+                        'entity': entity,
+                    }
+                )
     distance_info_list = sorted(
         distance_info_list,
-
         key=lambda x: x['distance'],
     )
     if len(distance_info_list) > nearby_entity_limit:

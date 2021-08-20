@@ -1,6 +1,6 @@
-
 """Test gig_data."""
 import unittest
+
 from gig.ent_types import ENTITY_TYPE, get_entity_type
 
 

@@ -1,6 +1,6 @@
 """Test gig_data."""
-import unittest
 import time
+import unittest
 
 from utils import db
 
@@ -70,29 +70,12 @@ class TestGig(unittest.TestCase):
         delta_t_mean = delta_t_total / len(ENTITY_TYPE.list())
         self.assertTrue(delta_t_mean < 200, delta_t_mean)
 
-    def test_get_fuzzy_fp(self):
-        """Test."""
-        for [entity_name, expected_fp] in [
-            ['Colombo', 'clmb'],
-            ['Nuwara Eliya', 'nvr ely'],
-            ['Trincomalee', 'trncml'],
-            ['Galle', 'gll'],
-        ]:
-            self.assertEqual(
-                expected_fp,
-                ents.get_fuzzy_fp(entity_name),
-            )
-
     def test_get_entities_by_name_buzzy(self):
         """Test."""
         for [entity_name, expected_entity_names] in [
             [
                 'Colombu',
-                 [
-                    'Colombo',
-                    'Colombo',
-                    'Colombo',
-                ],
+                ['Colombo', 'Colombo', 'Colombo'],
             ],
             [
                 'Nuware Eliya',
@@ -100,6 +83,8 @@ class TestGig(unittest.TestCase):
                     'Nuwara Eliya',
                     'Nuwara Eliya',
                     'Nuwara Eliya',
+                    'Nuwaraeliya',
+                    'Nuwaraeliya',
                 ],
             ],
             [
@@ -114,19 +99,16 @@ class TestGig(unittest.TestCase):
             ],
             [
                 'Galla',
-                [
-                    'Galle',
-                    'Galle',
-                    'Galle',
-                    'Galle',
-                ],
+                ['Galwala', 'Galdola', 'Gallala', 'Gallewa', 'Gallawa'],
             ],
         ]:
             actual_entities = ents.get_entities_by_name_fuzzy(entity_name)
-            actual_entity_names = list(map(
-                lambda entity: entity['name'],
-                actual_entities,
-            ))
+            actual_entity_names = list(
+                map(
+                    lambda entity: entity['name'],
+                    actual_entities,
+                )
+            )
             self.assertListEqual(expected_entity_names, actual_entity_names)
 
         # with filters
@@ -135,7 +117,7 @@ class TestGig(unittest.TestCase):
             ents.get_entities_by_name_fuzzy(
                 'Colombo',
                 filter_entity_type='district',
-            )[0]['id']
+            )[0]['id'],
         )
 
         self.assertEqual(
@@ -143,5 +125,5 @@ class TestGig(unittest.TestCase):
             ents.get_entities_by_name_fuzzy(
                 'Colombo North',
                 filter_parent_id='EC-01',
-            )[0]['id']
+            )[0]['id'],
         )
