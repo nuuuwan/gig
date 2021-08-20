@@ -34,3 +34,5 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
   * Fixed typo in setup
 ### 1.0.3 (PRE-RELEASE)
   * PRE-RELEASE 1.0.3
+### 1.0.4 (PRE-RELEASE)
+  * PRE-RELEASE 1.0.4

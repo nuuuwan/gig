@@ -3,7 +3,7 @@
 import setuptools
 
 DIST_NAME = 'gig'
-VERSION = '1.0.2'
+VERSION = '1.0.3'
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
     version=VERSION,
