@@ -1,5 +1,4 @@
 """Setup."""
-import time
 
 import setuptools
 
@@ -11,7 +10,7 @@ setuptools.setup(
     author="Nuwan I. Senaratna",
     author_email="nuuuwan@gmail.com",
     description="Generalized information graph.",
-    long_description=long_description,
+    long_description='',
     long_description_content_type="text/markdown",
     url="https://github.com/nuuuwan/%s" % DIST_NAME,
     project_urls={

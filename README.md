@@ -31,3 +31,4 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
   * Updated dependencies
   * Updated get_entities_by_name_fuzzy
   * Updated setup and workflows
+  * Fixed typo in setup
