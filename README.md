@@ -32,3 +32,5 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
   * Updated get_entities_by_name_fuzzy
   * Updated setup and workflows
   * Fixed typo in setup
+### 1.0.3 (PRE-RELEASE)
+  * PRE-RELEASE 1.0.3
