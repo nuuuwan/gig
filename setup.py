@@ -2,15 +2,15 @@
 
 import setuptools
 
-DIST_NAME = 'gig'
-VERSION = '1.0.4'
+DIST_NAME = "gig"
+VERSION = "1.0.5"
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
     version=VERSION,
     author="Nuwan I. Senaratna",
     author_email="nuuuwan@gmail.com",
     description="Generalized information graph.",
-    long_description='',
+    long_description="",
     long_description_content_type="text/markdown",
     url="https://github.com/nuuuwan/%s" % DIST_NAME,
     project_urls={
@@ -25,10 +25,10 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
     install_requires=[
-        'utils-nuuuwan',
-        'fuzzywuzzy',
-        'python-Levenshtein',
+        "utils-nuuuwan",
+        "fuzzywuzzy",
+        "python-Levenshtein",
     ],
-    test_suite='nose.collector',
-    tests_require=['nose'],
+    test_suite="nose.collector",
+    tests_require=["nose"],
 )
