@@ -41,3 +41,5 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
   *  [2021-10-06 02:36PM] Moved to multiple ed_ids in map
   *  [2021-11-29 12:49PM] Lint Python
   *  [2021-11-29 12:49PM] 
+### 1.0.6 (PRE-RELEASE)
+  *  [2021-11-29 12:50PM] PRE-RELEASE 1.0.6
