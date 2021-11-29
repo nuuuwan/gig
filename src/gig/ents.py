@@ -15,9 +15,8 @@ following information can be access about Colombo District.
 import json
 
 from fuzzywuzzy import fuzz
-from utils import db
+from utils import db, dt
 from utils.cache import cache
-from utils import dt
 
 from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
 from gig._remote_data import _get_remote_tsv_data
