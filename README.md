@@ -45,3 +45,5 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
   *  [2021-11-29 12:50PM] PRE-RELEASE 1.0.6
   *  [2021-11-29 01:00PM] Fixed unittests
   *  [2021-11-29 01:00PM] Lint Python
+### 1.0.7 (PRE-RELEASE)
+  *  [2021-11-29 01:00PM] PRE-RELEASE 1.0.7
