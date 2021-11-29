@@ -82,16 +82,14 @@ class TestGig(unittest.TestCase):
                 [
                     'Nuwara Eliya',
                     'Nuwara Eliya',
-                    'Nuwara Eliya',
                     'Nuwaraeliya',
-                    'Nuwaraeliya',
+                    'Nuwara-Eliya',
+                    'Nuwara Eliya PS',
                 ],
             ],
             [
                 'Trincomali',
                 [
-                    'Trincomalee',
-                    'Trincomalee',
                     'Trincomalee',
                     'Trincomalee',
                     'Trincomalee',

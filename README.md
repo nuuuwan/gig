@@ -43,3 +43,4 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
   *  [2021-11-29 12:49PM] 
 ### 1.0.6 (PRE-RELEASE)
   *  [2021-11-29 12:50PM] PRE-RELEASE 1.0.6
+  *  [2021-11-29 01:00PM] Fixed unittests

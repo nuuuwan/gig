@@ -17,6 +17,7 @@ import json
 from fuzzywuzzy import fuzz
 from utils import db
 from utils.cache import cache
+from utils import dt
 
 from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
 from gig._remote_data import _get_remote_tsv_data
@@ -45,14 +46,14 @@ def get_entities(entity_type):
 
     def clean_types(d):
         if 'area' in d:
-            d['area'] = (float)(d['area'])
+            d['area'] = dt.parse_float(d['area'])
 
         if 'population' in d:
-            d['population'] = (int)(d['population'])
+            d['population'] = dt.parse_int(d['population'])
 
         if 'centroid_altitude' in d:
             try:
-                d['centroid_altitude'] = (int)(d['centroid_altitude'])
+                d['centroid_altitude'] = dt.parse_float(d['centroid_altitude'])
             except ValueError:
                 d['centroid_altitude'] = 0
 

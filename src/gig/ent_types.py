@@ -11,7 +11,6 @@ class ENTITY_TYPE:
     GND = 'gnd'
     ED = 'ed'
     PD = 'pd'
-    PS = 'ps'
     LG = 'lg'
     MOH = 'moh'
     UNKNOWN = 'unknown'
@@ -26,13 +25,12 @@ class ENTITY_TYPE:
             ENTITY_TYPE.GND,
             ENTITY_TYPE.ED,
             ENTITY_TYPE.PD,
-            ENTITY_TYPE.PS,
             ENTITY_TYPE.LG,
             ENTITY_TYPE.MOH,
         ]
 
 
-NEARBY_ENTITY_TYPES = [ENTITY_TYPE.PS]
+NEARBY_ENTITY_TYPES = []
 
 
 def get_entity_type(entity_id):
