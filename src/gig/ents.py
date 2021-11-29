@@ -230,3 +230,8 @@ def get_entities_by_name_fuzzy(
         return matching_entities[:limit]
 
     return matching_entities
+
+
+if __name__ == '__main__':
+    entities = get_entities('province')
+    print(entities)

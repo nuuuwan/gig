@@ -39,3 +39,4 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
 ### 1.0.5 (PRE-RELEASE)
   * PRE-RELEASE 1.0.5
   *  [2021-10-06 02:36PM] Moved to multiple ed_ids in map
+  *  [2021-11-29 12:49PM] Lint Python
