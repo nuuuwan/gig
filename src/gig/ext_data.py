@@ -31,14 +31,8 @@ from utils import dt
 from utils.cache import cache
 
 from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
-from gig._remote_data import _get_remote_json_data, _get_remote_tsv_data
+from gig._remote_data import _get_remote_tsv_data
 from gig.ent_types import get_entity_type
-
-
-@cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
-def _get_meta_data(data_group):
-    """Get attr table index."""
-    return _get_remote_json_data('%s/meta.json' % data_group)
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
