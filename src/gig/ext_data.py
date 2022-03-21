@@ -9,7 +9,7 @@ from gig.ent_types import get_entity_type
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def _get_table(data_group, table_id):
     table = _get_remote_tsv_data(
-        '%s/data.%s.tsv'
+        '%s/%s.tsv'
         % (
             data_group,
             table_id,
