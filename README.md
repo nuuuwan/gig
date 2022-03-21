@@ -10,13 +10,16 @@ pip install gig-nuuuwan
 
 ## Release History (v2)
 
-### 2.0.0 (NEXT RELEASE)
+### 2.0.1 (NEXT RELEASE)
+
+
+### 2.0.0 (CURRENT RELEASE)
 * Modified data format (BREAKING_CHANGE: This will break all previous versions)
 * Added examples (including for pulling elections data)
 
 ## Release History (v1)
 
-### 1.0.2 (CURRENT RELEASE)
+### 1.0.2
 
 *  Added 1) parent, and 2) entity type filtering to get_entities_by_name_fuzzy
 
