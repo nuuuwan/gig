@@ -9,27 +9,28 @@ from gig._remote_data import _get_remote_tsv_data
 from gig.ent_types import ENTITY_TYPE, get_entity_type
 
 
+def clean_types(d):
+    if 'area' in d:
+        d['area'] = dt.parse_float(d['area'])
+
+    if 'population' in d:
+        d['population'] = dt.parse_int(d['population'])
+
+    if 'centroid_altitude' in d:
+        try:
+            d['centroid_altitude'] = dt.parse_float(d['centroid_altitude'])
+        except ValueError:
+            d['centroid_altitude'] = 0
+
+    for k in ['centroid', 'subs', 'supers', 'ints', 'eqs']:
+        if k in d:
+            if d[k]:
+                d[k] = json.loads(d[k].replace('\'', '"'))
+    return d
+
+
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def get_entities(entity_type):
-    def clean_types(d):
-        if 'area' in d:
-            d['area'] = dt.parse_float(d['area'])
-
-        if 'population' in d:
-            d['population'] = dt.parse_int(d['population'])
-
-        if 'centroid_altitude' in d:
-            try:
-                d['centroid_altitude'] = dt.parse_float(d['centroid_altitude'])
-            except ValueError:
-                d['centroid_altitude'] = 0
-
-        for k in ['centroid', 'subs', 'supers', 'ints', 'eqs']:
-            if k in d:
-                if d[k]:
-                    d[k] = json.loads(d[k].replace('\'', '"'))
-        return d
-
     return list(
         map(
             clean_types,
@@ -46,12 +47,11 @@ def get_entities(entity_type):
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
 def get_entity_index(entity_type):
     entities = get_entities(entity_type)
-    id_key = db.get_id_key(entity_type)
     return dict(
         zip(
             list(
                 map(
-                    lambda e: e[id_key],
+                    lambda e: e[db.get_id_key(entity_type)],
                     entities,
                 )
             ),
