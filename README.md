@@ -8,16 +8,13 @@ To install a stable version:
 pip install gig-nuuuwan
 ```
 
-To install a pre-release (which might have more features, but also be
-less stable):
+## Release History (v2)
 
-```
-pip install -i https://test.pypi.org/simple/ gig-nuuuwan
-```
+### 2.0.0 (NEXT RELEASE)
 
-## Release History
+## Release History (v1)
 
-### 1.0.2
+### 1.0.2 (CURRENT RELEASE)
 
 *  Added 1) parent, and 2) entity type filtering to get_entities_by_name_fuzzy
 
@@ -27,27 +24,4 @@ pip install -i https://test.pypi.org/simple/ gig-nuuuwan
 
 ### 1.0.0
 
-* Initial Release . See source for details.
-  * Updated dependencies
-  * Updated get_entities_by_name_fuzzy
-  * Updated setup and workflows
-  * Fixed typo in setup
-### 1.0.3 (PRE-RELEASE)
-  * PRE-RELEASE 1.0.3
-### 1.0.4 (PRE-RELEASE)
-  * PRE-RELEASE 1.0.4
-### 1.0.5 (PRE-RELEASE)
-  * PRE-RELEASE 1.0.5
-  *  [2021-10-06 02:36PM] Moved to multiple ed_ids in map
-  *  [2021-11-29 12:49PM] Lint Python
-  *  [2021-11-29 12:49PM] 
-### 1.0.6 (PRE-RELEASE)
-  *  [2021-11-29 12:50PM] PRE-RELEASE 1.0.6
-  *  [2021-11-29 01:00PM] Fixed unittests
-  *  [2021-11-29 01:00PM] Lint Python
-### 1.0.7 (PRE-RELEASE)
-  *  [2021-11-29 01:00PM] PRE-RELEASE 1.0.7
-  *  [2021-11-29 01:10PM] Lint Python
-  *  [2021-11-29 01:10PM] Fixed unittests
-### 1.0.8 (PRE-RELEASE)
-  *  [2021-11-29 01:10PM] PRE-RELEASE 1.0.8
+* Initial Release
