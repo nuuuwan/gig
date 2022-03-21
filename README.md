@@ -11,6 +11,8 @@ pip install gig-nuuuwan
 ## Release History (v2)
 
 ### 2.0.0 (NEXT RELEASE)
+* Modified data format (BREAKING_CHANGE: This will break all previous versions)
+* Added examples (including for pulling elections data)
 
 ## Release History (v1)
 
