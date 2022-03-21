@@ -1,9 +1,4 @@
-"""Various utils related to entity types."""
-
-
 class ENTITY_TYPE:
-    """Enum class ENTITY_TYPE."""
-
     COUNTRY = 'country'
     PROVINCE = 'province'
     DISTRICT = 'district'
@@ -17,7 +12,6 @@ class ENTITY_TYPE:
 
     @staticmethod
     def list():
-        """List all entity types."""
         return [
             ENTITY_TYPE.PROVINCE,
             ENTITY_TYPE.DISTRICT,
@@ -34,21 +28,6 @@ NEARBY_ENTITY_TYPES = []
 
 
 def get_entity_type(entity_id):
-    """Get entity type from entity id.
-
-    Args:
-        entity_id (str): entity id
-    Returns:
-        entity type (str)
-
-
-    .. code-block:: python
-
-        >> from gig.ent_types import get_entity_type
-        >> get_entity_type('LK-11')  # Colombo District
-        'district'
-
-    """
     n = len(entity_id)
     if entity_id[:2] == 'LK':
         if n == 2:

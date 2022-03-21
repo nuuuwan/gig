@@ -1,4 +1,3 @@
-"""Test gig_data."""
 import unittest
 
 from gig import ext_data
@@ -10,21 +9,16 @@ TEST_FIELD_ID = 'total_population'
 
 
 class TestGIGExtData(unittest.TestCase):
-    """Test."""
-
     def test_get_table(self):
-        """Test."""
         table = ext_data._get_table(TEST_ATTR_GROUP, TEST_TABLE_ID)
         self.assertTrue(len(table) > 100)
         self.assertEqual(table[0]['entity_id'][:2], 'EC')
 
     def test_get_table_index(self):
-        """Test."""
         table_index = ext_data._get_table_index(TEST_ATTR_GROUP, TEST_TABLE_ID)
         self.assertEqual(table_index['LK'][TEST_FIELD_ID], 20357776.0)
 
     def test_get_data_for_table_and_entity(self):
-        """Test."""
         data = ext_data.get_table_data(
             TEST_ATTR_GROUP,
             TEST_TABLE_ID,

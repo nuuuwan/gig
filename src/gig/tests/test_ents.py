@@ -1,4 +1,3 @@
-"""Test gig_data."""
 import time
 import unittest
 
@@ -9,16 +8,12 @@ from gig.ent_types import ENTITY_TYPE
 
 
 class TestGig(unittest.TestCase):
-    """Test."""
-
     def test_get_entities(self):
-        """Test."""
         for entity_type in ENTITY_TYPE.list():
             entities = ents.get_entities(entity_type)
             self.assertTrue(len(entities) >= 9)
 
     def test_get_entity_index(self):
-        """Test."""
         for entity_type in ENTITY_TYPE.list():
             entity_index = ents.get_entity_index(entity_type)
             first_entity_id = (list(entity_index.keys()))[0]
@@ -27,26 +22,22 @@ class TestGig(unittest.TestCase):
             self.assertEqual(first_entity_id, first_entity_id2)
 
     def test_get_entity_ids(self):
-        """Test."""
         for entity_type in ENTITY_TYPE.list():
             entity_index = ents.get_entity_index(entity_type)
             entity_ids = ents.get_entity_ids(entity_type)
             self.assertEqual(list(entity_index.keys()), entity_ids)
 
     def test_get_entity(self):
-        """Test."""
         for entity_type in ENTITY_TYPE.list():
             entity_ids = ents.get_entity_ids(entity_type)
             first_entity_id = entity_ids[0]
             entity = ents.get_entity(first_entity_id)
             id_key = db.get_id_key(entity_type)
             self.assertEqual(entity[id_key], first_entity_id)
-            print(entity)
             if 'centroid_altitude' in entity:
                 self.assertTrue(0 <= entity['centroid_altitude'] <= 2600)
 
     def test_multiget_entities(self):
-        """Test."""
         entity_map = ents.multiget_entities(['LK', 'LK-1', 'LK-11'])
         self.assertEqual(
             list(entity_map.keys()),
@@ -54,7 +45,6 @@ class TestGig(unittest.TestCase):
         )
 
     def test_perf(self):
-        """Test."""
         delta_t_total = 0
         for entity_type in ENTITY_TYPE.list():
             ents.get_entities(entity_type)
@@ -71,7 +61,6 @@ class TestGig(unittest.TestCase):
         self.assertTrue(delta_t_mean < 200, delta_t_mean)
 
     def test_get_entities_by_name_buzzy(self):
-        """Test."""
         for [entity_name, expected_entity_names] in [
             [
                 'Colombu',

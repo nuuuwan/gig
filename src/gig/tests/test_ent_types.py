@@ -1,14 +1,10 @@
-"""Test gig_data."""
 import unittest
 
 from gig.ent_types import ENTITY_TYPE, get_entity_type
 
 
 class TestEntityTypes(unittest.TestCase):
-    """Test."""
-
     def test_get_entity_type(self):
-        """Test."""
         for [input, expected_output] in [
             ['LK', ENTITY_TYPE.COUNTRY],
             ['LK-1', ENTITY_TYPE.PROVINCE],

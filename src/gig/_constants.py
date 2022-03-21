@@ -1,5 +1,3 @@
-"""Constants."""
-
 GIG_CACHE_NAME = 'gig.v20211018'
 GIG_CACHE_TIMEOUT = 86400 * 28
 
