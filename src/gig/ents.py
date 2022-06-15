@@ -1,12 +1,11 @@
 import json
 
 from fuzzywuzzy import fuzz
-from utils import db, dt
-from utils.cache import cache
-
 from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
 from gig._remote_data import _get_remote_tsv_data
 from gig.ent_types import ENTITY_TYPE, get_entity_type
+from utils import db, dt
+from utils.cache import cache
 
 
 def clean_types(d):
