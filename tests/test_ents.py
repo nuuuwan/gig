@@ -1,9 +1,10 @@
 import time
 import unittest
 
+from utils import db
+
 from gig import ents
 from gig.ent_types import ENTITY_TYPE
-from utils import db
 
 
 class TestGig(unittest.TestCase):

@@ -1,19 +1,14 @@
-from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
-from gig._remote_data import _get_remote_tsv_data
-from gig.ent_types import get_entity_type
 from utils import dt
 from utils.cache import cache
 
+from gig._constants import GIG_CACHE_NAME, GIG_CACHE_TIMEOUT
+from gig._remote_data import _get_remote_tsv_data
+from gig.ent_types import get_entity_type
+
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
-def _get_table(data_group, table_id):
-    table = _get_remote_tsv_data(
-        '%s/%s.tsv'
-        % (
-            data_group,
-            table_id,
-        )
-    )
+def _get_table(table_id):
+    table = _get_remote_tsv_data(f'gig2/{table_id}.tsv')
 
     return list(
         map(
@@ -29,8 +24,8 @@ def _get_table(data_group, table_id):
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
-def _get_table_index(data_group, table_id):
-    table = _get_table(data_group, table_id)
+def _get_table_index(table_id):
+    table = _get_table(table_id)
     return dict(
         zip(
             list(map(lambda d: d['entity_id'], table)),
@@ -40,8 +35,8 @@ def _get_table_index(data_group, table_id):
 
 
 @cache(GIG_CACHE_NAME, GIG_CACHE_TIMEOUT)
-def get_table_data(data_group, table_id, entity_ids=None, entity_type=None):
-    table_index = _get_table_index(data_group, table_id)
+def get_table_data(table_id, entity_ids=None, entity_type=None):
+    table_index = _get_table_index(table_id)
     if entity_ids:
         data_map = {}
         for entity_id in entity_ids:
