@@ -1,6 +1,6 @@
 import os
 
-from utils import www
+from utils import WWW
 
 
 def _get_remote_file_path(file):
@@ -12,8 +12,8 @@ def _get_remote_file_path(file):
 
 
 def _get_remote_tsv_data(file):
-    return www.read_tsv(_get_remote_file_path(file))
+    return WWW(_get_remote_file_path(file)).readTSV()
 
 
 def _get_remote_json_data(file):
-    return www.read_json(_get_remote_file_path(file))
+    return WWW(_get_remote_file_path(file)).readTSV()

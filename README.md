@@ -11,7 +11,7 @@ pip install gig-nuuuwan
 ## Release History (v2)
 
 ### 2.0.1 (NEXT RELEASE)
-
+* Fix Deprecated Warnings
 
 ### 2.0.0 (CURRENT RELEASE)
 * Modified data format (BREAKING_CHANGE: This will break all previous versions)
