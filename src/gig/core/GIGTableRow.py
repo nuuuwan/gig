@@ -46,6 +46,11 @@ class GIGTableRow:
         return sorted_d
 
     @property
+    def dict_p(self):
+        d = {k: v * 1.0 / self.total for k, v in self.dict.items()}
+        return d
+
+    @property
     def total(self):
         return sum(self.dict.values())
 

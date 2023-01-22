@@ -10,6 +10,9 @@ pip install gig-nuuuwan
 
 ## Release History
 
+### 3.0.2
+* feat: GIGTableRow.dict_p, returns value as a ratio of total
+
 ### 3.0.1 (CURRENT RELEASE)
 * fix: Missing gig.core BUG
 
