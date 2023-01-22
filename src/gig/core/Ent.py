@@ -68,7 +68,7 @@ class Ent(EntBase):
         return id_list
 
     @staticmethod
-    def load_list_by_name_fuzzy(
+    def load_list_for_name_fuzzy(
         name_fuzzy: str,
         filter_ent_type: EntType = None,
         filter_parent_id: str = None,

@@ -151,7 +151,7 @@ class TestGig(unittest.TestCase):
                 ['Galwala', 'Galdola', 'Gallala', 'Gallewa', 'Gallawa'],
             ],
         ]:
-            ent_list = Ent.load_list_by_name_fuzzy(ent_name)
+            ent_list = Ent.load_list_for_name_fuzzy(ent_name)
             actual_ent_names = list(
                 map(
                     lambda ent: ent.name,

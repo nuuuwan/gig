@@ -12,6 +12,7 @@ pip install gig-nuuuwan
 
 ### 3.0.2
 * feat: GIGTableRow.dict_p, returns value as a ratio of total
+* fix: Rename to load_list_for_name_fuzzy
 
 ### 3.0.1 (CURRENT RELEASE)
 * fix: Missing gig.core BUG
