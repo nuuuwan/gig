@@ -33,3 +33,9 @@ class TestGIGTableRow(unittest.TestCase):
 
     def test_total(self):
         self.assertEqual(TEST_GIG_TABLE_ROW.total, 600.456)
+
+    def test_str(self):
+        self.assertEqual(
+            str(TEST_GIG_TABLE_ROW)[:20],
+            "{'id': 'LK-1', 'cell",
+        )

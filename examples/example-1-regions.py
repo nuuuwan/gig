@@ -1,11 +1,10 @@
 if __name__ == '__main__':
-    from gig import ents
-    from gig.ent_types import ENTITY_TYPE
+    from gig import Ent, EntType
 
-    provinces = ents.get_entities(ENTITY_TYPE.PROVINCE)
-    print(provinces[0])
+    province_list = Ent.load_list_for_type(EntType.PROVINCE)
+    print(province_list[0])
 
-    district_index = ents.get_entity_index(ENTITY_TYPE.DISTRICT)
-    print(district_index['LK-11'])
+    district_idx = Ent.load_idx_for_type(EntType.DISTRICT)
+    print(district_idx['LK-11'])
 
-    print(ents.get_entity('LK-1103'))
+    print(Ent.load_for_id('LK-1103'))

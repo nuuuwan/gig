@@ -32,6 +32,9 @@ class TestGig(unittest.TestCase):
         self.assertTrue(ent.is_parent_id('LK-1'))
         self.assertFalse(ent.is_parent_id('LK-1125'))
 
+        self.assertEqual(len(str(ent)), 519)
+        self.assertEqual(str(ent)[:10], "{'id': 'LK")
+
     def test_from_dict(self):
         ent = Ent.from_dict(TEST_D)
         self.assertEqual(ent.id, 'LK-11')

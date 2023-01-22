@@ -16,4 +16,10 @@ class EntBase:
     def __getattr__(self, key: str):
         if key in self.d.keys():
             return self.d.get(key)
-        return super().__getattr__(key)
+        raise AttributeError
+
+    def __str__(self):
+        return str(self.d)
+
+    def __repr__(self):
+        return self.__str__()
