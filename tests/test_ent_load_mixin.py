@@ -1,6 +1,6 @@
 import unittest
 
-from gig import Ent, EntType, GIGTable
+from gig import Ent, EntType
 
 TEST_SUBS = '''
     ['EC-01H', 'EC-01I', 'EC-01J', 'EC-01K', 'EC-01M',
@@ -24,17 +24,7 @@ TEST_D = dict(
 )
 
 
-class TestGig(unittest.TestCase):
-    def test_class_ent_base(self):
-        ent = Ent(TEST_D)
-        self.assertEqual(ent.id, 'LK-11')
-        self.assertEqual(ent.name, 'Colombo')
-        self.assertTrue(ent.is_parent_id('LK-1'))
-        self.assertFalse(ent.is_parent_id('LK-1125'))
-
-        self.assertEqual(len(str(ent)), 519)
-        self.assertEqual(str(ent)[:10], "{'id': 'LK")
-
+class TestEntLoadMixin(unittest.TestCase):
     def test_from_dict(self):
         ent = Ent.from_dict(TEST_D)
         self.assertEqual(ent.id, 'LK-11')
@@ -159,42 +149,3 @@ class TestGig(unittest.TestCase):
                 )
             )
             self.assertListEqual(expected_ent_names, actual_ent_names)
-
-    def test_gig(self):
-        gig_table = GIGTable('population-ethnicity', 'regions', '2012')
-        ent = Ent.for_id('LK-1')
-        gig_row = ent.gig(gig_table)
-        self.assertEqual(
-            gig_row.total,
-            5_850_745,
-        )
-
-        self.assertEqual(
-            gig_row.dict,
-            {
-                'sinhalese': 4925402,
-                'sl_tamil': 339233,
-                'ind_tamil': 56614,
-                'sl_moor': 460545,
-                'burgher': 25277,
-                'malay': 27853,
-                'sl_chetty': 4806,
-                'bharatha': 1297,
-                'other_eth': 9718,
-            },
-        )
-
-        self.assertEqual(
-            list(gig_row.dict.keys()),
-            [
-                'sinhalese',
-                'sl_moor',
-                'sl_tamil',
-                'ind_tamil',
-                'malay',
-                'burgher',
-                'other_eth',
-                'sl_chetty',
-                'bharatha',
-            ],
-        )
