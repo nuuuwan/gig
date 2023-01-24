@@ -75,6 +75,7 @@ class EntLoadMixin:
                     str(filter_parent_id),
                     str(limit),
                     str(min_fuzz_ratio),
+                    'v2023.01.24',
                 ]
             )
         )
@@ -88,7 +89,7 @@ class EntLoadMixin:
 
                 ent_list_from_type = cls.list_from_type(entity_type)
                 for ent in ent_list_from_type:
-                    if filter_parent_id and ent.is_parent_id(
+                    if filter_parent_id and not ent.is_parent_id(
                         filter_parent_id
                     ):
                         continue

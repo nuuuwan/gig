@@ -10,7 +10,7 @@ class EntBase:
     def name(self):
         return self.d["name"]
 
-    def is_parent_id(self, cand_parent_id):
+    def is_parent_id(self, cand_parent_id: str):
         return cand_parent_id in self.id
 
     def __getattr__(self, key: str):

@@ -88,44 +88,19 @@ class TestEntLoadMixin(unittest.TestCase):
         )
 
     def test_list_by_name_fuzzy(self):
-        for [ent_name, expected_ent_names] in [
-            [
-                'Colombo',
-                [
-                    'Colombo',
-                    'Colombo',
-                    'Colombo',
-                    'Colombo MC',
-                ],
-            ],
-            [
-                'Nuware Eliya',
-                [
-                    'Nuwara Eliya',
-                    'Nuwara Eliya',
-                    'Nuwaraeliya',
-                    'Nuwara-Eliya',
-                    'Nuwara Eliya PS',
-                ],
-            ],
-            [
-                'Trincomali',
-                [
-                    'Trincomalee',
-                    'Trincomalee',
-                    'Trincomalee',
-                ],
-            ],
-            [
-                'Galla',
-                ['Galwala', 'Galdola', 'Gallala', 'Gallewa', 'Gallawa'],
-            ],
+        for expected_id, name_fuzzy, filter_ent_type, filter_parent_id in [
+            ['LK-11', 'Colombo', None, None],
+            ['LK-11', 'Colombo', EntType.DISTRICT, None],
+            ['LK-11', 'Colombo', EntType.DISTRICT, 'LK-1'],
+            ['LK-11', 'Colombi', None, None],
+            ['LK-1103', 'Colombo', EntType.DSD, None],
+            ['LG-11001', 'Colombo MC', EntType.LG, None],
+            ['LK-23', 'Nuwara Eliya', EntType.DISTRICT, None],
+            ['LK-23', 'Nuwara-Eliya', EntType.DISTRICT, None],
+            ['LK-23', 'NuwaraEliya', EntType.DISTRICT, None],
         ]:
-            ent_list = Ent.list_from_name_fuzzy(ent_name)
-            actual_ent_names = list(
-                map(
-                    lambda ent: ent.name,
-                    ent_list,
-                )
+            ents = Ent.list_from_name_fuzzy(
+                name_fuzzy, filter_ent_type, filter_parent_id
             )
-            self.assertListEqual(expected_ent_names, actual_ent_names)
+            ent = ents[0]
+            self.assertEqual(ent.id, expected_id)
