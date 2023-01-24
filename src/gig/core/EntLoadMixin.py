@@ -29,36 +29,36 @@ class EntLoadMixin:
         return cls(d)
 
     @classmethod
-    def list_for_type(cls, ent_type: EntType) -> list:
+    def for_id(cls, id: str):
+        ent_type = EntType.from_id(id)
+        ent_idx = cls.idx_from_type(ent_type)
+        return ent_idx[id]
+
+    @classmethod
+    def list_from_type(cls, ent_type: EntType) -> list:
         d_list = ent_type.remote_data_list
         ent_list = [cls.from_dict(d) for d in d_list]
         return ent_list
 
     @classmethod
-    def idx_for_type(cls, ent_type: EntType) -> dict:
-        ent_list = cls.list_for_type(ent_type)
+    def idx_from_type(cls, ent_type: EntType) -> dict:
+        ent_list = cls.list_from_type(ent_type)
         ent_idx = {ent.id: ent for ent in ent_list}
         return ent_idx
 
     @classmethod
-    def for_id(cls, id: str):
-        ent_type = EntType.from_id(id)
-        ent_idx = cls.idx_for_type(ent_type)
-        return ent_idx[id]
-
-    @classmethod
-    def list_for_id_list(cls, id_list: list) -> list:
+    def list_from_id_list(cls, id_list: list) -> list:
         ent_list = [cls.for_id(id) for id in id_list]
         return ent_list
 
     @classmethod
-    def ids_for_type(cls, ent_type: EntType) -> list:
-        ent_list = cls.list_for_type(ent_type)
+    def ids_from_type(cls, ent_type: EntType) -> list:
+        ent_list = cls.list_from_type(ent_type)
         id_list = [ent.id for ent in ent_list]
         return id_list
 
     @classmethod
-    def list_for_name_fuzzy(
+    def list_from_name_fuzzy(
         cls,
         name_fuzzy: str,
         filter_ent_type: EntType = None,
@@ -86,8 +86,8 @@ class EntLoadMixin:
                 if filter_ent_type and (filter_ent_type != entity_type):
                     continue
 
-                ent_list_for_type = cls.list_for_type(entity_type)
-                for ent in ent_list_for_type:
+                ent_list_from_type = cls.list_from_type(entity_type)
+                for ent in ent_list_from_type:
                     if filter_parent_id and ent.is_parent_id(
                         filter_parent_id
                     ):
