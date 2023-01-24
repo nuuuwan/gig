@@ -7,4 +7,4 @@ if __name__ == '__main__':
     district_idx = Ent.idx_from_type(EntType.DISTRICT)
     print(district_idx['LK-11'])
 
-    print(Ent.for_id('LK-1103'))
+    print(Ent.from_id('LK-1103'))

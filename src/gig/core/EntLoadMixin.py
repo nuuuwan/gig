@@ -29,7 +29,7 @@ class EntLoadMixin:
         return cls(d)
 
     @classmethod
-    def for_id(cls, id: str):
+    def from_id(cls, id: str):
         ent_type = EntType.from_id(id)
         ent_idx = cls.idx_from_type(ent_type)
         return ent_idx[id]
@@ -48,7 +48,7 @@ class EntLoadMixin:
 
     @classmethod
     def list_from_id_list(cls, id_list: list) -> list:
-        ent_list = [cls.for_id(id) for id in id_list]
+        ent_list = [cls.from_id(id) for id in id_list]
         return ent_list
 
     @classmethod

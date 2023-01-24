@@ -6,7 +6,7 @@ from gig import Ent, GIGTable
 class TestEntGIGMixin(unittest.TestCase):
     def test_gig(self):
         gig_table = GIGTable('population-ethnicity', 'regions', '2012')
-        ent = Ent.for_id('LK-1')
+        ent = Ent.from_id('LK-1')
         gig_row = ent.gig(gig_table)
         self.assertEqual(
             gig_row.total,

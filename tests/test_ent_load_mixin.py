@@ -58,7 +58,7 @@ class TestEntLoadMixin(unittest.TestCase):
         self.assertEqual(ent_idx['LK-1'].name, 'Western')
 
     def test_from_id(self):
-        ent = Ent.for_id('LK-1')
+        ent = Ent.from_id('LK-1')
         self.assertEqual(ent.id, 'LK-1')
         self.assertEqual(ent.name, 'Western')
 
