@@ -9,3 +9,5 @@ class EntJSONMixin:
     def from_json(cls, json_str):
         d = json.loads(json_str)
         return cls(d)
+
+    
