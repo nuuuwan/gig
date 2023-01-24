@@ -49,5 +49,18 @@ class TestEntGeoMixin(TestCase):
                 filecmp.cmp(test_png_file_path, control_png_file_path)
             )
 
-    # def test_example_1_density_map(self):
+    def test_example_1_population_density_map(self):
+        _, ax = plt.subplots(figsize=(16, 9))
 
+        for id, color in [
+            ['LK-11', 'green'],
+            ['LK-12', 'blue'],
+            ['LK-62', 'darkgreen'],
+        ]:
+            ent = Ent.from_id(id)
+            geo = ent.geo()
+            geo.plot(ax=ax, color=color)
+
+        test_png_file_path = '/tmp/gig.TestEntGeoMixin.example1.png'
+        plt.savefig(test_png_file_path)
+        plt.close()
