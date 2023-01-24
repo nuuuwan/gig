@@ -3,3 +3,5 @@ fuzzywuzzy
 python-Levenshtein
 utils-nuuuwan
 matplotlib
+shapely
+geopandas
