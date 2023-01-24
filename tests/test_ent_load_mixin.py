@@ -1,27 +1,7 @@
 import unittest
 
 from gig import Ent, EntType
-
-TEST_SUBS = '''
-    ['EC-01H', 'EC-01I', 'EC-01J', 'EC-01K', 'EC-01M',
-    'EC-01N', 'EC-01O', 'LG-11031', 'LG-11090', 'LG-11121',
-    'LG-11210', 'LG-11240', 'LG-11301', 'LG-11330', 'LK-1106',
-    'LK-1109', 'LK-1121', 'LK-1124', 'LK-1133', 'LK-1136',
-    'MOH-11031', 'MOH-11060', 'MOH-11212', 'MOH-11330']
-'''
-
-TEST_D = dict(
-    id='LK-11',
-    name='Colombo',
-    area='642.00',
-    population='2323964',
-    centroid_altitude='8',
-    centroid='[6.869636028857, 80.01959786729992]',
-    subs=TEST_SUBS,
-    supers="['LK']",
-    eqs="['LK-1']",
-    ints="[]",
-)
+from tests.test_ent_base import TEST_D
 
 
 class TestEntLoadMixin(unittest.TestCase):
