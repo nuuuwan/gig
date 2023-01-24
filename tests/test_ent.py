@@ -76,32 +76,32 @@ class TestGig(unittest.TestCase):
         self.assertEqual(ent.eqs, ['LK-1'])
         self.assertEqual(ent.ints, [])
 
-    def test_load_list_for_type(self):
-        ent_list = Ent.load_list_for_type(EntType.PROVINCE)
+    def test_list_for_type(self):
+        ent_list = Ent.list_for_type(EntType.PROVINCE)
         self.assertEqual(len(ent_list), 9)
         self.assertEqual(ent_list[0].id, 'LK-1')
 
-    def test_load_idx_for_type(self):
-        ent_idx = Ent.load_idx_for_type(EntType.PROVINCE)
+    def test_idx_for_type(self):
+        ent_idx = Ent.idx_for_type(EntType.PROVINCE)
         self.assertEqual(len(ent_idx), 9)
         self.assertEqual(ent_idx['LK-1'].id, 'LK-1')
         self.assertEqual(ent_idx['LK-1'].name, 'Western')
 
-    def test_load_for_id(self):
-        ent = Ent.load_for_id('LK-1')
+    def test_for_id(self):
+        ent = Ent.for_id('LK-1')
         self.assertEqual(ent.id, 'LK-1')
         self.assertEqual(ent.name, 'Western')
 
-    def test_load_list_for_id_list(self):
+    def test_list_for_id_list(self):
         for id_list in [['LK-1'], ['LK-11', 'LK-12']]:
-            ent_list = Ent.load_list_for_id_list(id_list)
+            ent_list = Ent.list_for_id_list(id_list)
             self.assertEqual(len(ent_list), len(id_list))
 
             for id, ent in zip(id_list, ent_list):
                 self.assertEqual(id, ent.id)
 
-    def test_load_ids_for_type(self):
-        id_list = Ent.load_ids_for_type(EntType.PROVINCE)
+    def test_ids_for_type(self):
+        id_list = Ent.ids_for_type(EntType.PROVINCE)
         self.assertEqual(
             id_list,
             [
@@ -117,7 +117,7 @@ class TestGig(unittest.TestCase):
             ],
         )
 
-    def test_load_list_by_name_fuzzy(self):
+    def test_list_by_name_fuzzy(self):
         for [ent_name, expected_ent_names] in [
             [
                 'Colombo',
@@ -151,7 +151,7 @@ class TestGig(unittest.TestCase):
                 ['Galwala', 'Galdola', 'Gallala', 'Gallewa', 'Gallawa'],
             ],
         ]:
-            ent_list = Ent.load_list_for_name_fuzzy(ent_name)
+            ent_list = Ent.list_for_name_fuzzy(ent_name)
             actual_ent_names = list(
                 map(
                     lambda ent: ent.name,
@@ -162,7 +162,7 @@ class TestGig(unittest.TestCase):
 
     def test_gig(self):
         gig_table = GIGTable('population-ethnicity', 'regions', '2012')
-        ent = Ent.load_for_id('LK-1')
+        ent = Ent.for_id('LK-1')
         gig_row = ent.gig(gig_table)
         self.assertEqual(
             gig_row.total,
