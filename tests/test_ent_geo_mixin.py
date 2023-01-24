@@ -43,6 +43,7 @@ class TestEntGeoMixin(TestCase):
             png_file_name = f'gig.TestEntGeoMixin.{id}.png'
             test_png_file_path = os.path.join('/tmp', png_file_name)
             plt.savefig(test_png_file_path)
+            plt.close()
 
             control_png_file_path = os.path.join('tests/', png_file_name)
             self.assertTrue(
