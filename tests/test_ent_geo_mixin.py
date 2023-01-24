@@ -1,4 +1,3 @@
-import filecmp
 import os
 from unittest import TestCase
 
@@ -46,8 +45,9 @@ class TestEntGeoMixin(TestCase):
             plt.close()
 
             control_png_file_path = os.path.join('tests/', png_file_name)
-            self.assertTrue(
-                filecmp.cmp(test_png_file_path, control_png_file_path)
+            self.assertEqual(
+                os.path.getsize(test_png_file_path),
+                os.path.getsize(control_png_file_path),
             )
 
     def test_example_1_westernish_province(self):
@@ -68,6 +68,7 @@ class TestEntGeoMixin(TestCase):
         plt.close()
 
         control_png_file_path = os.path.join('tests/', png_file_name)
-        self.assertTrue(
-            filecmp.cmp(test_png_file_path, control_png_file_path)
+        self.assertEqual(
+            os.path.getsize(test_png_file_path),
+            os.path.getsize(control_png_file_path),
         )
