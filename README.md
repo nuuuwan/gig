@@ -8,7 +8,10 @@ pip install gig-nuuuwan
 
 ## Release History
 
-### 3.0.3 (CURRENT RELEASE)
+### 3.0.4 (CURRENT RELEASE)
+* Fixed filter_parent_id BUG in Ent.list_from_name_fuzzy
+
+### 3.0.3 
 * Geo support for Ents
 
 ### 3.0.2
