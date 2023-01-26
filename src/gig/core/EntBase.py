@@ -10,6 +10,19 @@ class EntBase:
     def name(self):
         return self.d["name"]
 
+    @property
+    def acronym(self):
+        return "".join([c for c in self.name if c.isupper()])
+
+    @property
+    def short_name(self):
+        # remove lowecase vowels
+        return (
+            "".join([c for c in self.name if c not in "aeiou"])
+            .replace('.', '')
+            .replace('-', '')
+        )
+
     def is_parent_id(self, cand_parent_id: str):
         return cand_parent_id in self.id
 
