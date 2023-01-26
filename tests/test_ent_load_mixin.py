@@ -13,6 +13,8 @@ class TestEntLoadMixin(unittest.TestCase):
         self.assertEqual(ent.population, 2323964)
         self.assertEqual(ent.centroid_altitude, 8)
         self.assertEqual(ent.centroid, [6.869636028857, 80.01959786729992])
+
+        self.assertEqual(ent.lnglat, [80.01959786729992, 6.869636028857])
         self.assertEqual(
             ent.subs,
             [
