@@ -23,6 +23,11 @@ class EntBase:
             .replace('-', '')
         )
 
+    @property
+    def lnglat(self):
+        centroid = self.d["centroid"]
+        return [centroid[1], centroid[0]]
+
     def is_parent_id(self, cand_parent_id: str):
         return cand_parent_id in self.id
 
