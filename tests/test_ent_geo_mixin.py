@@ -1,9 +1,10 @@
 import os
+import time
 from unittest import TestCase
 
 import matplotlib.pyplot as plt
 
-from gig import Ent
+from gig import Ent, EntType
 
 TEST_ENT = Ent.from_id('LK-11')
 
@@ -27,7 +28,7 @@ class TestEntGeoMixin(TestCase):
         )
 
     def test_raw_geo(self):
-        raw_geo = TEST_ENT.raw_geo()
+        raw_geo = TEST_ENT.get_raw_geo()
         self.assertEqual(len(raw_geo), 2)
         self.assertEqual(len(raw_geo[0]), 23)
         self.assertEqual(len(raw_geo[0][0]), 2)
@@ -72,3 +73,28 @@ class TestEntGeoMixin(TestCase):
             os.path.getsize(test_png_file_path),
             os.path.getsize(control_png_file_path),
         )
+
+    def test_example_2_lgs(self):
+
+        _, ax = plt.subplots(figsize=(16, 9))
+
+        lg_ents = Ent.list_from_type(EntType.LG)
+
+        # dummy load run
+        N_ENTS = 20
+        for ent in lg_ents[:N_ENTS]:
+            ent.geo()
+
+        t0 = time.time()
+        for ent in lg_ents[:N_ENTS]:
+            geo = ent.geo()
+            geo.plot(ax=ax, color='#0c0')
+        dt = time.time() - t0
+        mean_t = dt / N_ENTS
+
+        png_file_name = 'gig.TestEntGeoMixin.example2.png'
+        test_png_file_path = os.path.join('/tmp', png_file_name)
+        plt.savefig(test_png_file_path)
+        plt.close()
+
+        self.assertLess(mean_t, 0.1)
