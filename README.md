@@ -8,12 +8,12 @@ pip install gig-nuuuwan
 
 ## Release History
 
-### 3.0.5
+### 3.0.5 (CURRENT RELEASE)
 * perf: Speed-up Ent.geo
 * feat: Added Ent.lnglat
 * feat: Added Ent.short_name, Ent.acronym
 
-### 3.0.4 (CURRENT RELEASE)
+### 3.0.4 
 * Fixed filter_parent_id BUG in Ent.list_from_name_fuzzy
 
 ### 3.0.3 
