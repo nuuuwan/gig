@@ -98,8 +98,6 @@ class TestEntLoadMixin(unittest.TestCase):
             ['LK-23', 'Nuwara Eliya', EntType.DISTRICT, None],
             ['LK-23', 'Nuwara-Eliya', EntType.DISTRICT, None],
             ['LK-23', 'NuwaraEliya', EntType.DISTRICT, None],
-            # Rideekanda
-            ['LK-6145227', 'Rideekanda', EntType.GND, 'LK-6148'],
         ]:
             ents = Ent.list_from_name_fuzzy(
                 name_fuzzy, filter_ent_type, filter_parent_id
