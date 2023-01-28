@@ -32,9 +32,6 @@ class EntType:
                     5: EntType.ED,
                     6: EntType.PD,
                 },
-                'PS': {
-                    7: EntType.PS,
-                },
                 'LG': {
                     8: EntType.LG,
                 },
@@ -58,7 +55,6 @@ class EntType:
             EntType.PD,
             EntType.LG,
             EntType.MOH,
-            EntType.PS,
         ]
 
     @property
@@ -89,4 +85,3 @@ EntType.PD = EntType('pd')
 EntType.LG = EntType('lg')
 EntType.MOH = EntType('moh')
 EntType.UNKNOWN = EntType('unknown')
-EntType.PS = EntType('ps')

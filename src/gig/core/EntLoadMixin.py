@@ -1,7 +1,7 @@
 import json
 
 from fuzzywuzzy import fuzz
-from utils import SECONDS_IN, String, cache, hashx
+from utils import String
 
 from gig.core.EntType import EntType
 
@@ -10,22 +10,14 @@ class EntLoadMixin:
     @classmethod
     def from_dict(cls, d):
         d = d.copy()
-        if 'area' in d:
-            d['area'] = String(d['area']).float
 
-        if 'population' in d:
-            d['population'] = String(d['population']).int
-
-        if 'centroid_altitude' in d:
-            try:
-                d['centroid_altitude'] = String(d['centroid_altitude']).float
-            except ValueError:
-                d['centroid_altitude'] = 0
+        for k in ['area', 'population', 'centroid_altitude']:
+            if k in d and d[k]:
+                d[k] = String(d[k]).int
 
         for k in ['centroid', 'subs', 'supers', 'ints', 'eqs']:
-            if k in d:
-                if d[k]:
-                    d[k] = json.loads(d[k].replace('\'', '"'))
+            if k in d and d[k]:
+                d[k] = json.loads(d[k].replace('\'', '"'))
         return cls(d)
 
     @classmethod
@@ -67,46 +59,30 @@ class EntLoadMixin:
         min_fuzz_ratio: int = 80,
     ) -> list:
 
-        cache_key = hashx.md5(
-            '.'.join(
-                [
-                    name_fuzzy,
-                    filter_ent_type.name if filter_ent_type else str(None),
-                    str(filter_parent_id),
-                    str(limit),
-                    str(min_fuzz_ratio),
-                    'v2023.01.24',
-                ]
-            )
+        ent_and_ratio_list = []
+
+        entity_type_list = (
+            [filter_ent_type] if filter_ent_type else EntType.list()
         )
 
-        @cache(cache_key, SECONDS_IN.WEEK)
-        def inner():
-            ent_and_ratio_list = []
-            for entity_type in EntType.list():
-                if filter_ent_type and (filter_ent_type != entity_type):
+        for entity_type in entity_type_list:
+            ent_list_from_type = cls.list_from_type(entity_type)
+            for ent in ent_list_from_type:
+                if filter_parent_id and not ent.is_parent_id(
+                    filter_parent_id
+                ):
                     continue
 
-                ent_list_from_type = cls.list_from_type(entity_type)
-                for ent in ent_list_from_type:
-                    if filter_parent_id and not ent.is_parent_id(
-                        filter_parent_id
-                    ):
-                        continue
+                fuzz_ratio = fuzz.ratio(ent.name, name_fuzzy)
+                ent_and_ratio_list.append([ent, fuzz_ratio])
 
-                    fuzz_ratio = fuzz.ratio(ent.name, name_fuzzy)
+        ent_list = [
+            item[0]
+            for item in sorted(ent_and_ratio_list, key=lambda x: -x[1])
+            if item[1] >= min_fuzz_ratio
+        ]
 
-                    if fuzz_ratio >= min_fuzz_ratio:
-                        ent_and_ratio_list.append([ent, fuzz_ratio])
+        if len(ent_list) >= limit:
+            ent_list = ent_list[:limit]
 
-            ent_list = [
-                item[0]
-                for item in sorted(ent_and_ratio_list, key=lambda x: -x[1])
-            ]
-
-            if len(ent_list) >= limit:
-                ent_list = ent_list[:limit]
-
-            return [ent.to_json() for ent in ent_list]
-
-        return [cls.from_json(x) for x in inner()]
+        return ent_list
