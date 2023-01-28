@@ -13,35 +13,38 @@ class EntType:
 
     @staticmethod
     def from_id(id: str):
+        if id == 'LK':
+            return EntType.COUNTRY
+
+        prefix = id.partition('-')[0]
         n = len(id)
-        if id[:2] == 'LK':
-            if n == 2:
-                return EntType.COUNTRY
-            if n == 4:
-                return EntType.PROVINCE
-            if n == 5:
-                return EntType.DISTRICT
-            if n == 7:
-                return EntType.DSD
-            if n == 10:
-                return EntType.GND
 
-        if id[:2] == 'EC':
-            if n == 5:
-                return EntType.ED
-            if n == 6:
-                return EntType.PD
-
-        if id[:2] == 'PS':
-            return EntType.PS
-
-        if id[:2] == 'LG':
-            return EntType.LG
-
-        if id[:3] == 'MOH':
-            return EntType.MOH
-
-        return EntType.UNKNOWN
+        return (
+            {
+                'LK': {
+                    2: EntType.COUNTRY,
+                    4: EntType.PROVINCE,
+                    5: EntType.DISTRICT,
+                    7: EntType.DSD,
+                    10: EntType.GND,
+                },
+                'EC': {
+                    5: EntType.ED,
+                    6: EntType.PD,
+                },
+                'PS': {
+                    7: EntType.PS,
+                },
+                'LG': {
+                    8: EntType.LG,
+                },
+                'MOH': {
+                    9: EntType.MOH,
+                },
+            }
+            .get(prefix, {})
+            .get(n, EntType.UNKNOWN)
+        )
 
     @staticmethod
     def list():
@@ -55,6 +58,7 @@ class EntType:
             EntType.PD,
             EntType.LG,
             EntType.MOH,
+            EntType.PS,
         ]
 
     @property
@@ -85,3 +89,4 @@ EntType.PD = EntType('pd')
 EntType.LG = EntType('lg')
 EntType.MOH = EntType('moh')
 EntType.UNKNOWN = EntType('unknown')
+EntType.PS = EntType('ps')

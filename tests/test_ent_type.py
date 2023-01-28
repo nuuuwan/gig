@@ -18,6 +18,7 @@ class TestEntType(unittest.TestCase):
                 EntType.PD,
                 EntType.LG,
                 EntType.MOH,
+                EntType.PS,
             ],
         )
 
