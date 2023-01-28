@@ -59,15 +59,13 @@ class EntLoadMixin:
         min_fuzz_ratio: int = 80,
     ) -> list:
 
-        ent_and_ratio_list = []
-
         entity_type_list = (
             [filter_ent_type] if filter_ent_type else EntType.list()
         )
 
+        ent_and_ratio_list = []
         for entity_type in entity_type_list:
-            ent_list_from_type = cls.list_from_type(entity_type)
-            for ent in ent_list_from_type:
+            for ent in cls.list_from_type(entity_type):
                 if filter_parent_id and not ent.is_parent_id(
                     filter_parent_id
                 ):
@@ -76,13 +74,8 @@ class EntLoadMixin:
                 fuzz_ratio = fuzz.ratio(ent.name, name_fuzzy)
                 ent_and_ratio_list.append([ent, fuzz_ratio])
 
-        ent_list = [
+        return [
             item[0]
             for item in sorted(ent_and_ratio_list, key=lambda x: -x[1])
             if item[1] >= min_fuzz_ratio
-        ]
-
-        if len(ent_list) >= limit:
-            ent_list = ent_list[:limit]
-
-        return ent_list
+        ][:limit]

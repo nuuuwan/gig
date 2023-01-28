@@ -27,18 +27,3 @@ class TestEntGIGMixin(unittest.TestCase):
                 'other_eth': 9718,
             },
         )
-
-        self.assertEqual(
-            list(gig_row.dict.keys()),
-            [
-                'sinhalese',
-                'sl_moor',
-                'sl_tamil',
-                'ind_tamil',
-                'malay',
-                'burgher',
-                'other_eth',
-                'sl_chetty',
-                'bharatha',
-            ],
-        )

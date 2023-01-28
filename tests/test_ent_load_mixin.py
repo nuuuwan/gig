@@ -3,6 +3,33 @@ import unittest
 from gig import Ent, EntType
 from tests.test_ent_base import TEST_D
 
+TEST_EXPECTED_SUBS = [
+    'EC-01H',
+    'EC-01I',
+    'EC-01J',
+    'EC-01K',
+    'EC-01M',
+    'EC-01N',
+    'EC-01O',
+    'LG-11031',
+    'LG-11090',
+    'LG-11121',
+    'LG-11210',
+    'LG-11240',
+    'LG-11301',
+    'LG-11330',
+    'LK-1106',
+    'LK-1109',
+    'LK-1121',
+    'LK-1124',
+    'LK-1133',
+    'LK-1136',
+    'MOH-11031',
+    'MOH-11060',
+    'MOH-11212',
+    'MOH-11330',
+]
+
 
 class TestEntLoadMixin(unittest.TestCase):
     def test_from_dict(self):
@@ -17,32 +44,7 @@ class TestEntLoadMixin(unittest.TestCase):
         self.assertEqual(ent.lnglat, [80.01959786729992, 6.869636028857])
         self.assertEqual(
             ent.subs,
-            [
-                'EC-01H',
-                'EC-01I',
-                'EC-01J',
-                'EC-01K',
-                'EC-01M',
-                'EC-01N',
-                'EC-01O',
-                'LG-11031',
-                'LG-11090',
-                'LG-11121',
-                'LG-11210',
-                'LG-11240',
-                'LG-11301',
-                'LG-11330',
-                'LK-1106',
-                'LK-1109',
-                'LK-1121',
-                'LK-1124',
-                'LK-1133',
-                'LK-1136',
-                'MOH-11031',
-                'MOH-11060',
-                'MOH-11212',
-                'MOH-11330',
-            ],
+            TEST_EXPECTED_SUBS,
         )
         self.assertEqual(ent.supers, ['LK'])
         self.assertEqual(ent.eqs, ['LK-1'])
@@ -106,3 +108,9 @@ class TestEntLoadMixin(unittest.TestCase):
             )
             ent = ents[0]
             self.assertEqual(ent.id, expected_id)
+
+    def test_list_by_name_fuzzy_limit(self):
+        ents = Ent.list_from_name_fuzzy(
+            'Colombo', limit=10, min_fuzz_ratio=10
+        )
+        self.assertEqual(len(ents), 10)

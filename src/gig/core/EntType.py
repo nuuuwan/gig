@@ -19,29 +19,7 @@ class EntType:
         prefix = id.partition('-')[0]
         n = len(id)
 
-        return (
-            {
-                'LK': {
-                    2: EntType.COUNTRY,
-                    4: EntType.PROVINCE,
-                    5: EntType.DISTRICT,
-                    7: EntType.DSD,
-                    10: EntType.GND,
-                },
-                'EC': {
-                    5: EntType.ED,
-                    6: EntType.PD,
-                },
-                'LG': {
-                    8: EntType.LG,
-                },
-                'MOH': {
-                    9: EntType.MOH,
-                },
-            }
-            .get(prefix, {})
-            .get(n, EntType.UNKNOWN)
-        )
+        return EntType.ID_TYPE_CONFIG.get(prefix, {}).get(n, EntType.UNKNOWN)
 
     @staticmethod
     def list():
@@ -85,3 +63,23 @@ EntType.PD = EntType('pd')
 EntType.LG = EntType('lg')
 EntType.MOH = EntType('moh')
 EntType.UNKNOWN = EntType('unknown')
+
+EntType.ID_TYPE_CONFIG = {
+    'LK': {
+        2: EntType.COUNTRY,
+        4: EntType.PROVINCE,
+        5: EntType.DISTRICT,
+        7: EntType.DSD,
+        10: EntType.GND,
+    },
+    'EC': {
+        5: EntType.ED,
+        6: EntType.PD,
+    },
+    'LG': {
+        8: EntType.LG,
+    },
+    'MOH': {
+        9: EntType.MOH,
+    },
+}

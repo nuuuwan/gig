@@ -75,9 +75,7 @@ class TestEntGeoMixin(TestCase):
         )
 
     def test_example_2_lgs(self):
-
         _, ax = plt.subplots(figsize=(16, 9))
-
         lg_ents = Ent.list_from_type(EntType.LG)
 
         # dummy load run
@@ -96,5 +94,4 @@ class TestEntGeoMixin(TestCase):
         test_png_file_path = os.path.join('/tmp', png_file_name)
         plt.savefig(test_png_file_path)
         plt.close()
-
         self.assertLess(mean_t, 0.1)
