@@ -2,7 +2,7 @@ import os
 from dataclasses import dataclass
 from functools import cached_property
 
-from utils import SECONDS_IN, WWW, cache
+from utils import WWW, FiledVariable
 
 from gig.core._common import URL_BASE
 
@@ -44,13 +44,12 @@ class EntType:
 
     @cached_property
     def remote_data_list(self) -> list:
-        @cache('EntType.' + self.name, SECONDS_IN.WEEK)
         def inner():
             d_list = WWW(self.url_remote_data_path).readTSV()
             non_null_d_list = [d for d in d_list if d]
             return non_null_d_list
 
-        return inner()
+        return FiledVariable(self.name + '.remote_data_list', inner).value
 
 
 EntType.COUNTRY = EntType('country')

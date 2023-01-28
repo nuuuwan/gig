@@ -8,7 +8,10 @@ pip install gig-nuuuwan
 
 ## Release History
 
-### 3.0.6 (CURRENT RELEASE)
+### 3.0.7 (CURRENT RELEASE)
+* refactoring (removed deprecated utils.cache)
+
+### 3.0.6 
 * refactoring, optimizations
 
 ### 3.0.5 
