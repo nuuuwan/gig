@@ -8,10 +8,10 @@ pip install gig-nuuuwan
 
 ## Release History
 
-### 3.0.6
+### 3.0.6 (CURRENT RELEASE)
 * refactoring, optimizations
 
-### 3.0.5 (CURRENT RELEASE)
+### 3.0.5 
 * perf: Speed-up Ent.geo
 * feat: Added Ent.lnglat
 * feat: Added Ent.short_name, Ent.acronym
