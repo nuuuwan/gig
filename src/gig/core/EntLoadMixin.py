@@ -12,8 +12,8 @@ class EntLoadMixin:
         d = d.copy()
 
         for k in ['area', 'population', 'centroid_altitude']:
-            if k in d and d[k]:
-                d[k] = String(d[k]).int
+            if k in d:
+                d[k] = String(d[k]).int if d[k] else 0
 
         for k in ['centroid', 'subs', 'supers', 'ints', 'eqs']:
             if k in d and d[k]:
