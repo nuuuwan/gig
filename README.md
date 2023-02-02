@@ -8,11 +8,11 @@ pip install gig-nuuuwan
 
 ## Release History
 
-### 3.0.8
+### 3.0.8 (CURRENT RELEASE)
 * Fixed missing dependencies BUG 
 * Replaced fuzzywuzzy with RapidFuzz for string matching
 
-### 3.0.7 (CURRENT RELEASE)
+### 3.0.7 
 * refactoring (removed deprecated utils.cache)
 
 ### 3.0.6 
