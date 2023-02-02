@@ -1,6 +1,6 @@
 import json
 
-from fuzzywuzzy import fuzz
+from rapidfuzz import fuzz
 from utils import String
 
 from gig.core.EntType import EntType

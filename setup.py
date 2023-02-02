@@ -26,9 +26,8 @@ setuptools.setup(
     python_requires=">=3.8",
     install_requires=[
         'geopandas',
+        'RapidFuzz',
         'shapely',
-        'fuzzywuzzy',
-        'python-Levenshtein',
         'utils-nuuuwan',
     ],
     test_suite="nose.collector",

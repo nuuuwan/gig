@@ -1,5 +1,4 @@
 geopandas
+RapidFuzz
 shapely
-fuzzywuzzy
-python-Levenshtein
 utils-nuuuwan
