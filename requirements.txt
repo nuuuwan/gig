@@ -1,7 +1,5 @@
-# Auto Generated
+geopandas
+shapely
 fuzzywuzzy
 python-Levenshtein
 utils-nuuuwan
-matplotlib
-shapely
-geopandas

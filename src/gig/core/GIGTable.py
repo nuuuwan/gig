@@ -40,8 +40,7 @@ class GIGTable:
             non_null_d_list = [d for d in d_list if d]
             return non_null_d_list
 
-        var = FiledVariable(self.table_id + '.remote_data_list', inner)
-        return var.value
+        return FiledVariable(self.table_id + '.remote_data_list', inner).value
 
     @cached_property
     def remote_data_idx(self) -> dict:
