@@ -1,4 +1,3 @@
-import os
 from dataclasses import dataclass
 from functools import cached_property
 
@@ -28,10 +27,7 @@ class GIGTable:
 
     @property
     def url_remote_data_path(self):
-        return os.path.join(
-            URL_BASE,
-            f'gig2/{self.table_id}.tsv',
-        )
+        return f'{URL_BASE}/gig2/{self.table_id}.tsv'
 
     @cached_property
     def remote_data_list(self) -> list:

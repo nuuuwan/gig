@@ -1,4 +1,3 @@
-import os
 from dataclasses import dataclass
 from functools import cached_property
 
@@ -37,10 +36,7 @@ class EntType:
 
     @property
     def url_remote_data_path(self):
-        return os.path.join(
-            URL_BASE,
-            f'ents/{self.name}.tsv',
-        )
+        return f'{URL_BASE}/ents/{self.name}.tsv'
 
     @cached_property
     def remote_data_list(self) -> list:

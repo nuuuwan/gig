@@ -1,4 +1,5 @@
 import os
+import tempfile
 import time
 from unittest import TestCase
 
@@ -7,23 +8,25 @@ import matplotlib.pyplot as plt
 from gig import Ent, EntType
 
 TEST_ENT = Ent.from_id('LK-11')
+DIR_TMP = tempfile.gettempdir()
 
 
 class TestEntGeoMixin(TestCase):
     def test_url_remote_geo_data_path(self):
-
         print(TEST_ENT.url_remote_geo_data_path)
 
         self.assertEqual(
             TEST_ENT.url_remote_geo_data_path,
-            os.path.join(
-                'https://raw.githubusercontent.com',
-                'nuuuwan',
-                'gig-data',
-                'master',
-                'geo',
-                'district',
-                'LK-11.json',
+            '/'.join(
+                [
+                    'https://raw.githubusercontent.com',
+                    'nuuuwan',
+                    'gig-data',
+                    'master',
+                    'geo',
+                    'district',
+                    'LK-11.json',
+                ]
             ),
         )
 
@@ -41,11 +44,11 @@ class TestEntGeoMixin(TestCase):
             geo = ent.geo()
             geo.plot()
             png_file_name = f'gig.TestEntGeoMixin.{id}.png'
-            test_png_file_path = os.path.join('/tmp', png_file_name)
+            test_png_file_path = os.path.join(DIR_TMP, png_file_name)
             plt.savefig(test_png_file_path)
             plt.close()
 
-            control_png_file_path = os.path.join('tests/', png_file_name)
+            control_png_file_path = os.path.join('tests', png_file_name)
             self.assertEqual(
                 os.path.getsize(test_png_file_path),
                 os.path.getsize(control_png_file_path),
@@ -64,11 +67,11 @@ class TestEntGeoMixin(TestCase):
             geo.plot(ax=ax, color=color)
 
         png_file_name = 'gig.TestEntGeoMixin.example1.png'
-        test_png_file_path = os.path.join('/tmp', png_file_name)
+        test_png_file_path = os.path.join(DIR_TMP, png_file_name)
         plt.savefig(test_png_file_path)
         plt.close()
 
-        control_png_file_path = os.path.join('tests/', png_file_name)
+        control_png_file_path = os.path.join('tests', png_file_name)
         self.assertEqual(
             os.path.getsize(test_png_file_path),
             os.path.getsize(control_png_file_path),
@@ -91,7 +94,7 @@ class TestEntGeoMixin(TestCase):
         mean_t = dt / N_ENTS
 
         png_file_name = 'gig.TestEntGeoMixin.example2.png'
-        test_png_file_path = os.path.join('/tmp', png_file_name)
+        test_png_file_path = os.path.join(DIR_TMP, png_file_name)
         plt.savefig(test_png_file_path)
         plt.close()
         self.assertLess(mean_t, 0.1)

@@ -1,4 +1,3 @@
-import os
 import unittest
 
 from gig import GIGTable
@@ -17,13 +16,15 @@ class TestGIGTable(unittest.TestCase):
         gig_table = TEST_GIG_TABLE
         self.assertEqual(
             gig_table.url_remote_data_path,
-            os.path.join(
-                'https://raw.githubusercontent.com',
-                'nuuuwan',
-                'gig-data',
-                'master',
-                'gig2',
-                'population-ethnicity.regions.2012.tsv',
+            '/'.join(
+                [
+                    'https://raw.githubusercontent.com',
+                    'nuuuwan',
+                    'gig-data',
+                    'master',
+                    'gig2',
+                    'population-ethnicity.regions.2012.tsv',
+                ]
             ),
         )
 

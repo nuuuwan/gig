@@ -1,4 +1,3 @@
-import os
 import unittest
 
 from gig import EntType
@@ -43,13 +42,15 @@ class TestEntType(unittest.TestCase):
     def test_url_remote_data_path(self):
         self.assertEqual(
             EntType.PROVINCE.url_remote_data_path,
-            os.path.join(
-                'https://raw.githubusercontent.com',
-                'nuuuwan',
-                'gig-data',
-                'master',
-                'ents',
-                'province.tsv',
+            '/'.join(
+                [
+                    'https://raw.githubusercontent.com',
+                    'nuuuwan',
+                    'gig-data',
+                    'master',
+                    'ents',
+                    'province.tsv',
+                ]
             ),
         )
 

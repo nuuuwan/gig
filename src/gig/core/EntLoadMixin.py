@@ -58,7 +58,6 @@ class EntLoadMixin:
         limit: int = 5,
         min_fuzz_ratio: int = 80,
     ) -> list:
-
         entity_type_list = (
             [filter_ent_type] if filter_ent_type else EntType.list()
         )

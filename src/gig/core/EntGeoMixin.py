@@ -1,4 +1,5 @@
 import os
+import tempfile
 
 import geopandas as gpd
 from shapely.geometry import MultiPolygon, Polygon
@@ -11,17 +12,17 @@ from gig.core.EntType import EntType
 class EntGeoMixin:
     @property
     def raw_geo_file(self):
-        raw_geo_path = os.path.join('/tmp', f'ent.{self.id}.raw_geo.json')
+        raw_geo_path = os.path.join(
+            tempfile.gettempdir(), f'ent.{self.id}.raw_geo.json'
+        )
+
         return JSONFile(raw_geo_path)
 
     @property
     def url_remote_geo_data_path(self):
         id = self.id
         ent_type = EntType.from_id(id)
-        return os.path.join(
-            URL_BASE,
-            f'geo/{ent_type.name}/{id}.json',
-        )
+        return f'{URL_BASE}/geo/{ent_type.name}/{id}.json'
 
     def get_raw_geo(self):
         raw_geo_file = self.raw_geo_file
