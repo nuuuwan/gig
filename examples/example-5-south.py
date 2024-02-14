@@ -1,7 +1,8 @@
 import os
 import re
-from matplotlib.font_manager import FontProperties
+
 from matplotlib import pyplot as plt
+from matplotlib.font_manager import FontProperties
 from utils import Log
 
 from gig import Ent, EntType, GIGTable
@@ -15,7 +16,9 @@ MID_LAT = (MIN_LAT + MAX_LAT) / 2
 log.debug(f'{MID_LAT=}')
 
 
-FONT_PATH = "C:\\Users\\ASUS\\AppData\\Local\\Microsoft\\Windows\\Fonts\\p22.ttf"
+FONT_PATH = (
+    "C:\\Users\\ASUS\\AppData\\Local\\Microsoft\\Windows\\Fonts\\p22.ttf"
+)
 FONT = FontProperties(fname=FONT_PATH)
 plt.rcParams['font.family'] = FONT.get_name()
 
@@ -160,12 +163,10 @@ def main():
         lambda ent: p_sinhalese(ent) > 0.5,
     )
 
-
     build_map(
         'Ethnicity (>80% Sinhala)',
         lambda ent: p_sinhalese(ent) > 0.8,
     )
-
 
     gig_table_rel = GIGTable('population-religion', 'regions', '2012')
 
@@ -184,7 +185,7 @@ def main():
     )
 
     # Elections
-    global ENT_TYPE 
+    global ENT_TYPE
     ENT_TYPE = EntType.PD
     gig_table_prespoll_2019 = GIGTable(
         'government-elections-presidential', 'regions-ec', '2019'
