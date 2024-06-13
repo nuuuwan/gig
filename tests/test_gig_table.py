@@ -31,7 +31,7 @@ class TestGIGTable(unittest.TestCase):
     def test_remote_data_list(self):
         gig_table = TEST_GIG_TABLE
         remote_data_list = gig_table.remote_data_list
-        self.assertEqual(len(remote_data_list), 15_219)
+        self.assertEqual(len(remote_data_list), 15_220)
         first_data = remote_data_list[0]
         self.assertEqual(
             first_data,
@@ -53,7 +53,7 @@ class TestGIGTable(unittest.TestCase):
     def test_remote_data_idx(self):
         gig_table = TEST_GIG_TABLE
         remote_data_idx = gig_table.remote_data_idx
-        self.assertEqual(len(remote_data_idx), 15_219)
+        self.assertEqual(len(remote_data_idx), 15_220)
         first_data = remote_data_idx['EC-01']
         self.assertEqual(
             first_data['entity_id'],

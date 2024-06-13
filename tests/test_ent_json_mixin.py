@@ -1,7 +1,8 @@
 import unittest
 
+from test_ent_base import TEST_D
+
 from gig import Ent
-from tests.test_ent_base import TEST_D
 
 
 class TestEntJSONMixin(unittest.TestCase):

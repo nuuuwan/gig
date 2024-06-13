@@ -8,7 +8,10 @@ log = Log('example-8')
 
 CHILD_TYPE = EntType.GND
 PARENT_TYPE = EntType.DSD
-def PARENT_ID_LAMBDA(ent): return ent.dsd_id
+
+
+def PARENT_ID_LAMBDA(ent):
+    return ent.dsd_id
 
 
 def main():

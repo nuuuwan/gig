@@ -1,7 +1,8 @@
 import unittest
 
+from test_ent_base import TEST_D
+
 from gig import Ent, EntType
-from tests.test_ent_base import TEST_D
 
 TEST_EXPECTED_SUBS = [
     'EC-01H',

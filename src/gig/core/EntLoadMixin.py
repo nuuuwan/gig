@@ -16,7 +16,7 @@ class EntLoadMixin:
                 d[k] = String(d[k]).int if d[k] else 0
 
         for k in ['centroid', 'subs', 'supers', 'ints', 'eqs']:
-            if k in d and d[k]:
+            if k in d and d[k] and d[k] != 'None':
                 d[k] = json.loads(d[k].replace('\'', '"'))
         return cls(d)
 
