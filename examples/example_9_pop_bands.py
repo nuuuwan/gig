@@ -11,16 +11,16 @@ COLORS = ['red', 'orange', 'yellow', 'green', 'blue']
 N_COLORS = len(COLORS)
 
 ENT_TYPE = EntType.GND
-PARENT_ENT_ID = "LK"
+PARENT_ENT_ID_LIST = ["LK-1"]
 
 # CENTER = [9.663203555637029, 80.01332119260337] # LK-4
 CENTER = [6.961312108947133, 79.85694398099878] # LK-11, LK-1
-N_BANDS = 22
+N_BANDS = 5
 
 def get_progress(p):
     N_BARS = 10
     n = int(p * N_BARS)
-    bars = "🟩" * n + "-" * (N_BARS - n)
+    bars = "🟩" * n + "⬛" * (N_BARS - n)
     return f'[{bars} {p:.1%}]'
 
 def get_distance(p1, p2):
@@ -30,9 +30,14 @@ def get_distance(p1, p2):
 def get_color(i_band):
     return COLORS[i_band % N_COLORS]
 
+def is_in_parent(id):
+    for parent_ent_id in PARENT_ENT_ID_LIST:
+        if parent_ent_id in id:
+            return True
+    return False
 
 def get_ents_list():
-    ents = [ent for ent in Ent.list_from_type(ENT_TYPE) if PARENT_ENT_ID in ent.id]
+    ents = [ent for ent in Ent.list_from_type(ENT_TYPE) if is_in_parent(ent.id)]
     
     ents.sort(
         key=lambda ent: get_distance(ent.centroid, CENTER)
@@ -64,7 +69,7 @@ def get_geo_idx(ent_list):
     def get_worker(i, ent):
         def worker(i=i,ent=ent):
             p = i / n
-            print(f'[{get_progress(p)}] {ent.id} {ent.name}'.ljust(80), end='\r')
+            print(f'{get_progress(p)} {ent.id} {ent.name}'.ljust(80), end='\r')
             try:
                 geo = ent.geo()
             except Exception as e:
@@ -90,7 +95,7 @@ def draw():
     for i, ent_info in enumerate(ent_info_list, start=1):
         p = i / n
         ent = ent_info['ent']
-        print(f'[{get_progress(p)}] Drawing {ent.id} {ent.name}'.ljust(80), end='\r')
+        print(f'{get_progress(p)} Drawing {ent.id} {ent.name}'.ljust(80), end='\r')
         
         color = ent_info['color']        
         geo = geo_idx[ent.id]
@@ -100,7 +105,7 @@ def draw():
 
     
     for ent in Ent.list_from_type(EntType.DISTRICT):
-        if PARENT_ENT_ID in ent.id:
+        if is_in_parent(ent.id):
             geo = ent.geo()
             geo.plot(ax=ax, color="white", edgecolor='black', linewidth=1, alpha=0.333)
 
@@ -111,7 +116,8 @@ def draw():
 
     plt.title(f"Each Band of {ENT_TYPE.name.upper()}s has (roughly) the same population.")
 
-    image_path = __file__ + f'.{ENT_TYPE.name}.{PARENT_ENT_ID}.png'
+    parent_id_str = '-'.join(PARENT_ENT_ID_LIST)
+    image_path = __file__ + f'.{ENT_TYPE.name}.{parent_id_str}.png'
     plt.savefig(image_path, dpi=600)
     plt.close()
     log.info(f'Saved {image_path}')
