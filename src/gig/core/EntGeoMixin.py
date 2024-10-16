@@ -20,9 +20,9 @@ class EntGeoMixin:
 
     @property
     def url_remote_geo_data_path(self):
-        id = self.id
-        ent_type = EntType.from_id(id)
-        return f"{GIGConstants.URL_BASE}/geo/{ent_type.name}/{id}.json"
+        ent_id = self.id
+        ent_type = EntType.from_id(ent_id)
+        return f"{GIGConstants.URL_BASE}/geo/{ent_type.name}/{ent_id}.json"
 
     def get_raw_geo(self):
         raw_geo_file = self.raw_geo_file
@@ -36,7 +36,7 @@ class EntGeoMixin:
     def geo(self):
         polygon_list = list(
             map(
-                lambda polygon_data: Polygon(polygon_data),
+                Polygon,
                 self.get_raw_geo(),
             )
         )
