@@ -1,4 +1,3 @@
-import os
 
 from matplotlib import pyplot as plt
 from utils import Log
@@ -90,19 +89,14 @@ def main():
         if i_ent % 10 == 0:
             log.debug(f"{i_ent + 1}/{n_ents} Drew {ent.id}")
 
-    # Hide grid lines
     ax.grid(False)
-
-    # Hide axes ticks
     ax.set_xticks([])
     ax.set_yticks([])
 
     image_path = __file__ + ".png"
-
     plt.savefig(image_path, dpi=600)
     plt.close()
     log.info(f"Saved {image_path}")
-    os.startfile(image_path)
 
     group_to_pop_sum = get_group_to_pop_sum(ents, ent_id_to_group)
     total_population = sum(group_to_pop_sum.values())
