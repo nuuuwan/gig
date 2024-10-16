@@ -22,17 +22,17 @@ class TestEntType(unittest.TestCase):
 
     def test_get_entity_type(self):
         for [id, expected_ent_type] in [
-            ['LK', EntType.COUNTRY],
-            ['LK-1', EntType.PROVINCE],
-            ['LK-11', EntType.DISTRICT],
-            ['LK-1127', EntType.DSD],
-            ['LK-1127025', EntType.GND],
-            ['XX-112702512', EntType.UNKNOWN],
-            ['EC-11', EntType.ED],
-            ['EC-11A', EntType.PD],
-            ['LG-12345', EntType.LG],
-            ['MOH-12345', EntType.MOH],
-            ['XX-1234', EntType.UNKNOWN],
+            ["LK", EntType.COUNTRY],
+            ["LK-1", EntType.PROVINCE],
+            ["LK-11", EntType.DISTRICT],
+            ["LK-1127", EntType.DSD],
+            ["LK-1127025", EntType.GND],
+            ["XX-112702512", EntType.UNKNOWN],
+            ["EC-11", EntType.ED],
+            ["EC-11A", EntType.PD],
+            ["LG-12345", EntType.LG],
+            ["MOH-12345", EntType.MOH],
+            ["XX-1234", EntType.UNKNOWN],
         ]:
             self.assertEqual(
                 EntType.from_id(id),
@@ -42,14 +42,14 @@ class TestEntType(unittest.TestCase):
     def test_url_remote_data_path(self):
         self.assertEqual(
             EntType.PROVINCE.url_remote_data_path,
-            '/'.join(
+            "/".join(
                 [
-                    'https://raw.githubusercontent.com',
-                    'nuuuwan',
-                    'gig-data',
-                    'master',
-                    'ents',
-                    'province.tsv',
+                    "https://raw.githubusercontent.com",
+                    "nuuuwan",
+                    "gig-data",
+                    "master",
+                    "ents",
+                    "province.tsv",
                 ]
             ),
         )
@@ -64,10 +64,10 @@ class TestEntType(unittest.TestCase):
         self.assertEqual(
             first_data,
             {
-                'id': 'LK-1',
-                'name': 'Western',
-                'centroid': '[6.834825098320717, 80.0669776450327]',
-                'province_id': 'LK-1',
-                'population': '5850745',
+                "id": "LK-1",
+                "name": "Western",
+                "centroid": "[6.834825, 80.066978]",
+                "province_id": "LK-1",
+                "population": "5850745",
             },
         )

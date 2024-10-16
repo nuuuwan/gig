@@ -3,7 +3,7 @@ import tempfile
 
 import geopandas as gpd
 from shapely.geometry import MultiPolygon, Polygon
-from utils import WWW, JSONFile
+from utils import WWW, JSONFile, Parallel
 
 from gig.core.EntType import EntType
 from gig.core.GIGConstants import GIGConstants
@@ -44,3 +44,18 @@ class EntGeoMixin:
         return gpd.GeoDataFrame(
             index=[0], crs="epsg:4326", geometry=[multipolygon]
         )
+
+    @classmethod
+    def get_ent_id_to_geo(cls, ent_id_list, max_threads=4):
+        workers = []
+
+        for ent_id in ent_id_list:
+
+            def worker(ent_id=ent_id):
+                ent = cls.from_id(ent_id)
+                return ent_id, ent.geo()
+
+            workers.append(worker)
+
+        tuples = Parallel.run(workers, max_threads=max_threads)
+        return dict(tuples)
