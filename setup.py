@@ -3,7 +3,7 @@
 import setuptools
 
 DIST_NAME = "gig"
-VERSION = "3.0.9"
+VERSION = "3.0.10"
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
     version=VERSION,
@@ -25,10 +25,10 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.10",
     install_requires=[
-        'geopandas',
-        'RapidFuzz',
-        'shapely',
-        'utils-nuuuwan',
+        "geopandas",
+        "RapidFuzz",
+        "shapely",
+        "utils-nuuuwan",
     ],
     test_suite="nose.collector",
     tests_require=["nose"],
