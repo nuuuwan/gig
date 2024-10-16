@@ -3,7 +3,7 @@ from functools import cached_property
 
 from utils import WWW, FiledVariable
 
-from gig.core._common import URL_BASE
+from gig.core.GIGConstants import GIGConstants
 
 
 @dataclass
@@ -12,10 +12,10 @@ class EntType:
 
     @staticmethod
     def from_id(id: str):
-        if id == 'LK':
+        if id == "LK":
             return EntType.COUNTRY
 
-        prefix = id.partition('-')[0]
+        prefix = id.partition("-")[0]
         n = len(id)
 
         return EntType.ID_TYPE_CONFIG.get(prefix, {}).get(n, EntType.UNKNOWN)
@@ -36,7 +36,7 @@ class EntType:
 
     @property
     def url_remote_data_path(self):
-        return f'{URL_BASE}/ents/{self.name}.tsv'
+        return f"{GIGConstants.URL_BASE}/ents/{self.name}.tsv"
 
     @cached_property
     def remote_data_list(self) -> list:
@@ -45,36 +45,36 @@ class EntType:
             non_null_d_list = [d for d in d_list if d]
             return non_null_d_list
 
-        return FiledVariable(self.name + '.remote_data_list', inner).value
+        return FiledVariable(self.name + ".remote_data_list", inner).value
 
 
-EntType.COUNTRY = EntType('country')
-EntType.PROVINCE = EntType('province')
-EntType.DISTRICT = EntType('district')
-EntType.DSD = EntType('dsd')
-EntType.GND = EntType('gnd')
-EntType.ED = EntType('ed')
-EntType.PD = EntType('pd')
-EntType.LG = EntType('lg')
-EntType.MOH = EntType('moh')
-EntType.UNKNOWN = EntType('unknown')
+EntType.COUNTRY = EntType("country")
+EntType.PROVINCE = EntType("province")
+EntType.DISTRICT = EntType("district")
+EntType.DSD = EntType("dsd")
+EntType.GND = EntType("gnd")
+EntType.ED = EntType("ed")
+EntType.PD = EntType("pd")
+EntType.LG = EntType("lg")
+EntType.MOH = EntType("moh")
+EntType.UNKNOWN = EntType("unknown")
 
 EntType.ID_TYPE_CONFIG = {
-    'LK': {
+    "LK": {
         2: EntType.COUNTRY,
         4: EntType.PROVINCE,
         5: EntType.DISTRICT,
         7: EntType.DSD,
         10: EntType.GND,
     },
-    'EC': {
+    "EC": {
         5: EntType.ED,
         6: EntType.PD,
     },
-    'LG': {
+    "LG": {
         8: EntType.LG,
     },
-    'MOH': {
+    "MOH": {
         9: EntType.MOH,
     },
 }

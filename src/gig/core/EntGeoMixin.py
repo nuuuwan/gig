@@ -5,15 +5,15 @@ import geopandas as gpd
 from shapely.geometry import MultiPolygon, Polygon
 from utils import WWW, JSONFile
 
-from gig.core._common import URL_BASE
 from gig.core.EntType import EntType
+from gig.core.GIGConstants import GIGConstants
 
 
 class EntGeoMixin:
     @property
     def raw_geo_file(self):
         raw_geo_path = os.path.join(
-            tempfile.gettempdir(), f'ent.{self.id}.raw_geo.json'
+            tempfile.gettempdir(), f"ent.{self.id}.raw_geo.json"
         )
 
         return JSONFile(raw_geo_path)
@@ -22,7 +22,7 @@ class EntGeoMixin:
     def url_remote_geo_data_path(self):
         id = self.id
         ent_type = EntType.from_id(id)
-        return f'{URL_BASE}/geo/{ent_type.name}/{id}.json'
+        return f"{GIGConstants.URL_BASE}/geo/{ent_type.name}/{id}.json"
 
     def get_raw_geo(self):
         raw_geo_file = self.raw_geo_file
@@ -41,6 +41,4 @@ class EntGeoMixin:
             )
         )
         multipolygon = MultiPolygon(polygon_list)
-        return gpd.GeoDataFrame(
-            index=[0], crs='epsg:4326', geometry=[multipolygon]
-        )
+        return gpd.GeoDataFrame(index=[0], crs="epsg:4326", geometry=[multipolygon])

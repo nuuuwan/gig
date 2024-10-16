@@ -5,11 +5,11 @@ from utils import Log
 
 from gig import Ent, EntType
 
-GROUP_LARGER = 'GROUP_LARGER'
-GROUP_SMALLER = 'GROUP_SMALLER'
+GROUP_LARGER = "GROUP_LARGER"
+GROUP_SMALLER = "GROUP_SMALLER"
 COLOR_IDX = {GROUP_LARGER: "#f008", GROUP_SMALLER: "#08f8"}
 
-log = Log('ex-3')
+log = Log("ex-3")
 
 ENT_TYPE = EntType.DSD
 N_CUTS = 100
@@ -63,13 +63,10 @@ def get_best_k(ents):
         group_to_pop_sum = get_group_to_pop_sum(ents, ent_id_to_group)
 
         group_larger_pop = group_to_pop_sum[GROUP_LARGER]
-        if (
-            max_group_larger_pop is None
-            or group_larger_pop > max_group_larger_pop
-        ):
+        if max_group_larger_pop is None or group_larger_pop > max_group_larger_pop:
             max_group_larger_pop = group_larger_pop
             best_k = k
-    log.info(f'{best_k=}')
+    log.info(f"{best_k=}")
     return best_k
 
 
@@ -80,7 +77,7 @@ def main():
     best_k = get_best_k(ents)
     ent_id_to_group = get_ent_id_to_group(best_k, ents)
 
-    len(ents)
+    n_ents = len(ents)
     for i_ent, ent in enumerate(ents):
         group = ent_id_to_group[ent.id]
         color = COLOR_IDX[group]
@@ -88,7 +85,7 @@ def main():
         geo = ent.geo()
         geo.plot(ax=ax, color=color)
         if i_ent % 10 == 0:
-            log.debug(f'{i_ent + 1}/{n_ents} Drew {ent.id}')
+            log.debug(f"{i_ent + 1}/{n_ents} Drew {ent.id}")
 
     # Hide grid lines
     ax.grid(False)
@@ -97,18 +94,18 @@ def main():
     ax.set_xticks([])
     ax.set_yticks([])
 
-    image_path = __file__ + '.png'
+    image_path = __file__ + ".png"
 
     plt.savefig(image_path, dpi=600)
     plt.close()
-    log.info(f'Saved {image_path}')
+    log.info(f"Saved {image_path}")
     os.startfile(image_path)
 
     group_to_pop_sum = get_group_to_pop_sum(ents, ent_id_to_group)
     total_population = sum(group_to_pop_sum.values())
     for group, pop_sum in group_to_pop_sum.items():
-        log.info(f'{COLOR_IDX[group]} {pop_sum / total_population:.0%}')
+        log.info(f"{COLOR_IDX[group]} {pop_sum / total_population:.0%}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

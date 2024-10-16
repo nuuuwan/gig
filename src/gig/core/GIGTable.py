@@ -3,10 +3,10 @@ from functools import cached_property
 
 from utils import WWW, FiledVariable
 
-from gig.core._common import URL_BASE
+from gig.core.GIGConstants import GIGConstants
 from gig.core.GIGTableRow import GIGTableRow
 
-ID_FIELD = 'entity_id'
+ID_FIELD = "entity_id"
 
 
 @dataclass
@@ -17,7 +17,7 @@ class GIGTable:
 
     @property
     def table_id(self):
-        return '.'.join(
+        return ".".join(
             [
                 self.measurement,
                 self.ent_type_group,
@@ -27,7 +27,7 @@ class GIGTable:
 
     @property
     def url_remote_data_path(self):
-        return f'{URL_BASE}/gig2/{self.table_id}.tsv'
+        return f"{GIGConstants.URL_BASE}/gig2/{self.table_id}.tsv"
 
     @cached_property
     def remote_data_list(self) -> list:
@@ -36,7 +36,7 @@ class GIGTable:
             non_null_d_list = [d for d in d_list if d]
             return non_null_d_list
 
-        return FiledVariable(self.table_id + '.remote_data_list', inner).value
+        return FiledVariable(self.table_id + ".remote_data_list", inner).value
 
     @cached_property
     def remote_data_idx(self) -> dict:

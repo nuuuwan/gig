@@ -76,7 +76,9 @@ class BandVisual:
 
     def get_distance(self, p):
         """Get Distance from Center"""
-        return ((p[0] - self.center[0]) ** 2 + (p[1] - self.center[1]) ** 2) ** 0.5
+        return (
+            (p[0] - self.center[0]) ** 2 + (p[1] - self.center[1]) ** 2
+        ) ** 0.5
 
     def is_in_parent(self, ent_id):
         """Check if id is inside parent region"""
@@ -128,7 +130,10 @@ class BandVisual:
 
             def worker(i=i, ent=ent):
                 p = i / n
-                print(f"{Progress.get(p)} {ent.id} {ent.name}".ljust(40), end="\r")
+                print(
+                    f"{Progress.get(p)} {ent.id} {ent.name}".ljust(40),
+                    end="\r",
+                )
                 try:
                     geo = ent.geo()
                 except Exception as e:
@@ -138,7 +143,9 @@ class BandVisual:
 
             return worker
 
-        workers = [get_worker(i, ent) for i, ent in enumerate(ent_list, start=1)]
+        workers = [
+            get_worker(i, ent) for i, ent in enumerate(ent_list, start=1)
+        ]
 
         tuple_list = Parallel.run(workers, max_threads=32)
         geo_idx = dict(tuple_list)
@@ -153,7 +160,10 @@ class BandVisual:
         for i, ent_info in enumerate(ent_info_list, start=1):
             p = i / n
             ent = ent_info["ent"]
-            print(f"{Progress.get(p)} Drawing {ent.id} {ent.name}".ljust(40), end="\r")
+            print(
+                f"{Progress.get(p)} Drawing {ent.id} {ent.name}".ljust(40),
+                end="\r",
+            )
 
             p_pop = ent_info["p_pop"]
             i_band = int(p_pop * n_bands)
@@ -169,7 +179,11 @@ class BandVisual:
             if is_in_parent(ent.id):
                 geo = ent.geo()
                 geo.plot(
-                    ax=ax, color="white", edgecolor="black", linewidth=1, alpha=0.333
+                    ax=ax,
+                    color="white",
+                    edgecolor="black",
+                    linewidth=1,
+                    alpha=0.333,
                 )
         ax.grid(False)
         ax.set_xticks([])
