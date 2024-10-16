@@ -41,4 +41,6 @@ class EntGeoMixin:
             )
         )
         multipolygon = MultiPolygon(polygon_list)
-        return gpd.GeoDataFrame(index=[0], crs="epsg:4326", geometry=[multipolygon])
+        return gpd.GeoDataFrame(
+            index=[0], crs="epsg:4326", geometry=[multipolygon]
+        )

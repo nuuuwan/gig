@@ -63,7 +63,10 @@ def get_best_k(ents):
         group_to_pop_sum = get_group_to_pop_sum(ents, ent_id_to_group)
 
         group_larger_pop = group_to_pop_sum[GROUP_LARGER]
-        if max_group_larger_pop is None or group_larger_pop > max_group_larger_pop:
+        if (
+            max_group_larger_pop is None
+            or group_larger_pop > max_group_larger_pop
+        ):
             max_group_larger_pop = group_larger_pop
             best_k = k
     log.info(f"{best_k=}")

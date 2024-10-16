@@ -43,7 +43,8 @@ def build_map_nocache(label, func_is_south, image_path):
         is_south = func_is_south(ent)
         if i_ent % 100 == 0:
             log.debug(
-                f"{label} {i_ent}/{n_ents}" + f" ({ent.id}) {ent.name}\t -> {is_south}"
+                f"{label} {i_ent}/{n_ents}"
+                + f" ({ent.id}) {ent.name}\t -> {is_south}"
             )
         color = COLOR.SOUTH if is_south else COLOR.NORTH
         try:
@@ -97,7 +98,10 @@ def main():
         "Province (1833 to 1886)",
         lambda ent: "LK-3" in ent.id
         or "LK-91" in ent.id
-        or (("LK-23" in ent.id or "LK-8" in ent.id) and (ent.centroid[0] < 6.75)),
+        or (
+            ("LK-23" in ent.id or "LK-8" in ent.id)
+            and (ent.centroid[0] < 6.75)
+        ),
     )
 
     # Ruhuna
