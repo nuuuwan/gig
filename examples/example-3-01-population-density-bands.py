@@ -12,15 +12,24 @@ log = Log("ex-3-01")
 
 class PopulationDensityBandMap:
 
-    def __init__(self, ent_type):
+    def __init__(self, parent_ent_id, ent_type):
+        self.parent_ent_id = parent_ent_id
         self.ent_type = ent_type
 
     @cached_property
     def ent_list(self):
         return sorted(
-            Ent.list_from_type(self.ent_type),
+            [
+                ent
+                for ent in Ent.list_from_type(self.ent_type)
+                if self.parent_ent_id in ent.id
+            ],
             key=lambda ent: ent.population_density,
         )
+
+    @property
+    def parent_ent(self):
+        return Ent.from_id(self.parent_ent_id)
 
     @cached_property
     def total_population(self):
@@ -68,9 +77,7 @@ class PopulationDensityBandMap:
             if min_p_population <= p_population <= max_p_population:
                 filtered_ent_list.append(ent)
 
-        total_area = sum(ent.area for ent in self.ent_list)
-        log.debug(f"{total_area=:,.0f}")
-        return sum(ent.area for ent in filtered_ent_list) / total_area
+        return sum(ent.area for ent in filtered_ent_list) / self.total_area
 
     def get_p_population_for_area(self, min_p_area, max_p_area):
 
@@ -118,14 +125,11 @@ class PopulationDensityBandMap:
         return ".".join(
             [
                 __file__,
+                self.parent_ent.name,
                 self.ent_type.name,
                 "png",
             ]
         )
-
-    @cached_property
-    def title(self):
-        return "Where Sri Lankans Live"
 
     def hide_grid(self, ax):
         ax.grid(False)
@@ -139,12 +143,12 @@ class PopulationDensityBandMap:
 
         ax = plt.gca()
         self.render_ents(ax)
-        self.render_parent_region_boundaries(ax)
+        # self.render_parent_region_boundaries(ax)
         self.hide_grid(ax)
         self.add_legend(plt)
 
-        plt.gcf().set_size_inches(16, 9)
-        plt.title(self.title)
+        plt.gcf().set_size_inches(8, 9)
+        plt.title(self.parent_ent.name)
         plt.savefig(self.image_path, dpi=300)
         plt.close()
 
@@ -154,7 +158,7 @@ class PopulationDensityBandMap:
     @cache
     def get_legend_config(self):
 
-        p1 = self.get_p_population_for_area(0, 0.5)
+        p1 = 0.01
         p2 = 0.5
 
         return [
@@ -174,4 +178,13 @@ class PopulationDensityBandMap:
 
 
 if __name__ == "__main__":
-    PopulationDensityBandMap(EntType.GND).draw()
+    district_ent_list = Ent.list_from_type(EntType.DISTRICT)
+    district_ent_list.sort(
+        key=lambda ent: PopulationDensityBandMap(
+            ent.id, EntType.GND
+        ).get_p_area_for_population(0.5, 1),
+        reverse=False,
+    )
+
+    for district_ent in district_ent_list[-4:]:
+        PopulationDensityBandMap(district_ent.id, EntType.GND).draw()
