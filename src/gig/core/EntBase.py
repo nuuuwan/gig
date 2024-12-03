@@ -19,14 +19,22 @@ class EntBase:
         # remove lowecase vowels
         return (
             "".join([c for c in self.name if c not in "aeiou"])
-            .replace('.', '')
-            .replace('-', '')
+            .replace(".", "")
+            .replace("-", "")
         )
 
     @property
     def lnglat(self):
         centroid = self.d["centroid"]
         return [centroid[1], centroid[0]]
+
+    @property
+    def population_density(self):
+        population = self.population
+        area = self.area
+        if area and population:
+            return population / area
+        raise ValueError(f"Cannot compute population_density ({self.id})")
 
     def is_parent_id(self, cand_parent_id: str):
         return cand_parent_id in self.id
