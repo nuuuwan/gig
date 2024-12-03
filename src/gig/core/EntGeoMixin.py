@@ -58,6 +58,13 @@ class EntGeoMixin:
                 time.sleep(timeout_cur)
                 timeout_cur *= 2
 
+    def get_area_from_geo(self):
+        return self.geo_safe().area.sum()
+
+    @property
+    def area(self) -> float:
+        return self.d["area"] or self.get_area_from_geo()
+
     @classmethod
     def get_ent_id_to_geo(cls, ent_id_list, max_threads=4):
         workers = []
