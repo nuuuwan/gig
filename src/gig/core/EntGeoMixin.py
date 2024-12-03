@@ -63,7 +63,7 @@ class EntGeoMixin:
 
     @property
     def area(self) -> float:
-        return self.d["area"] or self.get_area_from_geo()
+        return self.d.get("area") or self.get_area_from_geo()
 
     @classmethod
     def get_ent_id_to_geo(cls, ent_id_list, max_threads=4):
