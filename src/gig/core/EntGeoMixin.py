@@ -1,12 +1,15 @@
 import os
 import tempfile
+import time
 
 import geopandas as gpd
 from shapely.geometry import MultiPolygon, Polygon
-from utils import WWW, JSONFile, Parallel
+from utils import WWW, JSONFile, Log, Parallel
 
 from gig.core.EntType import EntType
 from gig.core.GIGConstants import GIGConstants
+
+log = Log("EntGeoMixin")
 
 
 class EntGeoMixin:
@@ -44,6 +47,16 @@ class EntGeoMixin:
         return gpd.GeoDataFrame(
             index=[0], crs="epsg:4326", geometry=[multipolygon]
         )
+
+    def geo_safe(self, timeout=10):
+        timeout_cur = 0.1
+        while timeout_cur < timeout:
+            try:
+                return self.geo()
+            except Exception as e:
+                log.error(f"[{timeout_cur}s] {self.id} {e}")
+                time.sleep(timeout_cur)
+                timeout_cur *= 2
 
     @classmethod
     def get_ent_id_to_geo(cls, ent_id_list, max_threads=4):
