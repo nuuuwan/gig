@@ -1,6 +1,7 @@
 import os
 import tempfile
 import time
+from functools import cached_property
 
 import geopandas as gpd
 from shapely.geometry import MultiPolygon, Polygon
@@ -58,12 +59,15 @@ class EntGeoMixin:
                 time.sleep(timeout_cur)
                 timeout_cur *= 2
 
-    def get_area_from_geo(self):
-        return self.geo_safe().area.sum()
+    def get_area_from_geo(self) -> float:
+        geo = self.geo_safe()
+        if geo.crs.is_geographic:
+            geo = geo.to_crs(epsg=3395)
+        return geo.area.sum() / 1_000_000.0
 
-    @property
-    def area(self) -> float:
-        return self.d.get("area") or self.get_area_from_geo()
+    @cached_property
+    def area(self):
+        return self.get_area_from_geo()
 
     @classmethod
     def get_ent_id_to_geo(cls, ent_id_list, max_threads=4):
