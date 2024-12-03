@@ -34,7 +34,7 @@ class EntBase:
         area = self.area
         if area and population:
             return population / area
-        raise ValueError(f"Cannot compute population_density ({self.id})")
+        return 0
 
     def is_parent_id(self, cand_parent_id: str):
         return cand_parent_id in self.id
