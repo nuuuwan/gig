@@ -122,13 +122,20 @@ class PopulationDensityBandMap:
 
     @cached_property
     def image_path(self):
-        return ".".join(
-            [
-                __file__,
-                self.parent_ent.name,
-                self.ent_type.name,
-                "png",
-            ]
+        dir_images = os.path.join(
+            os.path.dirname(__file__), "images", self.ent_type.name
+        )
+        os.makedirs(dir_images, exist_ok=True)
+
+        return os.path.join(
+            dir_images,
+            ".".join(
+                [
+                    self.parent_ent_id,
+                    self.parent_ent.name,
+                    "png",
+                ]
+            ),
         )
 
     def hide_grid(self, ax):
@@ -153,7 +160,7 @@ class PopulationDensityBandMap:
         plt.close()
 
         log.info(f"Saved {self.image_path}")
-        os.startfile(self.image_path)
+        # os.startfile(self.image_path)
 
     @cache
     def get_legend_config(self):
@@ -179,12 +186,6 @@ class PopulationDensityBandMap:
 
 if __name__ == "__main__":
     district_ent_list = Ent.list_from_type(EntType.DISTRICT)
-    district_ent_list.sort(
-        key=lambda ent: PopulationDensityBandMap(
-            ent.id, EntType.GND
-        ).get_p_area_for_population(0.5, 1),
-        reverse=False,
-    )
 
-    for district_ent in district_ent_list[-4:]:
+    for district_ent in district_ent_list:
         PopulationDensityBandMap(district_ent.id, EntType.GND).draw()
