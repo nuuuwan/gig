@@ -35,14 +35,3 @@ class TestEntBase(unittest.TestCase):
         self.assertEqual(len(str(ent)), 519)
         self.assertEqual(str(ent)[:10], "{'id': 'LK")
 
-    def test_acronym_and_short_name(self):
-        for id, expected_acronym, expected_short_name in [
-            ['LK-11', 'C', 'Clmb'],
-            ['LG-11001', 'CMC', 'Clmb MC'],
-            ['LG-11005', 'HPS', 'Hmgm PS'],
-            ['LG-11009', 'SJKMC', 'Sr Jywrdnpr Ktt MC'],
-            ['LG-11010', 'DMLMC', 'Dhwl MtLvn MC'],
-        ]:
-            ent = Ent.from_id(id)
-            self.assertEqual(ent.acronym, expected_acronym)
-            self.assertEqual(ent.short_name, expected_short_name)

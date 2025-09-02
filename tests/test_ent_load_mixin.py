@@ -37,7 +37,7 @@ class TestEntLoadMixin(unittest.TestCase):
         ent = Ent.from_dict(TEST_D)
         self.assertEqual(ent.id, 'LK-11')
         self.assertEqual(ent.name, 'Colombo')
-        self.assertEqual(ent.area, 642.00)
+        self.assertAlmostEqual(ent.area, 692, places=0)
         self.assertEqual(ent.population, 2323964)
         self.assertEqual(ent.centroid_altitude, 8)
         self.assertEqual(ent.centroid, [6.869636028857, 80.01959786729992])

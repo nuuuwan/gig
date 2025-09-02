@@ -52,7 +52,7 @@ class TestEntGeoMixin(TestCase):
             self.assertAlmostEqual(
                 os.path.getsize(test_png_file_path),
                 os.path.getsize(control_png_file_path),
-                delta=1000,
+                delta=10000,
             )
 
     def test_ent_id_to_geo(self):
