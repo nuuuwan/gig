@@ -32,10 +32,8 @@ class EntBase:
     def population_density(self):
         population = self.population
         area = self.area
-        if area and population:
-            return population / area
-        return 0
-
+        return population / area
+        
     def is_parent_id(self, cand_parent_id: str):
         return cand_parent_id in self.id
 
