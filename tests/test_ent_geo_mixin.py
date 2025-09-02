@@ -68,6 +68,10 @@ class TestEntGeoMixin(TestCase):
         self.assertEqual(geo.crs.to_string(), "EPSG:4326")
         self.assertEqual(geo.geometry.type[0], "MultiPolygon")
 
+    def test_geo_safe_fail(self):
+        ent = Ent(dict(id='FakeID'))
+        self.assertIsNone(ent.geo_safe())
+
     def test_ent_id_to_geo(self):
         ent_ids = ["LK-1", "LK-11", "LK-1127", "LK-1127025"]
         ent_id_to_geo = Ent.get_ent_id_to_geo(ent_ids)

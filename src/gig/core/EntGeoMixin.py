@@ -58,6 +58,7 @@ class EntGeoMixin:
                 log.error(f"[{timeout_cur}s] {self.id} {e}")
                 time.sleep(timeout_cur)
                 timeout_cur *= 2
+        return None
 
     def get_area_from_geo(self) -> float:
         geo = self.geo_safe()
