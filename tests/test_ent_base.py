@@ -63,3 +63,26 @@ class TestEntBase(unittest.TestCase):
             self.assertAlmostEqual(
                 ent.population_density, expected_population_density, places=0
             )
+
+    def test_is_parent_id(self):
+        for ent_id, cand_parent_id, expected_is_parent_id in [
+            ('LK-11', 'LK-1', True),
+            ('LK-11', 'LK-11', True),
+            ('LK-11', 'LK-112', False),
+            ('LK-1127', 'LK-1', True),
+            ('LK-1127', 'LK-11', True),
+            ('LK-1127', 'LK-112', True),
+            ('LK-1127', 'LK-1127', True),
+            ('LK-1127', 'LK-11270', False),
+            ('LK-1127025', 'LK-1', True),
+            ('LK-1127025', 'LK-11', True),
+            ('LK-1127025', 'LK-112', True),
+            ('LK-1127025', 'LK-1127', True),
+            ('LK-1127025', 'LK-11270', True),
+            ('LK-1127025', 'LK-1127025', True),
+            ('LK-1127025', 'LK-2', False),
+        ]:
+            ent = Ent.from_id(ent_id)
+            self.assertEqual(
+                ent.is_parent_id(cand_parent_id), expected_is_parent_id
+            )
