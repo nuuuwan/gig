@@ -61,6 +61,13 @@ class TestEntGeoMixin(TestCase):
                 delta=10000,
             )
 
+    def test_geo_safe(self):
+        geo = TEST_ENT.geo_safe()
+        self.assertEqual(len(geo), 1)
+        self.assertEqual(len(geo.columns), 1)
+        self.assertEqual(geo.crs.to_string(), "EPSG:4326")
+        self.assertEqual(geo.geometry.type[0], "MultiPolygon")
+
     def test_ent_id_to_geo(self):
         ent_ids = ["LK-1", "LK-11", "LK-1127", "LK-1127025"]
         ent_id_to_geo = Ent.get_ent_id_to_geo(ent_ids)
