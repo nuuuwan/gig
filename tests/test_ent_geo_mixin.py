@@ -38,6 +38,12 @@ class TestEntGeoMixin(TestCase):
         self.assertAlmostEqual(raw_geo[0][0][0], 79.84781552236845, 4)
         self.assertAlmostEqual(raw_geo[0][0][1], 6.956820193543937, 4)
 
+    def test_raw_geo_after_delete(self):
+        if os.path.exists(TEST_ENT.raw_geo_file.path):
+            os.remove(TEST_ENT.raw_geo_file.path)
+        raw_geo = TEST_ENT.get_raw_geo()
+        self.assertEqual(len(raw_geo), 2)
+
     def test_geo(self):
         for id in ["LK-1", "LK-11", "LK-1127", "LK-1127025"]:
             ent = Ent.from_id(id)
