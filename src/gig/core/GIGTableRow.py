@@ -19,8 +19,6 @@ class GIGTableRow:
         return self.d['entity_id']
 
     def __getattr__(self, key: str):
-        if key in IGNORE_KEYS:
-            raise AttributeError
 
         if key in self.d:
             return String(self.d.get(key)).float
