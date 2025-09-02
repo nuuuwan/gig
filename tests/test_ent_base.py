@@ -81,3 +81,10 @@ class TestEntBase(unittest.TestCase):
     def test_repr(self):
         ent = Ent(TEST_D)
         self.assertEqual(repr(ent), str(ent))
+
+    def test_eq(self):
+        ent1 = Ent(TEST_D)
+        ent2 = Ent(TEST_D)
+        self.assertEqual(ent1, ent2)
+        self.assertNotEqual(ent1, Ent.from_id('LK-1127'))
+        self.assertNotEqual(ent1, 1)
