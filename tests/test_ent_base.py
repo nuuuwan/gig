@@ -52,3 +52,14 @@ class TestEntBase(unittest.TestCase):
         ]:
             ent = Ent.from_id(ent_id)
             self.assertEqual(ent.short_name, expected_short_name)
+
+    def test_population_density(self):
+        for ent_id, expected_population_density in [
+            ('LK-11', 3_359),
+            ('LK-1127', 10_369),
+            ('LK-1127025', 18_006),
+        ]:
+            ent = Ent.from_id(ent_id)
+            self.assertAlmostEqual(
+                ent.population_density, expected_population_density, places=0
+            )
