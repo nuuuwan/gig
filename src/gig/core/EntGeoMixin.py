@@ -19,7 +19,6 @@ class EntGeoMixin:
         raw_geo_path = os.path.join(
             tempfile.gettempdir(), f"ent.{self.id}.raw_geo.json"
         )
-
         return JSONFile(raw_geo_path)
 
     @property
@@ -62,8 +61,7 @@ class EntGeoMixin:
 
     def get_area_from_geo(self) -> float:
         geo = self.geo_safe()
-        if geo.crs.is_geographic:
-            geo = geo.to_crs(epsg=3395)
+        geo = geo.to_crs(epsg=3395)
         return geo.area.sum() / 1_000_000.0
 
     @cached_property
