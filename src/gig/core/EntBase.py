@@ -33,7 +33,7 @@ class EntBase:
         population = self.population
         area = self.area
         return population / area
-        
+
     def is_parent_id(self, cand_parent_id: str):
         return cand_parent_id in self.id
 
