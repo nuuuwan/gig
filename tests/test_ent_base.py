@@ -43,3 +43,12 @@ class TestEntBase(unittest.TestCase):
         ]:
             ent = Ent.from_id(ent_id)
             self.assertEqual(ent.acronym, expected_acronym)
+
+    def test_short_name(self):
+        for ent_id, expected_short_name in [
+            ('LK-11', 'Clmb'),
+            ('LK-1127', 'Thmbrgsyy'),
+            ('LK-1127025', 'Kppywtt Est'),
+        ]:
+            ent = Ent.from_id(ent_id)
+            self.assertEqual(ent.short_name, expected_short_name)
