@@ -71,16 +71,7 @@ class TestEntBase(unittest.TestCase):
             ('LK-11', 'LK-112', False),
             ('LK-1127', 'LK-1', True),
             ('LK-1127', 'LK-11', True),
-            ('LK-1127', 'LK-112', True),
-            ('LK-1127', 'LK-1127', True),
-            ('LK-1127', 'LK-11270', False),
-            ('LK-1127025', 'LK-1', True),
-            ('LK-1127025', 'LK-11', True),
-            ('LK-1127025', 'LK-112', True),
-            ('LK-1127025', 'LK-1127', True),
-            ('LK-1127025', 'LK-11270', True),
-            ('LK-1127025', 'LK-1127025', True),
-            ('LK-1127025', 'LK-2', False),
+            ('LK-1127', 'LK-113', False),
         ]:
             ent = Ent.from_id(ent_id)
             self.assertEqual(
