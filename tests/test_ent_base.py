@@ -77,3 +77,7 @@ class TestEntBase(unittest.TestCase):
             self.assertEqual(
                 ent.is_parent_id(cand_parent_id), expected_is_parent_id
             )
+
+    def test_repr(self):
+        ent = Ent(TEST_D)
+        self.assertEqual(repr(ent), str(ent))
