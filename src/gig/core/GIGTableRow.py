@@ -54,6 +54,3 @@ class GIGTableRow:
 
     def __str__(self):
         return str(dict(id=self.id, cells=self.dict, total=self.total))
-
-    def __repr__(self):
-        return self.__str__()
