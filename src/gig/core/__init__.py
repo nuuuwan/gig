@@ -1,4 +1,5 @@
 # gig.core (auto generate by build_inits.py)
+# flake8: noqa: F408
 
 from gig.core.Ent import Ent
 from gig.core.EntBase import EntBase
