@@ -1,12 +1,16 @@
+import os
 from dataclasses import dataclass
 from functools import cached_property
 
-from utils import WWW, FiledVariable
+from utils import WWW, File, Log, TSVFile
 
 from gig.core.GIGConstants import GIGConstants
 from gig.core.GIGTableRow import GIGTableRow
 
 ID_FIELD = "entity_id"
+
+
+log = Log("GIGTable")
 
 
 @dataclass
@@ -29,14 +33,27 @@ class GIGTable:
     def url_remote_data_path(self):
         return f"{GIGConstants.URL_BASE}/gig2/{self.table_id}.tsv"
 
+    @property
+    def temp_data_path(self):
+        temp_gig_dir_tables = os.path.join(
+            GIGConstants.TEMP_GIG_DIR, "tables"
+        )
+        os.makedirs(temp_gig_dir_tables, exist_ok=True)
+        return os.path.join(temp_gig_dir_tables, f"{self.table_id}.tsv")
+
     @cached_property
     def remote_data_list(self) -> list:
-        def inner():
-            d_list = WWW(self.url_remote_data_path).readTSV()
-            non_null_d_list = [d for d in d_list if d]
-            return non_null_d_list
-
-        return FiledVariable(self.table_id + ".remote_data_list", inner).value
+        if not os.path.exists(self.temp_data_path):
+            content = WWW(self.url_remote_data_path).read()
+            File(self.temp_data_path).write(content)
+            log.debug(
+                f"Downloaded {self.url_remote_data_path}"
+                + f" to {self.temp_data_path}"
+            )
+        d_list = TSVFile(self.temp_data_path).read()
+        n = len(d_list)
+        log.debug(f"Loaded {n} records from {self.temp_data_path}")
+        return d_list
 
     @cached_property
     def remote_data_idx(self) -> dict:

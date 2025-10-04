@@ -1,9 +1,12 @@
+import os
 from dataclasses import dataclass
 from functools import cached_property
 
-from utils import WWW, FiledVariable
+from utils import WWW, File, Log, TSVFile
 
 from gig.core.GIGConstants import GIGConstants
+
+log = Log("EntType")
 
 
 @dataclass
@@ -38,14 +41,25 @@ class EntType:
     def url_remote_data_path(self):
         return f"{GIGConstants.URL_BASE}/ents/{self.name}.tsv"
 
+    @property
+    def temp_data_path(self):
+        temp_gig_dir_ents = os.path.join(GIGConstants.TEMP_GIG_DIR, "ents")
+        os.makedirs(temp_gig_dir_ents, exist_ok=True)
+        return os.path.join(temp_gig_dir_ents, f"{self.name}.tsv")
+
     @cached_property
     def remote_data_list(self) -> list:
-        def inner():
-            d_list = WWW(self.url_remote_data_path).readTSV()
-            non_null_d_list = [d for d in d_list if d]
-            return non_null_d_list
-
-        return FiledVariable(self.name + ".remote_data_list", inner).value
+        if not os.path.exists(self.temp_data_path):
+            content = WWW(self.url_remote_data_path).read()
+            File(self.temp_data_path).write(content)
+            log.debug(
+                f"Downloaded {self.url_remote_data_path}"
+                + f" to {self.temp_data_path}"
+            )
+        d_list = TSVFile(self.temp_data_path).read()
+        n = len(d_list)
+        log.debug(f"Loaded {n} records from {self.temp_data_path}")
+        return d_list
 
 
 EntType.COUNTRY = EntType("country")
