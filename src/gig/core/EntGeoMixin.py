@@ -1,3 +1,4 @@
+import json
 import os
 import tempfile
 import time
@@ -32,7 +33,8 @@ class EntGeoMixin:
         if raw_geo_file.exists:
             raw_geo = raw_geo_file.read()
         else:
-            raw_geo = WWW(self.url_remote_geo_data_path).readJSON()
+            content = WWW(self.url_remote_geo_data_path).read()
+            raw_geo = json.loads(content)
             raw_geo_file.write(raw_geo)
         return raw_geo
 
