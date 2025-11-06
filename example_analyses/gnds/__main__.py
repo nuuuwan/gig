@@ -9,6 +9,8 @@ from gig import Ent, EntType
 
 log = Log(os.path.basename(os.path.dirname(__file__)))
 
+ENT_TYPE = EntType.DISTRICT
+
 
 def draw_histogram(title, values, unit):
     plt.figure(figsize=(12, 6))
@@ -63,6 +65,17 @@ def draw_xy_plot(ents):
     plt.figure(figsize=(12, 8))
     plt.scatter(areas, populations, alpha=0.6, color="steelblue", s=50)
 
+    # Annotate each point with entity name
+    for ent in ents:
+        plt.annotate(
+            ent.name,
+            xy=(ent.area, ent.population),
+            xytext=(5, 0),
+            textcoords="offset points",
+            fontsize=6,
+            alpha=0.7,
+        )
+
     plt.xlabel("Area (sq.km)")
     plt.ylabel("Population")
     plt.title("Population vs Area for GNDs")
@@ -88,7 +101,7 @@ def main():
 
     ents = [
         ent
-        for ent in Ent.list_from_type(EntType.DSD)
+        for ent in Ent.list_from_type(ENT_TYPE)
         if ent.population and ent.area
     ]
     n_ents = len(ents)
