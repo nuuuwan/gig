@@ -11,6 +11,9 @@ def main():
     ents.sort(key=lambda x: x.population)
     populations = [ent.population for ent in ents]
 
+    ent_ids = [ent.id for ent in ents]
+    ent_ids.sort()
+    Ent.get_ent_id_to_geo(ent_ids)
     areas = [ent.area for ent in ents]
 
     print(populations[:10])
