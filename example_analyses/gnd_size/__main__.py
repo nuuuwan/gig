@@ -43,7 +43,10 @@ def draw_histogram(ent_type, title, values, unit):
             color=color,
             linestyle="--",
             linewidth=2,
-            label=f"{value:,.0f} {unit} - {label}",
+            label=(
+                (f"{value:,.0f}" if title == "population" else f"{value:,.1f}")
+                + f" {unit} - {label}"
+            ),
         )
 
     plt.xlabel(f"{title.title()} ({unit})")
@@ -127,7 +130,7 @@ def draw_xy_plot(ent_type, ents):
         linestyle=":",
         linewidth=2,
         alpha=0.5,
-        label=f"{max_reasonable_area:,.0f} sq.km"
+        label=f"{max_reasonable_area:,.1f} sq.km"
         + f" - Median Area x {REASONABLE_FACTOR}",
     )
 
@@ -155,6 +158,7 @@ def print_list(ent_type, ents, label, values, unit):
     limit = median * REASONABLE_FACTOR
     total_value = sum(values)
     log.debug(f"{label} -> {total_value=:,} {unit}")
+    i_rank = 0
     for ent, value in sorted(
         zip(ents, values),
         key=lambda x: x[1],
@@ -162,7 +166,16 @@ def print_list(ent_type, ents, label, values, unit):
     ):
         if value <= limit:
             continue
-        lines.append(f"- {value:,.0f} {unit} {ent.id} {ent.name}")
+        i_rank += 1
+        population = ent.population
+        area = ent.area
+
+        lines.append(
+            f"{i_rank}."
+            + f" {population:,.0f} persons"
+            + f" {area:,.1f} sq.km"
+            + f" {ent.id} {ent.name}"
+        )
 
     output_path = os.path.join(
         os.path.dirname(__file__), f"{ent_type.name}-{label}-outliers.md"
