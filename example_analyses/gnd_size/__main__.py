@@ -10,7 +10,7 @@ from gig import Ent, EntType
 
 log = Log(os.path.basename(os.path.dirname(__file__)))
 
-ENT_TYPE = EntType.DSD
+ENT_TYPE = EntType.GND
 REASONABLE_FACTOR = 4
 
 
