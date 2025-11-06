@@ -1,0 +1,497 @@
+# Area
+
+- 571 sq.km LK-5251060 Panama South
+- 527 sq.km LK-3309010 Kirinda
+- 416 sq.km LK-8227010 Katharagama
+- 353 sq.km LK-6206010 Ralmaduwa
+- 334 sq.km LK-8212240 Kotiyagala
+- 274 sq.km LK-8224140 Gonagan Ara
+- 268 sq.km LK-5209005 Bogamuyaya
+- 237 sq.km LK-8103100 Dambana
+- 214 sq.km LK-7210005 Sinhapura
+- 210 sq.km LK-5112075 Eralakkulam
+- 196 sq.km LK-7124185 Dematawewa
+- 194 sq.km LK-5212065 Bandaradoowa
+- 194 sq.km LK-7215275 Kalahagala
+- 185 sq.km LK-7203005 Sinhagama
+- 178 sq.km LK-7112045 Mannaram Junction
+- 177 sq.km LK-5110035 Kudumpimalai
+- 172 sq.km LK-8230020 Hambegamuwa
+- 163 sq.km LK-8203015 Bulupitiya
+- 161 sq.km LK-7139005 Kukulkatuwa
+- 158 sq.km LK-4206015 Pali Aru
+- 152 sq.km LK-8206010 Mullegama
+- 152 sq.km LK-7139045 Hunuvilagama
+- 152 sq.km LK-5330075 Sirimangalapura
+- 147 sq.km LK-4215085 Palaikuli
+- 145 sq.km LK-5203020 Kadirapura
+- 144 sq.km LK-7203010 Galoya
+- 140 sq.km LK-4412045 Manavalanpaddamurippu
+- 132 sq.km LK-4209055 Madhu
+- 130 sq.km LK-4406020 Moonrumurippu
+- 126 sq.km LK-5318005 Galmetiyawa North
+- 123 sq.km LK-7139010 Ittikulama
+- 121 sq.km LK-5321035 Sooriyapura
+- 119 sq.km LK-5110015 Muruthanai
+- 116 sq.km LK-4206100 Parappukadanthan East
+- 115 sq.km LK-5103055 Punanai East
+- 114 sq.km LK-6206005 Pukkulama
+- 113 sq.km LK-7106010 Kanugahawewa
+- 113 sq.km LK-7206025 Palliyagodella
+- 112 sq.km LK-5103035 Kaddumurivu
+- 110 sq.km LK-8224145 Rahathangama
+- 109 sq.km LK-4512095 Ponnaveli
+- 108 sq.km LK-5206005 Galode
+- 107 sq.km LK-8212230 Wattegama
+- 107 sq.km LK-2227005 Kumbukoya
+- 107 sq.km LK-7124150 Parangiyawadiya
+- 106 sq.km LK-8206015 Galgamuwa
+- 105 sq.km LK-8230065 Sittarama
+- 100 sq.km LK-4215045 Maruthamadhu
+- 100 sq.km LK-8142195 Mahalanda
+- 98 sq.km LK-4303085 Puliyankulam North
+- 97 sq.km LK-4406070 Vannivilankulam
+- 97 sq.km LK-7112020 Sandamaleliya
+- 96 sq.km LK-4412090 Panikkankulam
+- 91 sq.km LK-4303010 Vedivaithakallu
+- 88 sq.km LK-8206005 Nelliyadda
+- 87 sq.km LK-7139105 Katupathwewa
+- 87 sq.km LK-4309010 Maruthamadhu
+- 86 sq.km LK-5110030 Vadamunai
+- 85 sq.km LK-7106005 Halmillawetiya
+- 84 sq.km LK-4415115 Kumulamunai East
+- 84 sq.km LK-5245090 Kanchikudicharu
+- 82 sq.km LK-7203080 Mahasengama
+- 81 sq.km LK-7210010 Kandakaduwa
+- 80 sq.km LK-4412005 Ampakamam
+- 80 sq.km LK-5312045 Kithuluthuwa
+- 79 sq.km LK-4406025 Naddankandal
+- 79 sq.km LK-7103035 Bisokotuwa
+- 79 sq.km LK-5209085 Aranthalawa
+- 77 sq.km LK-7206005 wedikachchiya
+- 77 sq.km LK-8230025 Hambegamuwa Colony
+- 77 sq.km LK-6209005 Pahala Puliyankulama
+- 77 sq.km LK-7203075 Moragaswewa
+- 76 sq.km LK-5251040 Panama West
+- 76 sq.km LK-5312025 Morawewa South
+- 75 sq.km LK-8224080 Konketiya
+- 75 sq.km LK-5321115 Seenipura
+- 74 sq.km LK-5242155 Wadinagala
+- 74 sq.km LK-4209040 Iranai Ilupaikulam
+- 73 sq.km LK-7106055 Kunchuttuwa
+- 72 sq.km LK-5242165 Bakmitiyawa
+- 72 sq.km LK-6206015 Parana Eluwankulama
+- 72 sq.km LK-4512075 Nallur
+- 71 sq.km LK-4309210 Velankulam
+- 70 sq.km LK-2312310 Pattipola
+- 70 sq.km LK-4512025 Jayapuram North
+- 69 sq.km LK-3309015 Uddhakandara
+- 67 sq.km LK-4409095 Visuvamadu West
+- 67 sq.km LK-4403060 Puthuvedduvan
+- 66 sq.km LK-5248085 Komarie 01
+- 66 sq.km LK-5251015 Hulannuge
+- 66 sq.km LK-4409080 Vallipunam
+- 65 sq.km LK-8221145 Uva kudaoya
+- 65 sq.km LK-8221140 Kithulkote
+- 65 sq.km LK-8230015 Aluthwewa
+- 65 sq.km LK-5112175 Kithulwewa
+- 65 sq.km LK-5309045 Mailawewa
+- 64 sq.km LK-8221130 Balaharuwa
+- 63 sq.km LK-4412130 Thirumurukanndy
+- 63 sq.km LK-5245030 Sangamam
+- 62 sq.km LK-4303100 Mannakulam
+- 62 sq.km LK-5306050 Kuchchaveli
+- 61 sq.km LK-5203045 Sandunpura
+- 61 sq.km LK-8212005 Nape
+- 61 sq.km LK-5121100 Unnichchi
+- 61 sq.km LK-7209020 Sungavila
+- 61 sq.km LK-5212180 Kahatagasyaya
+- 59 sq.km LK-7139050 Horuvila
+- 59 sq.km LK-7112040 Palugaswewa
+- 59 sq.km LK-5209075 Lahugala
+- 56 sq.km LK-5209010 Tempitiya
+- 56 sq.km LK-4209050 Periya-Pandivirichchan West
+- 56 sq.km LK-7206030 Wadigawewa
+- 56 sq.km LK-5312010 Mahadivulwewa Stage I
+- 55 sq.km LK-4409075 Udaiyarkaddu South
+- 55 sq.km LK-5110040 Perillaveli
+- 55 sq.km LK-4215030 Sinnapullachchi Potkerni
+- 55 sq.km LK-6209090 Murukkuwatawana
+- 55 sq.km LK-5312005 Peniketiyawa
+- 55 sq.km LK-5309020 Pamburugaswewa
+- 54 sq.km LK-4312005 Andiyapuliyankulam
+- 54 sq.km LK-4512040 Kiranchi
+- 53 sq.km LK-5248080 Komarie 02
+- 53 sq.km LK-8103110 Wewatta
+- 52 sq.km LK-4406060 Siraddikulam
+- 52 sq.km LK-4418045 Nikawewa South
+- 52 sq.km LK-4209005 Palampiddy
+- 52 sq.km LK-8227005 Sella Katharagama
+- 52 sq.km LK-4209015 Parasankulam
+- 51 sq.km LK-4415090 Kokuthoduvai North
+- 51 sq.km LK-7124190 Diyatittawewa
+- 51 sq.km LK-5112185 Koppavely
+- 51 sq.km LK-8230070 Seenukkuwa
+- 51 sq.km LK-5245110 Thangavelayudapuram
+- 50 sq.km LK-2309015 Hegasulla
+- 50 sq.km LK-4512085 Pallikuda
+- 49 sq.km LK-8212205 Siripura
+- 49 sq.km LK-7218120 Atharagallewa
+- 49 sq.km LK-4215050 Ahathimurippu
+- 49 sq.km LK-4215075 Kondachchi
+- 48 sq.km LK-5306040 Kaddukulam
+- 48 sq.km LK-5248020 Victor Estate 2
+- 48 sq.km LK-3306080 Mattala
+- 48 sq.km LK-8203020 Nilgala
+- 48 sq.km LK-4415070 Keppapulavu
+- 48 sq.km LK-2224170 Etanwala
+- 47 sq.km LK-7112015 Nelumvila
+- 47 sq.km LK-8230005 Kandiyapitawewa
+- 47 sq.km LK-7210035 Mahindagama
+- 47 sq.km LK-8206025 Baduluwela
+- 47 sq.km LK-5103005 Kathiraveli
+- 46 sq.km LK-8142165 Kosgama
+- 46 sq.km LK-5203050 Paranagama
+- 46 sq.km LK-5121105 Panchenai
+- 46 sq.km LK-4303080 Puliyankulam South
+- 46 sq.km LK-4412050 Mankulam
+- 46 sq.km LK-4303005 Unchalkaddy
+- 46 sq.km LK-5103045 Panichchankerny
+- 45 sq.km LK-4309005 Palamoddai
+- 45 sq.km LK-4206045 Periyamadhu East
+- 45 sq.km LK-6209045 Thambapanniya
+- 45 sq.km LK-5318050 Galmetiyawa South
+- 44 sq.km LK-5206100 Komana
+- 44 sq.km LK-5103050 Mathurankernikulam
+- 43 sq.km LK-4206010 Vellankulam
+- 43 sq.km LK-5103060 Kirimichai
+- 43 sq.km LK-4306095 Pirappanmaduwa
+- 43 sq.km LK-4512080 Pallavarayankaddu
+- 43 sq.km LK-4509205 Vannerikulam
+- 42 sq.km LK-4406030 Oddaruththakulam
+- 42 sq.km LK-4312065 Sinnasippikulam
+- 42 sq.km LK-4209075 Pannavedduvan
+- 42 sq.km LK-6209085 Pahariya
+- 42 sq.km LK-5306020 Pulmoddai Division No 01
+- 41 sq.km LK-4418015 Ehatugaswewa
+- 41 sq.km LK-5112160 Vepavedduwan
+- 41 sq.km LK-4415205 Thannimurippu
+- 41 sq.km LK-4509175 Urithirapuram North
+- 41 sq.km LK-6209040 Ihala Puliyankulama
+- 41 sq.km LK-8221065 Pubuduwewa
+- 41 sq.km LK-8106045 Dehigama
+- 40 sq.km LK-7212210 Warapitiya
+- 40 sq.km LK-5209050 Borapola
+- 40 sq.km LK-4412065 Oddusuddan
+- 40 sq.km LK-9133165 Ilumbakanda
+- 39 sq.km LK-7106030 D06 Wahalkada
+- 39 sq.km LK-4303050 Kulavisuddan
+- 39 sq.km LK-7212235 Alawakumbura
+- 39 sq.km LK-5333020 Poonagar
+- 39 sq.km LK-4206065 Kovilkulam
+- 39 sq.km LK-4312095 Kiristhavakulam
+- 39 sq.km LK-8233005 Katupilagama
+- 39 sq.km LK-5130115 Kachchakody
+- 38 sq.km LK-7218140 Kirioya
+- 38 sq.km LK-7112005 Dematamalgama
+- 38 sq.km LK-5251035 Pansalgoda
+- 38 sq.km LK-4409055 Suthanthirapuram
+- 38 sq.km LK-7112075 Oyamaduwa
+- 38 sq.km LK-3309005 Kawanthissapura
+- 38 sq.km LK-4403015 Ambalaperumalkulam
+- 38 sq.km LK-4409090 Visuvamadu East
+- 38 sq.km LK-8221110 Maha Aragama
+- 37 sq.km LK-4312015 Periyakaddu
+- 37 sq.km LK-5306080 Kumbrupiddy North
+- 37 sq.km LK-1336200 Kalukandawa
+- 37 sq.km LK-5248115 Hijra Nagar
+- 37 sq.km LK-4303070 Sinnadampan
+- 37 sq.km LK-4512065 Mulankavil
+- 37 sq.km LK-7218100 Elahera
+- 36 sq.km LK-5130110 Thanthamalai
+- 36 sq.km LK-5303030 Parana Madawachchiya
+- 36 sq.km LK-7109020 Puhudivula
+- 36 sq.km LK-2206075 Pol Attawa
+- 36 sq.km LK-3315020 Liyangasthota
+- 35 sq.km LK-8224060 Maligavila
+- 35 sq.km LK-2206210 Angunawel Pelessa
+- 35 sq.km LK-7115005 Helambagaswewa
+- 35 sq.km LK-5324155 Upparu
+- 35 sq.km LK-4209085 Matha Kiramam
+- 35 sq.km LK-5110045 Poolakadu
+- 35 sq.km LK-8221135 Debara Ara
+- 35 sq.km LK-8230030 Kahakurullan Pelessa
+- 35 sq.km LK-4403010 Amaithipuram
+- 35 sq.km LK-8227025 Karavile
+- 35 sq.km LK-4415085 Kokuthoduvai Centre
+- 35 sq.km LK-9133145 Kudawa
+- 35 sq.km LK-8212180 Pahatha Arawa
+- 35 sq.km LK-4403065 Thenniyankulam
+- 35 sq.km LK-7215220 Sinha Udagama
+- 35 sq.km LK-7203070 Minihirigama
+- 35 sq.km LK-7206015 Ekamuthugama
+- 35 sq.km LK-4309050 Kallikulam
+- 34 sq.km LK-9112035 Kudawa
+- 34 sq.km LK-8212015 Waragama
+- 34 sq.km LK-4409045 Puthukkudiyiruppu West
+- 34 sq.km LK-8206020 Inginiyagala
+- 34 sq.km LK-9145070 Handagirigoda
+- 34 sq.km LK-2312350 Agarapathana
+- 34 sq.km LK-5306090 Nilaveli
+- 34 sq.km LK-3312050 Bellagaswewa
+- 33 sq.km LK-5242125 Thimbirigolla
+- 33 sq.km LK-8209105 Thambana
+- 33 sq.km LK-7106045 Kahatagollewa
+- 33 sq.km LK-7212055 Yakkure
+- 33 sq.km LK-5324025 Majeed Nagar
+- 33 sq.km LK-2315315 Loinon
+- 33 sq.km LK-7166155 Kalugala
+- 33 sq.km LK-5209080 Pollebedda
+- 33 sq.km LK-9133150 Hapugoda
+- 33 sq.km LK-4303040 Olumadu
+- 33 sq.km LK-5321095 Kanthalai Town
+- 33 sq.km LK-4512005 Alankerni
+- 33 sq.km LK-8215100 Kumbukkana
+- 33 sq.km LK-2224025 Akarahediya
+- 32 sq.km LK-5306075 Kumbrupiddy South
+- 32 sq.km LK-4506055 Punnaineeravi
+- 32 sq.km LK-6212005 Mahameddewa
+- 32 sq.km LK-8215130 Kahambana
+- 32 sq.km LK-5112170 Marappalam
+- 32 sq.km LK-5309040 Pulikandikulama
+- 32 sq.km LK-4415120 Kumulamunai West
+- 32 sq.km LK-8106030 Kandubedda
+- 31 sq.km LK-9118225 Diyavinna
+- 31 sq.km LK-4209010 Keerisuddan
+- 31 sq.km LK-5324040 Ayiliyady
+- 31 sq.km LK-7203085 Bathgampattuwa
+- 31 sq.km LK-7209130 Thambala
+- 31 sq.km LK-2121240 Bembiya
+- 31 sq.km LK-8221085 Siripuragama
+- 31 sq.km LK-7154015 Mahadivulwewa
+- 31 sq.km LK-9233130 Dikellakanda
+- 31 sq.km LK-8142180 Welanvita
+- 31 sq.km LK-2315275 Moca
+- 30 sq.km LK-4415025 Shemmalai West
+- 30 sq.km LK-4312010 Periyathampanai
+- 30 sq.km LK-8212030 Newgala
+- 30 sq.km LK-8215105 Horombuwa
+- 30 sq.km LK-5321065 Bhathiyagama
+- 30 sq.km LK-7124045 Dutuwewa
+- 30 sq.km LK-5309030 Madawachchiya
+- 30 sq.km LK-3312010 Ketenwewa
+- 30 sq.km LK-4312060 Muthaliyarkulam
+- 30 sq.km LK-6215005 Manalthivu
+- 30 sq.km LK-7115010 Asirikgama
+- 29 sq.km LK-4506025 Kumarapuram
+- 29 sq.km LK-4303075 Nainamadu
+- 29 sq.km LK-5110010 Vahaneri
+- 29 sq.km LK-7106015 Herathhalmillewa
+- 29 sq.km LK-5248040 Sarvodayapuram
+- 29 sq.km LK-5112190 Periyapullumalai
+- 29 sq.km LK-5306085 Kumbrupiddy East
+- 29 sq.km LK-5309010 Kalyanapura
+- 29 sq.km LK-8106040 Ekiriyankumbura
+- 28 sq.km LK-5206030 Hagamwela
+- 28 sq.km LK-4403035 Kalvilan
+- 28 sq.km LK-8212095 Pallegama
+- 28 sq.km LK-5212070 Lathugala
+- 28 sq.km LK-4412100 Periyaithimadu
+- 28 sq.km LK-7109025 Heerallugama
+- 28 sq.km LK-6209125 Paleegama
+- 28 sq.km LK-4412115 Thachchadampan
+- 28 sq.km LK-7124085 Rathmale
+- 28 sq.km LK-4309120 Echchankulam
+- 28 sq.km LK-5218250 Valathapitty 01
+- 28 sq.km LK-7139015 Ranorawa
+- 28 sq.km LK-5306005 Thennaimaravady
+- 28 sq.km LK-3303080 Andarawewa
+- 28 sq.km LK-8203010 Karandugala
+- 28 sq.km LK-5242065 Dewalahida
+- 28 sq.km LK-5312040 Namalwatta
+- 28 sq.km LK-2118005 Meemure
+- 28 sq.km LK-8224125 Kumarapura
+- 28 sq.km LK-4303065 Anandar Pulliyankulam
+- 28 sq.km LK-8212130 Madugama
+- 27 sq.km LK-7212005 Manampitiya
+- 27 sq.km LK-8103105 Kukulapola
+- 27 sq.km LK-3303105 Wediwewa
+- 27 sq.km LK-2224005 Maoya
+- 27 sq.km LK-9118055 Mulgama
+- 27 sq.km LK-5239045 Aligambai
+- 27 sq.km LK-7103070 Bogahawewa
+- 27 sq.km LK-4409030 Mannakandal
+- 27 sq.km LK-7203175 C.P.Pura
+- 27 sq.km LK-4412035 Kathaliyarsamlankulam
+- 27 sq.km LK-4309140 Pampaimadu
+- 26 sq.km LK-9136115 Delwala
+- 26 sq.km LK-7109130 Thammenna Elawaka
+- 26 sq.km LK-3306030 Bogahawewa
+- 26 sq.km LK-9133125 Dolekanda
+- 26 sq.km LK-3312005 Elalla
+- 26 sq.km LK-6206020 Aluth Eluwankulama
+- 26 sq.km LK-3312040 Keliyapura
+- 26 sq.km LK-4124085 Pokkaruppu
+- 26 sq.km LK-7121150 Mee - Kumbukwewa
+- 26 sq.km LK-7124160 Puliyankadawala
+- 26 sq.km LK-3124125 Homadola
+- 26 sq.km LK-5315150 Muththunagar
+- 26 sq.km LK-4415180 Mulliyawalai West
+- 26 sq.km LK-4506015 Kandavalai
+- 26 sq.km LK-3312140 Pallemalala
+- 25 sq.km LK-2309005 Serasunthenna
+- 25 sq.km LK-4409060 Theravil
+- 25 sq.km LK-5312030 Morawewa North
+- 25 sq.km LK-4312075 Periyapuliyalankulam
+- 25 sq.km LK-6209130 Egodapitiya
+- 25 sq.km LK-7112050 Kuda Vilachchiya
+- 25 sq.km LK-7112085 Dunumadalawa
+- 25 sq.km LK-3312145 Bundala
+- 25 sq.km LK-5215005 Dambethalawa
+- 25 sq.km LK-8106110 Mahalunuka
+- 25 sq.km LK-5242160 Pannalgama
+- 25 sq.km LK-5121120 Kaanchirankudah
+- 25 sq.km LK-7124050 Morawewa
+- 25 sq.km LK-7215250 Kotaleeya
+- 25 sq.km LK-4503050 Muhavil
+- 25 sq.km LK-2206070 Mailattawa
+- 25 sq.km LK-4303020 Paddikudiyiruppu
+- 25 sq.km LK-5110005 Punanai West
+- 25 sq.km LK-4303095 Kanagarayankulam North
+- 25 sq.km LK-5234005 Irakkamam 07
+- 25 sq.km LK-4121175 Kapputhu
+- 25 sq.km LK-6206070 Karadipuwal
+- 25 sq.km LK-8212105 Karambagoda
+- 25 sq.km LK-5112005 Sittandy 3
+- 25 sq.km LK-6209010 Moonamalgaswewa
+- 25 sq.km LK-5206085 Kolamanthalawa
+- 24 sq.km LK-4418040 Ethawatunawewa
+- 24 sq.km LK-5218215 Malkampiddy
+- 24 sq.km LK-5321005 Vendrasanpura Unit 16
+- 24 sq.km LK-5242100 Ekgaloya
+- 24 sq.km LK-5112180 Rugam
+- 24 sq.km LK-8230050 Nikawewa
+- 24 sq.km LK-5112165 Karadiyanaru
+- 24 sq.km LK-4209080 Periyamurippu
+- 24 sq.km LK-9133055 Wewagama
+- 24 sq.km LK-8203025 Kanawegalla
+- 24 sq.km LK-4309110 Salambaikkulam
+- 24 sq.km LK-8103090 Galporuyaya
+- 24 sq.km LK-3312015 Thammennawa
+- 24 sq.km LK-9133160 Pothupitiya South
+- 24 sq.km LK-2224140 Kivulawadiya
+- 24 sq.km LK-7124010 Wahalkada D 1
+- 24 sq.km LK-5212270 Himidurawa
+- 24 sq.km LK-4506080 Uriyan
+- 24 sq.km LK-4306075 Mahamylankulama
+- 24 sq.km LK-7109005 Prabodhagama
+- 24 sq.km LK-5206025 Unapana
+- 24 sq.km LK-4206060 Pallamadhu
+- 24 sq.km LK-5203065 Wewmedagama
+- 24 sq.km LK-2315265 Seethagangula
+- 24 sq.km LK-4406005 Ampalpuram
+- 23 sq.km LK-5306010 Pulmoddai Division No 03
+- 23 sq.km LK-7109055 Anekattiya
+- 23 sq.km LK-4306045 Madukanda
+- 23 sq.km LK-8227015 Datagamuwa
+- 23 sq.km LK-7130080 Pothana
+- 23 sq.km LK-8224130 Yatiyallathota
+- 23 sq.km LK-8221055 Warunagama
+- 23 sq.km LK-7115025 Galpottegama
+- 23 sq.km LK-6209080 Rambawewa
+- 23 sq.km LK-8215110 Hulandawa south
+- 23 sq.km LK-7124090 Welangahaulpatha
+- 23 sq.km LK-7206060 Thissapura
+- 23 sq.km LK-5233010 Oluvil 01
+- 23 sq.km LK-5209015 Poolawala
+- 23 sq.km LK-7218015 Diyabeduma
+- 23 sq.km LK-7106085 Gonumeriyawa
+- 23 sq.km LK-4206090 Pappamoddai
+- 23 sq.km LK-8212035 Govindupura
+- 23 sq.km LK-4509120 Ramanathapuram
+- 23 sq.km LK-4403080 Thunukkai
+- 23 sq.km LK-7206045 Kavuduluwewa (Ralapanawa)
+- 23 sq.km LK-4206095 Parappukadanthan West
+- 23 sq.km LK-9233075 Maliboda
+- 23 sq.km LK-4506050 Puliyampokkanai
+- 23 sq.km LK-4303055 Marailuppai
+- 23 sq.km LK-6209055 Aluthgama
+- 23 sq.km LK-7154020 Keeriyagaswewa
+- 23 sq.km LK-8230035 Mahawewa
+- 23 sq.km LK-5321105 Batukachchiya
+- 23 sq.km LK-4312040 Kanthasamy Nagar
+- 23 sq.km LK-3312045 Gonnoruwa
+- 22 sq.km LK-4303060 Paranthan
+- 22 sq.km LK-4312035 Kurukkalputhukkulam
+- 22 sq.km LK-4303090 Kanagarayankulam South
+- 22 sq.km LK-4209020 Vilathikulam
+- 22 sq.km LK-7109060 Periyakulama
+- 22 sq.km LK-4409065 Thevipuram
+- 22 sq.km LK-7112070 Navodagama
+- 22 sq.km LK-6103135 Hettiarachchigama
+- 22 sq.km LK-8209020 Kotabowa
+- 22 sq.km LK-7109135 Puleliya
+- 22 sq.km LK-6103140 Gampola
+- 22 sq.km LK-7130120 Maradankalla
+- 22 sq.km LK-7112080 Helambawewa
+- 22 sq.km LK-8230055 Bodagama
+- 22 sq.km LK-2209030 Dambagolla
+- 22 sq.km LK-7124015 Maradanmaduwa
+- 22 sq.km LK-5103015 Punichchankerni
+- 22 sq.km LK-9148020 Udawalawa
+- 22 sq.km LK-8221120 Ethiliwewa
+- 22 sq.km LK-5203005 Rideela
+- 22 sq.km LK-4403050 Palayamurikandy
+- 22 sq.km LK-5309035 Kivulakadawala
+- 22 sq.km LK-5321060 Vendrasanpura Unit 14
+- 22 sq.km LK-6209050 Medagama
+- 22 sq.km LK-4415175 Mulliyawalai South
+- 22 sq.km LK-4206025 Illupaikadavai
+- 22 sq.km LK-5236005 Alim Nagar
+- 21 sq.km LK-8221020 Sudupanawela
+- 21 sq.km LK-2118255 Dewahandiya East
+- 21 sq.km LK-5103030 Ooriyankattu
+- 21 sq.km LK-8233035 Sevanagala
+- 21 sq.km LK-6127130 Pothuvila
+- 21 sq.km LK-2206125 Kandalama
+- 21 sq.km LK-7218060 Nikapitiya
+- 21 sq.km LK-6218025 Madurankuliya
+- 21 sq.km LK-4415095 Kokuthoduvai South
+- 21 sq.km LK-8233055 Habarugala
+- 21 sq.km LK-9233125 Magala
+- 21 sq.km LK-8103070 Girandurukotte
+- 21 sq.km LK-3306010 Angunakolawewa
+- 21 sq.km LK-6206045 Bandaranayakapura
+- 21 sq.km LK-7121060 Kubukgollewa
+- 21 sq.km LK-7106065 Thittagonewa
+- 21 sq.km LK-5330070 Ariyamankerni
+- 21 sq.km LK-6212010 Moragahawewa
+- 21 sq.km LK-5110090 Koraveli
+- 21 sq.km LK-4406075 Vinayagapuram
+- 21 sq.km LK-2209255 Galboda
+- 21 sq.km LK-4509030 Civic Centre
+- 21 sq.km LK-4503035 Kovilvayal
+- 21 sq.km LK-6215010 Sirambiadiya
+- 21 sq.km LK-4306085 Mahakachchikodiya
+- 21 sq.km LK-2227105 Himbiliyakada
+- 21 sq.km LK-3218065 Dolamawatha
+- 21 sq.km LK-5330030 Kavanthissapura
+- 21 sq.km LK-8206030 Bandarawadiya
+- 21 sq.km LK-9148015 Panahaduwa
+- 21 sq.km LK-6215015 Sella Kandal
+- 21 sq.km LK-7106110 Kiriketuwewa
+- 20 sq.km LK-4130060 Thanankilappu
+- 20 sq.km LK-8212020 Kotagoda
+- 20 sq.km LK-5209070 Kudaharasgala
+- 20 sq.km LK-8206050 Thampalawela
+- 20 sq.km LK-6206035 Karathivu South
+- 20 sq.km LK-8142175 Akkara seeya
+- 20 sq.km LK-5203015 Dehiattakandiya
+- 20 sq.km LK-5303005 Seva Janapadaya
+- 20 sq.km LK-7109140 Viralmurippuwa
+- 20 sq.km LK-5209025 Unuwathura Bubula
+- 20 sq.km LK-7118015 Kadurugasdamana
+- 20 sq.km LK-2315065 Minuwandeniya
+- 20 sq.km LK-8206040 Thalkotayaya
+- 20 sq.km LK-7124080 Puhulewewa
+- 20 sq.km LK-8212025 Weragoda
