@@ -9,7 +9,8 @@ from gig import Ent, EntType
 
 log = Log(os.path.basename(os.path.dirname(__file__)))
 
-ENT_TYPE = EntType.DISTRICT
+ENT_TYPE = EntType.DSD
+REASONABLE_FACTOR = 3
 
 
 def draw_histogram(title, values, unit):
@@ -23,12 +24,14 @@ def draw_histogram(title, values, unit):
         linewidth=0.5,
     )
 
-    median_pop = np.median(values)
+    median = np.median(values)
     p10 = stats.scoreatpercentile(values, 10)
     p90 = stats.scoreatpercentile(values, 90)
+    max_reasonable = median * REASONABLE_FACTOR
     for [value, label, color] in [
         [p10, "10th Percentile", "green"],
-        [median_pop, "Median", "orange"],
+        [median, "Median", "orange"],
+        [max_reasonable, f"Median x {REASONABLE_FACTOR}", "gray"],
         [p90, "90th Percentile", "red"],
     ]:
         plt.axvline(
@@ -63,10 +66,27 @@ def draw_xy_plot(ents):
     areas = [ent.area for ent in ents]
 
     plt.figure(figsize=(12, 8))
-    plt.scatter(areas, populations, alpha=0.6, color="steelblue", s=50)
+    plt.scatter(areas, populations, alpha=0.6)
+
+    median_population = np.median(populations)
+    median_area = np.median(areas)
+    max_reasonable_population = median_population * REASONABLE_FACTOR
+    max_reasonable_area = median_area * REASONABLE_FACTOR
 
     # Annotate each point with entity name
     for ent in ents:
+        population, area = ent.population, ent.area
+        unreasonable_population = population > max_reasonable_population
+        unreasonable_area = area > max_reasonable_area
+        if unreasonable_population and unreasonable_area:
+            color = "red"
+        elif unreasonable_population:
+            color = "orange"
+        elif unreasonable_area:
+            color = "blue"
+        else:
+            color = "gray"
+
         plt.annotate(
             ent.name,
             xy=(ent.area, ent.population),
@@ -74,6 +94,7 @@ def draw_xy_plot(ents):
             textcoords="offset points",
             fontsize=6,
             alpha=0.7,
+            color=color,
         )
 
     plt.xlabel("Area (sq.km)")
