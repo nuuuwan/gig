@@ -46,6 +46,7 @@ def draw_histogram(ent_type, title, values, unit):
 
     plt.xlabel(f"{title.title()} ({unit})")
     plt.ylabel("Frequency")
+    plt.xscale("log")
     plt.title(f"Histogram of {ent_type.name.upper()} {title.title()}")
     plt.legend()
     plt.grid(True, axis="y")
