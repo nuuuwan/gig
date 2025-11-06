@@ -9,11 +9,10 @@ from gig import Ent, EntType
 
 log = Log(os.path.basename(os.path.dirname(__file__)))
 
-ENT_TYPE = EntType.GND
 REASONABLE_FACTOR = 4
 
 
-def draw_histogram(title, values, unit):
+def draw_histogram(ent_type, title, values, unit):
     plt.figure(figsize=(12, 6))
     plt.hist(
         values,
@@ -47,7 +46,7 @@ def draw_histogram(title, values, unit):
 
     plt.xlabel(f"{title.title()} ({unit})")
     plt.ylabel("Frequency")
-    plt.title(f"Histogram of {ENT_TYPE.name.upper()} {title.title()}")
+    plt.title(f"Histogram of {ent_type.name.upper()} {title.title()}")
     plt.legend()
     plt.grid(True, axis="y")
 
@@ -60,13 +59,13 @@ def draw_histogram(title, values, unit):
     plt.tight_layout()
 
     image_path = os.path.join(
-        os.path.dirname(__file__), f"{ENT_TYPE.name}-{title}.png"
+        os.path.dirname(__file__), f"{ent_type.name}-{title}.png"
     )
     plt.savefig(image_path, dpi=300)
     log.info(f"Wrote {image_path}")
 
 
-def draw_xy_plot(ents):
+def draw_xy_plot(ent_type, ents):
     populations = [ent.population for ent in ents]
     areas = [ent.area for ent in ents]
 
@@ -105,7 +104,7 @@ def draw_xy_plot(ents):
 
     plt.xlabel("Area (sq.km)")
     plt.ylabel("Population (persons)")
-    plt.title(f"Population vs Area for {ENT_TYPE.name.upper()}")
+    plt.title(f"Population vs Area for {ent_type.name.upper()}")
     plt.grid(True, alpha=0.3)
 
     plt.axhline(
@@ -139,17 +138,17 @@ def draw_xy_plot(ents):
     plt.tight_layout()
 
     image_path = os.path.join(
-        os.path.dirname(__file__), f"{ENT_TYPE.name}-population-vs-area.png"
+        os.path.dirname(__file__), f"{ent_type.name}-population-vs-area.png"
     )
     plt.savefig(image_path, dpi=300)
     log.info(f"Wrote {image_path}")
 
 
-def main():
+def analyze(ent_type):
 
     ents = [
         ent
-        for ent in Ent.list_from_type(ENT_TYPE)
+        for ent in Ent.list_from_type(ent_type)
         if ent.population and ent.area
     ]
     n_ents = len(ents)
@@ -157,10 +156,11 @@ def main():
     populations = [ent.population for ent in ents]
     areas = [ent.area for ent in ents]
 
-    draw_histogram("population", populations, "persons")
-    draw_histogram("area", areas, "sq.km")
-    draw_xy_plot(ents)
+    draw_histogram(ent_type, "population", populations, "persons")
+    draw_histogram(ent_type, "area", areas, "sq.km")
+    draw_xy_plot(ent_type, ents)
 
 
 if __name__ == "__main__":
-    main()
+    for ent_type in [EntType.DSD, EntType.GND]:
+        analyze(ent_type)
