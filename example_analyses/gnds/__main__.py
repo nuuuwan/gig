@@ -66,14 +66,13 @@ def draw_xy_plot(ents):
     areas = [ent.area for ent in ents]
 
     plt.figure(figsize=(12, 8))
-    plt.scatter(areas, populations, alpha=0.6)
 
     median_population = np.median(populations)
     median_area = np.median(areas)
     max_reasonable_population = median_population * REASONABLE_FACTOR
     max_reasonable_area = median_area * REASONABLE_FACTOR
 
-    # Annotate each point with entity name
+    # Plot and annotate each point with matching colors
     for ent in ents:
         population, area = ent.population, ent.area
         unreasonable_population = population > max_reasonable_population
@@ -87,6 +86,8 @@ def draw_xy_plot(ents):
         else:
             color = "gray"
 
+        # Plot scatter point with same color as annotation
+        plt.scatter(area, population, alpha=0.6, color=color, s=50)
         plt.annotate(
             ent.name,
             xy=(ent.area, ent.population),
