@@ -2,6 +2,7 @@ import os
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.patches import Patch
 from scipy import stats
 from utils import Log
 
@@ -28,23 +29,26 @@ def draw_histogram(title, values, unit):
     p10 = stats.scoreatpercentile(values, 10)
     p90 = stats.scoreatpercentile(values, 90)
     max_reasonable = median * REASONABLE_FACTOR
-    for [value, label, color] in [
-        [p10, "10th Percentile", "green"],
-        [median, "Median", "orange"],
-        [max_reasonable, f"Median x {REASONABLE_FACTOR}", "gray"],
-        [p90, "90th Percentile", "red"],
-    ]:
+    for [value, label, color] in sorted(
+        [
+            [p10, "10th Percentile", "green"],
+            [median, "Median", "orange"],
+            [p90, "90th Percentile", "red"],
+            [max_reasonable, f"Median x {REASONABLE_FACTOR}", "gray"],
+        ],
+        key=lambda x: x[0],
+    ):
         plt.axvline(
             value,
             color=color,
             linestyle="--",
             linewidth=2,
-            label=f"{label} - {value:,.0f} {unit}",
+            label=f"{value:,.0f} {unit} - {label}",
         )
 
-    plt.xlabel(f"{title} ({unit})")
+    plt.xlabel(f"{title.title()} ({unit})")
     plt.ylabel("Frequency")
-    plt.title(f"Histogram of GND {title}")
+    plt.title(f"Histogram of {ENT_TYPE.name.upper()} {title.title()}")
     plt.legend()
     plt.grid(True, axis="y")
 
@@ -78,9 +82,9 @@ def draw_xy_plot(ents):
         unreasonable_population = population > max_reasonable_population
         unreasonable_area = area > max_reasonable_area
         if unreasonable_population and unreasonable_area:
-            color = "red"
-        elif unreasonable_population:
             color = "orange"
+        elif unreasonable_population:
+            color = "red"
         elif unreasonable_area:
             color = "blue"
         else:
@@ -99,32 +103,30 @@ def draw_xy_plot(ents):
         )
 
     plt.xlabel("Area (sq.km)")
-    plt.ylabel("Population")
-    plt.title("Population vs Area for GNDs")
+    plt.ylabel("Population (persons)")
+    plt.title(f"Population vs Area for {ENT_TYPE.name.upper()}")
     plt.grid(True, alpha=0.3)
 
-    # Add legend
-    from matplotlib.patches import Patch
+    plt.axhline(
+        y=max_reasonable_population,
+        color="red",
+        linestyle=":",
+        linewidth=2,
+        alpha=0.5,
+        label=f"{max_reasonable_population:,.0f} persons"
+        + f" - Median Population x {REASONABLE_FACTOR}",
+    )
+    plt.axvline(
+        x=max_reasonable_area,
+        color="blue",
+        linestyle=":",
+        linewidth=2,
+        alpha=0.5,
+        label=f"{max_reasonable_area:,.0f} sq.km"
+        + f" - Median Area x {REASONABLE_FACTOR}",
+    )
 
-    legend_elements = [
-        Patch(
-            facecolor="red",
-            alpha=0.6,
-            label=f"Population > {REASONABLE_FACTOR} x Median & Area > {REASONABLE_FACTOR} x Median",
-        ),
-        Patch(
-            facecolor="orange",
-            alpha=0.6,
-            label=f"Population > {REASONABLE_FACTOR} x Median",
-        ),
-        Patch(
-            facecolor="blue",
-            alpha=0.6,
-            label=f"Area > {REASONABLE_FACTOR} x Median",
-        ),
-        Patch(facecolor="gray", alpha=0.6, label="Normal"),
-    ]
-    plt.legend(handles=legend_elements, loc="upper left")
+    plt.legend()
 
     # Remove box/spines
     ax = plt.gca()
@@ -154,8 +156,8 @@ def main():
     populations = [ent.population for ent in ents]
     areas = [ent.area for ent in ents]
 
-    draw_histogram("Population", populations, "persons")
-    draw_histogram("Area", areas, "sq.km")
+    draw_histogram("population", populations, "persons")
+    draw_histogram("area", areas, "sq.km")
     draw_xy_plot(ents)
 
 
