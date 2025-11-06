@@ -3,17 +3,19 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
-from utils import Log
+from utils import File, Log
 
 from gig import Ent, EntType
 
 log = Log(os.path.basename(os.path.dirname(__file__)))
 
-REASONABLE_FACTOR = 4
+REASONABLE_FACTOR = 10
+DPI = 150
+FIG_SIZE = (8, 8)
 
 
 def draw_histogram(ent_type, title, values, unit):
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=FIG_SIZE)
     plt.hist(
         values,
         bins=50,
@@ -62,7 +64,7 @@ def draw_histogram(ent_type, title, values, unit):
     image_path = os.path.join(
         os.path.dirname(__file__), f"{ent_type.name}-{title}.png"
     )
-    plt.savefig(image_path, dpi=300)
+    plt.savefig(image_path, dpi=DPI)
     log.info(f"Wrote {image_path}")
 
 
@@ -70,7 +72,7 @@ def draw_xy_plot(ent_type, ents):
     populations = [ent.population for ent in ents]
     areas = [ent.area for ent in ents]
 
-    plt.figure(figsize=(12, 8))
+    plt.figure(figsize=FIG_SIZE)
 
     median_population = np.median(populations)
     median_area = np.median(areas)
@@ -92,21 +94,23 @@ def draw_xy_plot(ent_type, ents):
             color = "gray"
 
         # Plot scatter point with same color as annotation
-        plt.scatter(area, population, alpha=0.6, color=color, s=50)
+        plt.scatter(area, population, alpha=0.25, color=color, s=50)
         plt.annotate(
             ent.name,
             xy=(ent.area, ent.population),
             xytext=(5, 0),
             textcoords="offset points",
             fontsize=6,
-            alpha=0.7,
+            alpha=0.75,
             color=color,
         )
 
     plt.xlabel("Area (sq.km)")
     plt.ylabel("Population (persons)")
+    plt.xscale("log")
+    plt.yscale("log")
     plt.title(f"Population vs Area for {ent_type.name.upper()}")
-    plt.grid(True, alpha=0.3)
+    plt.grid(True, alpha=0.25)
 
     plt.axhline(
         y=max_reasonable_population,
@@ -141,8 +145,29 @@ def draw_xy_plot(ent_type, ents):
     image_path = os.path.join(
         os.path.dirname(__file__), f"{ent_type.name}-population-vs-area.png"
     )
-    plt.savefig(image_path, dpi=300)
+    plt.savefig(image_path, dpi=DPI)
     log.info(f"Wrote {image_path}")
+
+
+def print_list(ent_type, label, values, unit):
+    lines = [f"# {label.title()}", ""]
+    median = np.median(values)
+    limit = median * REASONABLE_FACTOR
+    for ent, value in sorted(
+        zip(ent_type.list_from_type(), values),
+        key=lambda x: x[1],
+        reverse=True,
+    ):
+        if value <= limit:
+            continue
+        lines.append(f"- {value:,.0f} {unit} - {ent.name}")
+
+    output_path = os.path.join(
+        os.path.dirname(__file__), f"{ent_type.name}-{label}-outliers.md"
+    )
+
+    File(output_path).write_lines(lines)
+    log.info(f"Wrote {output_path}")
 
 
 def analyze(ent_type):
@@ -159,6 +184,8 @@ def analyze(ent_type):
 
     draw_histogram(ent_type, "population", populations, "persons")
     draw_histogram(ent_type, "area", areas, "sq.km")
+    print_list(ent_type, "population", populations, "persons")
+    print_list(ent_type, "area", areas, "sq.km")
     draw_xy_plot(ent_type, ents)
 
 
