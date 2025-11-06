@@ -33,6 +33,7 @@ class EntGeoMixin:
         if raw_geo_file.exists:
             raw_geo = raw_geo_file.read()
         else:
+            log.debug(f"Downloading geo data for {self.id}")
             content = WWW(self.url_remote_geo_data_path).read()
             raw_geo = json.loads(content)
             raw_geo_file.write(raw_geo)
