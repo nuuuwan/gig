@@ -10,7 +10,7 @@ from gig import Ent, EntType
 log = Log(os.path.basename(os.path.dirname(__file__)))
 
 ENT_TYPE = EntType.DSD
-REASONABLE_FACTOR = 3
+REASONABLE_FACTOR = 4
 
 
 def draw_histogram(title, values, unit):
@@ -102,6 +102,29 @@ def draw_xy_plot(ents):
     plt.ylabel("Population")
     plt.title("Population vs Area for GNDs")
     plt.grid(True, alpha=0.3)
+
+    # Add legend
+    from matplotlib.patches import Patch
+
+    legend_elements = [
+        Patch(
+            facecolor="red",
+            alpha=0.6,
+            label=f"Population > {REASONABLE_FACTOR} x Median & Area > {REASONABLE_FACTOR} x Median",
+        ),
+        Patch(
+            facecolor="orange",
+            alpha=0.6,
+            label=f"Population > {REASONABLE_FACTOR} x Median",
+        ),
+        Patch(
+            facecolor="blue",
+            alpha=0.6,
+            label=f"Area > {REASONABLE_FACTOR} x Median",
+        ),
+        Patch(facecolor="gray", alpha=0.6, label="Normal"),
+    ]
+    plt.legend(handles=legend_elements, loc="upper left")
 
     # Remove box/spines
     ax = plt.gca()
