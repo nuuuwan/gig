@@ -60,7 +60,9 @@ def draw_histogram(title, values, unit):
 
     plt.tight_layout()
 
-    image_path = os.path.join(os.path.dirname(__file__), f"{title}.png")
+    image_path = os.path.join(
+        os.path.dirname(__file__), f"{ENT_TYPE.name}-{title}.png"
+    )
     plt.savefig(image_path, dpi=300)
     log.info(f"Wrote {image_path}")
 
@@ -138,7 +140,7 @@ def draw_xy_plot(ents):
     plt.tight_layout()
 
     image_path = os.path.join(
-        os.path.dirname(__file__), "population_vs_area.png"
+        os.path.dirname(__file__), f"{ENT_TYPE.name}-population-vs-area.png"
     )
     plt.savefig(image_path, dpi=300)
     log.info(f"Wrote {image_path}")
