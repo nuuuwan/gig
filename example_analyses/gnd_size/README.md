@@ -1,4 +1,4 @@
-# When GNDs are Too Big: Analysis of Population and Area of Sri Lanka's Grama Niladhari Divisions
+# When GNDs are Too Big: An Analysis of Population and Area of Sri Lanka's Grama Niladhari Divisions
 
 ## Background
 
@@ -7,6 +7,8 @@
 A Grama Niladhari Division is the smallest administrative unit in Sri Lanka, forming the base of the national governance structure under a Divisional Secretariat. Each GND represents a defined community or village area and is assigned a unique official code. These divisions ensure that government administration reaches every locality, connecting the public directly to state services.
 
 Sri Lanka's 9 provinces are divided into 25 Administrative Districts. These are, in turn, divided into 331 Divisional Secretariat Divisions (DSDs). DSDs are divided into 14,021 GNDs. GNDs are further divided into a unit known as villages.
+
+*[Grama Niladhari (ග්‍රාම නිලධාරී) is Sinhala for Village Office]*
 
 ### Role and Importance of the Grama Niladhari
 
