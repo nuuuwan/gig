@@ -62,8 +62,6 @@ The median area of Sri Lanka's GNDs was 2.0 sq.km (2012 census). 90% of GNDs had
 
 ([Complete List](https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/gnd-area-outliers.md))
 
-Most of these encompass national reserves (e.g., Wilpattu).
-
 ## Discussion
 
 The analysis reveals significant imbalances in both population and area across Sri Lanka's 14,021 Grama Niladhari Divisions. With a median population of 1,131 persons and median area of 2.0 sq.km, several GNDs far exceed reasonable administrative limits.
