@@ -81,8 +81,6 @@ def draw_xy_plot(ent_type, ents):
     median_area = np.median(areas)
     max_reasonable_population = median_population * REASONABLE_FACTOR
     max_reasonable_area = median_area * REASONABLE_FACTOR
-
-    # Plot and annotate each point with matching colors
     for ent in ents:
         population, area = ent.population, ent.area
         unreasonable_population = population > max_reasonable_population
@@ -136,7 +134,6 @@ def draw_xy_plot(ent_type, ents):
 
     plt.legend()
 
-    # Remove box/spines
     ax = plt.gca()
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -186,7 +183,6 @@ def print_list(ent_type, ents, label, values, unit):
 
 
 def analyze(ent_type):
-
     ents = [
         ent
         for ent in Ent.list_from_type(ent_type)
