@@ -1,4 +1,4 @@
-# Analysis of Population and Area of Grama Niladhari Divisions
+# When GNDs are Too Big: Analysis of Population and Area of Sri Lanka's Grama Niladhari Divisions
 
 ## Background
 
@@ -43,11 +43,11 @@ The median population of Sri Lanka's 14,021 GNDs, as of the [2012 census](http:/
 
 ## Area of GNDs
 
-The median area of Sri Lanka's GND was 2.0 sq.km (2012 census). 90% of GNDs had a area below 9.1 sq.km.
+The median area of Sri Lanka's GNDs was 2.0 sq.km (2012 census). 90% of GNDs had an area below 9.1 sq.km.
 
 ![gnd-area.png](gnd-area.png)
 
-10 GNDs had populations greater than 10x the median (11,310 persons). The 10 largest were:
+23 GNDs had areas greater than 10x the median (20 sq.km). The 10 largest were:
 
 1. 1,209 persons 570.7 sq.km LK-5251060 Panama South
 2. 3,614 persons 526.5 sq.km LK-3309010 Kirinda
@@ -62,9 +62,13 @@ The median area of Sri Lanka's GND was 2.0 sq.km (2012 census). 90% of GNDs had 
 
 ([Complete List](https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/gnd-area-outliers.md))
 
-# Discussion
+Most of these encompass national reserves (e.g., Wilpattu).
+
+## Discussion
 
 The analysis reveals significant imbalances in both population and area across Sri Lanka's 14,021 Grama Niladhari Divisions. With a median population of 1,131 persons and median area of 2.0 sq.km, several GNDs far exceed reasonable administrative limits.
+
+### Overpopulated Urban GNDs
 
 The 23 GNDs with populations exceeding 10 times the median (>11,310 persons) present serious challenges for effective governance. For example:
 
@@ -74,15 +78,17 @@ The 23 GNDs with populations exceeding 10 times the median (>11,310 persons) pre
 
 These densely populated divisions, predominantly in Colombo Municipal Council, strain the capacity of a single Grama Niladhari to maintain accurate population records, issue certificates efficiently, and coordinate welfare programs effectively. Such GNDs should be subdivided to ensure manageable administrative workloads and better service delivery.
 
-Conversely, 10 GNDs exceed 10 times the median area (>20 sq.km), creating accessibility challenges:
+### Oversized Rural GNDs
+
+Conversely, 23 GNDs exceed 10 times the median area (>20 sq.km), creating accessibility challenges:
 
 - **Panama South (LK-5251060)** spans 570.7 sq.km with only 1,209 residents
 - **Kirinda (LK-3309010)** covers 526.5 sq.km serving 3,614 persons
 - **Katharagama (LK-8227010)** extends across 415.9 sq.km
 
-While many of these encompass national reserves (e.g. Wilpattu), the vast geographic areas make it difficult for residents to access government services and for the Grama Niladhari to maintain effective oversight. These divisions may benefit from boundary adjustments where feasible, or additional administrative support.
+While many of these encompass national reserves (e.g., Wilpattu), the vast geographic areas make it difficult for residents to access government services and for the Grama Niladhari to maintain effective oversight. These divisions may benefit from boundary adjustments where feasible, or additional administrative support.
 
-# Concluding Recommendations
+## Concluding Recommendations
 
 When a GND becomes too large in area or population, it should be divided into two or more smaller divisions. This process should:
 
@@ -93,11 +99,12 @@ When a GND becomes too large in area or population, it should be divided into tw
 
 Such adjustments are essential to preserve the effectiveness of grassroots governance and ensure that all Sri Lankan communities receive equitable access to state services.
 
-# Appendix: Data and Code for Visualization and Analysis
+## Appendix
 
-See [https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/README.md](https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/README.md)
-
-# Appendix: A Visualization of Both Population and Area of Sri Lanka's GNDs
+### Population vs Area Visualization
 
 ![gnd-population-vs-area.png](gnd-population-vs-area.png)
 
+### Data and Code
+
+See [https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/](https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/) for complete data and analysis code.
