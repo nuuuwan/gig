@@ -149,12 +149,19 @@ def draw_xy_plot(ent_type, ents):
     log.info(f"Wrote {image_path}")
 
 
-def print_list(ent_type, ents, label, values, unit):
-    lines = [f"# {label.title()}", ""]
-    median = np.median(values)
-    limit = median * REASONABLE_FACTOR
+def generate_report(ent_type, ents, label, values, unit):
+    lines = [f"# {label.title()} Report", ""]
+
     total_value = sum(values)
-    log.debug(f"{label} -> {total_value=:,} {unit}")
+    lines.append(f"*Total {label.title()}: {total_value:,.0f} {unit}*")
+
+    median = np.median(values)
+    lines.append(f"*Median {label.title()}: {median:,.0f} {unit}*")
+
+    limit = median * REASONABLE_FACTOR
+    lines.append(
+        f"## Outliers (> {limit} {unit} = Median x {REASONABLE_FACTOR})"
+    )
     i_rank = 0
     for ent, value in sorted(
         zip(ents, values),
@@ -195,8 +202,8 @@ def analyze(ent_type):
 
     draw_histogram(ent_type, "population", populations, "persons")
     draw_histogram(ent_type, "area", areas, "sq.km")
-    print_list(ent_type, ents, "population", populations, "persons")
-    print_list(ent_type, ents, "area", areas, "sq.km")
+    generate_report(ent_type, ents, "population", populations, "persons")
+    generate_report(ent_type, ents, "area", areas, "sq.km")
     draw_xy_plot(ent_type, ents)
 
 
