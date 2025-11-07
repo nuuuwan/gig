@@ -65,3 +65,12 @@ Most of these eomcpoass national reserves (e.g. Wilpattu).
 ## Concluding Recomentations
 
 When a GND becomes too large in area or population, it can be divided into two or more smaller divisions. This allows for better administrative coverage and more direct engagement with residents. Such adjustments are typically initiated by the Divisional Secretary and formalized through the Ministry of Public Administration to maintain effective governance at the community level.
+
+*A Visualization of Both Population and Area of Sri Lanka's GNDs*
+
+![gnd-population-vs-area.png](gnd-population-vs-area.png)
+
+
+# Appendix: Data and Code for Visualization and Analysis
+
+See [https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/README.md](https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/README.md)
