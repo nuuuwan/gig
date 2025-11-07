@@ -6,7 +6,7 @@
 
 A Grama Niladhari Division is the smallest administrative unit in Sri Lanka, forming the base of the national governance structure under a Divisional Secretariat. Each GND represents a defined community or village area and is assigned a unique official code. These divisions ensure that government administration reaches every locality, connecting the public directly to state services.
 
-Sri Lanka's 9 provinces are divided into 25 Administrative Districts. These are, in turn, divided into 331 Divisional Secretariat Divisions (DSDs). DSDs are divided into 14,021 GNDs. GNDs are further divided into a unit known as villages. 
+Sri Lanka's 9 provinces are divided into 25 Administrative Districts. These are, in turn, divided into 331 Divisional Secretariat Divisions (DSDs). DSDs are divided into 14,021 GNDs. GNDs are further divided into a unit known as villages.
 
 ### Role and Importance of the Grama Niladhari
 
@@ -22,7 +22,7 @@ A GND must be of a manageable size so that one Grama Niladhari can effectively s
 
 ## Population of GNDs
 
-The median population of Sri Lanka's 14,021 GNDs, as of the [2012 census](http://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf) was 1,131 persons. 90% of GNDs had a population below 2,623. 
+The median population of Sri Lanka's 14,021 GNDs, as of the [2012 census](http://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf) was 1,131 persons. 90% of GNDs had a population below 2,623.
 
 ![gnd-population.png](gnd-population.png)
 
@@ -39,11 +39,11 @@ The median population of Sri Lanka's 14,021 GNDs, as of the [2012 census](http:/
 9. 14,876 persons 1.0 sq.km LK-1127085 Wellawatta North
 10. 14,017 persons 3.4 sq.km LK-6215040 Puttalam East
 
-All of these are in densely populated urban area, 9 of which are in the Colombo Municipal Council.
+([Complete List](https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/gnd-population-outliers.md))
 
-## Area of GNDs 
+## Area of GNDs
 
-The median area of Sri Lanka's GND was 2.0 sq.km (2012 census). 90% of GNDs had a area below 9.1 sq.km. 
+The median area of Sri Lanka's GND was 2.0 sq.km (2012 census). 90% of GNDs had a area below 9.1 sq.km.
 
 ![gnd-area.png](gnd-area.png)
 
@@ -60,17 +60,44 @@ The median area of Sri Lanka's GND was 2.0 sq.km (2012 census). 90% of GNDs had 
 9. 2,900 persons 214.2 sq.km LK-7210005 Sinhapura
 10. 1,326 persons 210.2 sq.km LK-5112075 Eralakkulam
 
-Most of these eomcpoass national reserves (e.g. Wilpattu).
+([Complete List](https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/gnd-area-outliers.md))
 
-## Concluding Recomentations
+# Discussion
 
-When a GND becomes too large in area or population, it can be divided into two or more smaller divisions. This allows for better administrative coverage and more direct engagement with residents. Such adjustments are typically initiated by the Divisional Secretary and formalized through the Ministry of Public Administration to maintain effective governance at the community level.
+The analysis reveals significant imbalances in both population and area across Sri Lanka's 14,021 Grama Niladhari Divisions. With a median population of 1,131 persons and median area of 2.0 sq.km, several GNDs far exceed reasonable administrative limits.
 
-*A Visualization of Both Population and Area of Sri Lanka's GNDs*
+The 23 GNDs with populations exceeding 10 times the median (>11,310 persons) present serious challenges for effective governance. For example:
 
-![gnd-population-vs-area.png](gnd-population-vs-area.png)
+- **Mattakkuliya (LK-1103010)** serves 28,003 persons in just 2.1 sq.km
+- **Borella North (LK-1127040)** has 21,326 persons in only 1.0 sq.km
+- **Dematagoda (LK-1127030)** manages 18,602 persons in 0.8 sq.km
 
+These densely populated divisions, predominantly in Colombo Municipal Council, strain the capacity of a single Grama Niladhari to maintain accurate population records, issue certificates efficiently, and coordinate welfare programs effectively. Such GNDs should be subdivided to ensure manageable administrative workloads and better service delivery.
+
+Conversely, 10 GNDs exceed 10 times the median area (>20 sq.km), creating accessibility challenges:
+
+- **Panama South (LK-5251060)** spans 570.7 sq.km with only 1,209 residents
+- **Kirinda (LK-3309010)** covers 526.5 sq.km serving 3,614 persons
+- **Katharagama (LK-8227010)** extends across 415.9 sq.km
+
+While many of these encompass national reserves (e.g. Wilpattu), the vast geographic areas make it difficult for residents to access government services and for the Grama Niladhari to maintain effective oversight. These divisions may benefit from boundary adjustments where feasible, or additional administrative support.
+
+# Concluding Recommendations
+
+When a GND becomes too large in area or population, it should be divided into two or more smaller divisions. This process should:
+
+1. Be initiated by the Divisional Secretary based on population growth, settlement patterns, and service delivery needs
+2. Consider both demographic and geographic factors to ensure balanced administrative units
+3. Be formalized through the Ministry of Public Administration and gazetted officially
+4. Maintain community coherence while improving administrative efficiency
+
+Such adjustments are essential to preserve the effectiveness of grassroots governance and ensure that all Sri Lankan communities receive equitable access to state services.
 
 # Appendix: Data and Code for Visualization and Analysis
 
 See [https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/README.md](https://github.com/nuuuwan/gig/blob/main/example_analyses/gnd_size/README.md)
+
+# Appendix: A Visualization of Both Population and Area of Sri Lanka's GNDs
+
+![gnd-population-vs-area.png](gnd-population-vs-area.png)
+
