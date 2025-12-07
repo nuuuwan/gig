@@ -30,7 +30,8 @@ class EntGeoMixin:
         if ent_id.startswith("LK-"):
             return (
                 f"{GIGConstants.URL_BASE_NEW}"
-                + f"/data/geo/json/original/{ent_type.name}s.json/{ent_id}.json"
+                + "/data/geo/json/original"
+                + f"/{ent_type.name}s.json/{ent_id}.json"
             )
 
         return f"{GIGConstants.URL_BASE}/geo/{ent_type.name}/{ent_id}.json"
