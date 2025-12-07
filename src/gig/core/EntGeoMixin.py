@@ -26,6 +26,13 @@ class EntGeoMixin:
     def url_remote_geo_data_path(self):
         ent_id = self.id
         ent_type = EntType.from_id(ent_id)
+
+        if ent_id.startswith("LK-"):
+            return (
+                f"{GIGConstants.URL_BASE_NEW}"
+                + f"/data/geo/json/original/{ent_type.name}s.json/{ent_id}.json"
+            )
+
         return f"{GIGConstants.URL_BASE}/geo/{ent_type.name}/{ent_id}.json"
 
     def get_raw_geo(self):

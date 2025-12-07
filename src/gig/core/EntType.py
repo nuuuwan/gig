@@ -39,7 +39,24 @@ class EntType:
 
     @property
     def url_remote_data_path(self):
-        return f"{GIGConstants.URL_BASE}/ents/{self.name}.tsv"
+        if self.name in [
+            EntType.COUNTRY.name,
+            EntType.PROVINCE.name,
+            EntType.DISTRICT.name,
+            EntType.DSD.name,
+            EntType.GND.name,
+        ]:
+            return f"{GIGConstants.URL_BASE_NEW}/data/ents/{self.name}s.tsv"
+
+        if self.name in [
+            EntType.ED.name,
+            EntType.PD.name,
+            EntType.LG.name,
+            EntType.MOH.name,
+        ]:
+            return f"{GIGConstants.URL_BASE}/ents/{self.name}.tsv"
+
+        raise ValueError(f"Unknown EntType name: {self.name}")
 
     @property
     def temp_data_path(self):

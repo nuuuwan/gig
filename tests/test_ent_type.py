@@ -44,12 +44,8 @@ class TestEntType(unittest.TestCase):
             EntType.PROVINCE.url_remote_data_path,
             "/".join(
                 [
-                    "https://raw.githubusercontent.com",
-                    "nuuuwan",
-                    "gig-data",
-                    "master",
-                    "ents",
-                    "province.tsv",
+                    "https://raw.githubusercontent.com/nuuuwan"
+                    + "/lk_admin_regions/master/data/ents/provinces.tsv",
                 ]
             ),
         )

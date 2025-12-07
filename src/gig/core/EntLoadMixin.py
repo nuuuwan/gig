@@ -1,4 +1,3 @@
-import json
 
 from rapidfuzz import fuzz
 from utils import String
@@ -11,13 +10,10 @@ class EntLoadMixin:
     def from_dict(cls, d):
         d = d.copy()
 
-        for k in ['area', 'population', 'centroid_altitude']:
+        for k in ["area_sqkm", "center_lat", "center_lng"]:
             if k in d:
-                d[k] = String(d[k]).int if d[k] else 0
+                d[k] = String(d[k]).float if d[k] else 0
 
-        for k in ['centroid', 'subs', 'supers', 'ints', 'eqs']:
-            if k in d and d[k] and d[k] != 'None':
-                d[k] = json.loads(d[k].replace('\'', '"'))
         return cls(d)
 
     @classmethod
