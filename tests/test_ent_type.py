@@ -62,8 +62,10 @@ class TestEntType(unittest.TestCase):
             {
                 "id": "LK-1",
                 "name": "Western",
-                "centroid": "[6.834825, 80.066978]",
-                "province_id": "LK-1",
-                "population": "5850745",
+                "name_si": "බස්නාහිර පළාත",
+                "name_ta": "மேல் மாகாணம்",
+                "area_sqkm": "3751.55742292",
+                "center_lat": "6.82758732",
+                "center_lon": "80.03300355",
             },
         )
