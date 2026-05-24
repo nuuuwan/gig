@@ -45,13 +45,13 @@ class EntType:
             EntType.DISTRICT.name,
             EntType.DSD.name,
             EntType.GND.name,
+            EntType.ED.name,
+            EntType.PD.name,
+            EntType.LG.name,
         ]:
             return f"{GIGConstants.URL_BASE_NEW}/data/ents/{self.name}s.tsv"
 
         if self.name in [
-            EntType.ED.name,
-            EntType.PD.name,
-            EntType.LG.name,
             EntType.MOH.name,
         ]:
             return f"{GIGConstants.URL_BASE}/ents/{self.name}.tsv"
