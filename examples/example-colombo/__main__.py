@@ -23,7 +23,7 @@ data_list = [
     )
 ]
 
-ax = plt.gca()
+fig, ax = plt.subplots(figsize=(10, 6.5))
 ax.set_axis_off()
 geo_by_ent_id = {}
 
@@ -111,6 +111,12 @@ for data in data_list:
         },
     )
 
-plt.savefig('examples/example-colombo/colombo.png', dpi=300)
+fig.subplots_adjust(left=0.01, right=0.99, bottom=0.01, top=0.99)
+plt.savefig(
+    'examples/example-colombo/colombo.png',
+    dpi=300,
+    bbox_inches='tight',
+    pad_inches=0.02,
+)
 plt.close()
     
