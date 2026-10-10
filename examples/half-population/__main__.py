@@ -19,15 +19,16 @@ def distance2(ent, latlng2):
 
 
 SORTER_IDX = dict(
-    lat=lambda ent: ent.d["center_lat"],
-    lng=lambda ent: ent.d["center_lng"],
     colombo=lambda ent: distance2(ent, LAT_LNG_COLOMBO),
     kandy=lambda ent: distance2(ent, LAT_LNG_KANDY),
     galle=lambda ent: distance2(ent, LAT_LNG_GALLE),
     jaffna=lambda ent: distance2(ent, LAT_LNG_JAFFNA),
     batticaloa=lambda ent: distance2(ent, LAT_LNG_BATTICALOA),
+    lat=lambda ent: ent.d["center_lat"],
+    lng=lambda ent: ent.d["center_lng"],
 )
-COLOR_IDX = ["red", "green"]
+COLOR_IDX = ["#108751", "#ffff24"]
+BACKGROUND_COLOR = "#80d0ed"
 
 GIG_TABLE_ETHNICITY = GIGTable("population-ethnicity", "regions", "2012")
 FIG_SIZE = (6, 6)
@@ -56,7 +57,11 @@ def draw(
     id_to_population = get_id_to_population(ents)
     total_population = sum(id_to_population.values())
     cum_population = 0
-    fig, ax = plt.subplots(figsize=FIG_SIZE)
+    fig, ax = plt.subplots(
+        figsize=FIG_SIZE,
+        facecolor=BACKGROUND_COLOR,
+    )
+    ax.set_facecolor(BACKGROUND_COLOR)
     fig.subplots_adjust(right=0.65)
     i_to_population = {}
     i_to_area = {}
@@ -75,6 +80,7 @@ def draw(
         i_to_area[color_i] = i_to_area.get(color_i, 0) + area
 
     ax.set_axis_off()
+    ax.set_title("Sri Lanka in Two equal Parts")
     ax.legend(
         handles=[
             mpatches.Patch(
@@ -91,11 +97,11 @@ def draw(
     )
 
     image_path = f"examples/half-population/{sorter_id}-{ent_type.name}.png"
-    fig.savefig(image_path, dpi=300)
+    fig.savefig(image_path, dpi=300, facecolor=BACKGROUND_COLOR)
     print(f"Wrote {image_path}")
 
 
 if __name__ == "__main__":
-    for ent_type in [EntType.DSD]:
+    for ent_type in [EntType.GND]:
         for sorter_id in SORTER_IDX.keys():
             draw(ent_type, sorter_id)
