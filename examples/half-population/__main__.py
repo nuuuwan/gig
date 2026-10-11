@@ -1,3 +1,4 @@
+import math
 from functools import cache
 
 import matplotlib.patches as mpatches
@@ -18,8 +19,15 @@ def distance2(ent, latlng2):
     return (lat1 - lat2) ** 2 + (lng1 - lng2) ** 2
 
 
+def distance1(ent, latlng2):
+    lat1, lng1 = ent.d["center_lat"], ent.d["center_lng"]
+    lat2, lng2 = latlng2
+    return abs(lat1 - lat2) + abs(lng1 - lng2)
+
+
 SORTER_IDX = dict(
     colombo=lambda ent: distance2(ent, LAT_LNG_COLOMBO),
+    colombo1=lambda ent: distance1(ent, LAT_LNG_COLOMBO),
     kandy=lambda ent: distance2(ent, LAT_LNG_KANDY),
     galle=lambda ent: distance2(ent, LAT_LNG_GALLE),
     jaffna=lambda ent: distance2(ent, LAT_LNG_JAFFNA),
@@ -27,7 +35,11 @@ SORTER_IDX = dict(
     lat=lambda ent: ent.d["center_lat"],
     lng=lambda ent: ent.d["center_lng"],
 )
-COLOR_IDX = ["#108751", "#ffff24"]
+COLOR_IDX = [
+    "#108751",
+    "#ffff24",
+]
+N_GROUPS = 2
 BACKGROUND_COLOR = "#80d0ed"
 
 GIG_TABLE_ETHNICITY = GIGTable("population-ethnicity", "regions", "2012")
@@ -45,16 +57,59 @@ def get_id_to_population(ents):
     return id_to_population
 
 
+def get_best_ent_sorter(ents):
+    total_population = sum(get_id_to_population(ents).values())
+    min_area = None
+    min_area_ent = None
+    for ent in ents:
+        latlng = [ent.d["center_lat"], ent.d["center_lng"]]
+        sorted_ents = sorted(ents, key=lambda e: distance2(e, latlng))
+
+        cum_area = 0
+        cum_population = 0
+
+        for ent1 in sorted_ents:
+            cum_area += ent1.area_sqkm
+            cum_population += get_id_to_population([ent1])[ent1.id]
+            if cum_population >= total_population / N_GROUPS:
+                break
+
+        if not min_area_ent or cum_area < min_area:
+            min_area = cum_area
+            min_area_ent = ent
+
+    return lambda ent: distance2(
+        ent, [min_area_ent.d["center_lat"], min_area_ent.d["center_lng"]]
+    )
+
+
 def draw(
-    ent_type=EntType.PROVINCE,
-    sorter_id="lat",
+    parent_id: str,
+    ent_type: EntType,
+    sorter_id: str,
 ):
     ents = Ent.list_from_type(ent_type)
-    ent = ents[0]
-    sorter = SORTER_IDX[sorter_id]
-    ents.sort(key=sorter)
+    ents = [ent for ent in ents if parent_id in ent.id or parent_id == "LK"]
 
     id_to_population = get_id_to_population(ents)
+    if sorter_id == "densest":
+        id_to_density = [
+            (ent.id, id_to_population[ent.id] / ent.area_sqkm) for ent in ents
+        ]
+        densest_ent = max(id_to_density, key=lambda x: x[1])[0]
+        latlng_densest = [
+            Ent.from_id(densest_ent).d["center_lat"],
+            Ent.from_id(densest_ent).d["center_lng"],
+        ]
+        sorter = lambda ent: distance2(ent, latlng_densest)
+    elif sorter_id == "best":
+        sorter = get_best_ent_sorter(ents)
+
+    else:
+        sorter = SORTER_IDX[sorter_id]
+    ents.sort(key=sorter)
+    parent_ent = Ent.from_id(parent_id)
+
     total_population = sum(id_to_population.values())
     cum_population = 0
     fig, ax = plt.subplots(
@@ -69,7 +124,11 @@ def draw(
     for ent in ents:
         area = ent.area_sqkm
         population = id_to_population[ent.id]
-        color_i = int(2 * cum_population / total_population)
+        color_i = (
+            math.ceil(N_GROUPS * cum_population / total_population) - 1
+            if cum_population > 0
+            else 0
+        )
         color = COLOR_IDX[color_i]
         cum_population += population
         geo = ent.geo()
@@ -80,7 +139,8 @@ def draw(
         i_to_area[color_i] = i_to_area.get(color_i, 0) + area
 
     ax.set_axis_off()
-    ax.set_title("Sri Lanka in Two equal Parts")
+    name = parent_ent.name + " " + EntType.from_id(parent_id).name.upper()
+    ax.set_title(f"{name} in Two equal Parts")
     ax.legend(
         handles=[
             mpatches.Patch(
@@ -96,12 +156,16 @@ def draw(
         bbox_to_anchor=(0.5, 1),
     )
 
-    image_path = f"examples/half-population/{sorter_id}-{ent_type.name}.png"
+    image_path = (
+        "examples/half-population/"
+        + f"{parent_id}.by-{ent_type.name}.{sorter_id}.png"
+    )
     fig.savefig(image_path, dpi=300, facecolor=BACKGROUND_COLOR)
     print(f"Wrote {image_path}")
 
 
 if __name__ == "__main__":
-    for ent_type in [EntType.GND]:
-        for sorter_id in SORTER_IDX.keys():
-            draw(ent_type, sorter_id)
+    for parent_id in [ent.id for ent in Ent.list_from_type(EntType.PROVINCE)]:
+        for ent_type in [EntType.GND]:
+            for sorter_id in ["best"]:
+                draw(parent_id, ent_type, sorter_id)
